@@ -175,6 +175,15 @@
           </li>
           <!--end dashboard-->
           <li class="nav-item">
+            <a href="../../pages/calendar.html" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Calendar
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="../UI/timeline.html" class="nav-link">
               <i class="nav-icon fas fa-project-diagram"></i>
               <p>
@@ -184,7 +193,7 @@
           </li>
           <!--end UI-->
           <li class="nav-item">
-            <a href="../examples/login.html" class="nav-link">
+            <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
               <p>
                 Logout
@@ -209,11 +218,73 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+    
  <!-- Main content -->
  <div class="card-footer clearfix">
   <div class="card-header"></h3>
-   <button type="button" class="btn btn-success float-right" ><i class="fas fa-plus"></i> Add request</button>
-   
+   <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add request</button>
+  </div>
+ </div>
+
+ <div class="modal fade" role="dialog" id="addrequestModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add request</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="Fullname" class="form-control" placeholder="Fullname" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="email" name="Govmail" class="form-control" placeholder="Govmail" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="Position" class="form-control" placeholder="Position" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="Division" class="form-control" placeholder="Division" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="number" name="Contact No." class="form-control" placeholder="Contact No." required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="Region" class="form-control" placeholder="Region" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="date" name="Date Start" class="form-control" placeholder="Date Start" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="date" name="Date End" class="form-control" placeholder="Date End" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="time" name="Time Start" class="form-control" placeholder="Time Start" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="time" name="Time End" class="form-control" placeholder="Time End" required="required">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Add request</button>
+      </div>
+
+    </div>
   </div>
  </div>
  
@@ -253,15 +324,93 @@
                     <td>5:00 PM</td>
                     <td><h5><span class="badge badge-warning">Pending</span></h5></td>
                     <td>
-                      <div class="card-tools">
-                        <a href="#" class="btn btn-tool">
-                          <i class="fas fa-pen"></i></a>
-                          <a href="#" class="btn btn-tool">
-                          <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
 
-                  </td>
+                      <button type="button" class="btn btn-warning float-md-none" data-toggle="modal" data-target="#editModal"><i class='fa fa-edit'></i></button>
+                      <button type="button" class="btn btn-danger float-md-none" data-toggle="modal" data-target="#deleteModal"><i class='fa fa-trash'></i></button>
+                                 
+                      <!-- Delete  -->
+                      <div class="modal fade" role="dialog" id="deleteModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h3 class="modal-title">Delete Request</h3>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+                              <p>Are you sure you want to delete the request?</p>
+                    
+                            </div>
+                    
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                                      <!-- EDIT  -->
+                      <div class="modal fade" role="dialog" id="editModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h3 class="modal-title">Edit Request</h3>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="text" name="Fullname" class="form-control" placeholder="Fullname" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="email" name="Govmail" class="form-control" placeholder="Govmail" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="text" name="Position" class="form-control" placeholder="Position" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="text" name="Division" class="form-control" placeholder="Division" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="number" name="Contact No." class="form-control" placeholder="Contact No." required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="text" name="Region" class="form-control" placeholder="Region" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="date" name="Date Start" class="form-control" placeholder="Date Start" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="date" name="Date End" class="form-control" placeholder="Date End" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="time" name="Time Start" class="form-control" placeholder="Time Start" required="required">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="time" name="Time End" class="form-control" placeholder="Time End" required="required">
+                              </div>
+                            </div>
+                    
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-success">Edit </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                   </td>
                   </tr>
                   </tbody>
                 </table>

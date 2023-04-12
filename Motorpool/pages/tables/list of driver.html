@@ -174,10 +174,18 @@
             </a>
           </li>
           <!--end dashboard-->
-          
+          <li class="nav-item">
+            <a href="../calendar.html" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Calendar
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
           <!--end  tables-->
           <li class="nav-item">
-            <a href="../examples/login.html" class="nav-link">
+            <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
               <p>
                 Logout
@@ -203,15 +211,48 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
-            <div class="card-footer clearfix">
-              <div class="card-header"></h3>
-               <button type="button" class="btn btn-success float-right" ><i class="fas fa-plus"></i> Add driver</button>
-               
-              </div>
-             </div>
-             
-              
+   <!-- Main content -->
+   <div class="card-footer clearfix">
+    <div class="card-header"></h3>
+     <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#adddriverModal"><i class="fas fa-plus"></i> Add Driver</button>
+    </div>
+   </div>
+
+   <div class="modal fade" role="dialog" id="adddriverModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Add driver</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+         
+          <div class="form-group">
+            <input type="text" name="Fullname" class="form-control" placeholder="Fullname" required="required">
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="Position" class="form-control" placeholder="Position" required="required">
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="Address" class="form-control" placeholder="Address" required="required">
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="Division" class="form-control" placeholder="Division" required="required">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Add Driver</button>
+        </div>
+
+      </div>
+    </div>
+   </div>
 
               <!-- /.card-header -->
               <div class="card-body">
@@ -232,15 +273,66 @@
                     <td>D.Tuazon 12th Ave.</td>
                     <td>Motorpool</td>
                     <td>
-                      <div class="card-tools">
-                      <a href="#" class="btn btn-tool">
-                        <i class="fas fa-pen"></i></a>
-                        <a href="#" class="btn btn-tool">
-                        <i class="fas fa-trash"></i>
-                      </a>
+                      <button type="button" class="btn btn-warning float-md-none" data-toggle="modal" data-target="#editModal"><i class='fa fa-edit'></i></button>
+
+                      <button type="button" class="btn btn-danger float-md-none" data-toggle="modal" data-target="#deleteModal"><i class='fa fa-trash'></i></button>
+
+                      <!-- Delete  -->
+                      <div class="modal fade" role="dialog" id="deleteModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h3 class="modal-title">Delete Driver</h3>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+                              <p>Are you sure you want to delete the driver?</p>
+                    
+                            </div>
+                    
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                                      <!-- EDIT  -->
+                      <div class="modal fade" role="dialog" id="editModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h3 class="modal-title">Edit Driver</h3>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+
+                              <div class="form-group">
+                                <input type="text" name="Fullname" class="form-control" placeholder="Fullname">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="text" name="Position" class="form-control" placeholder="Position">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" name="Address" class="form-control" placeholder="Address">
+                              </div>
+                  
+                              <div class="form-group">
+                                <input type="text" name="Division" class="form-control" placeholder="Division">
+                              </div>
+                            </div>
+                    
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-success">Edit</button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
-                  </td>
+                   </td>
                   </tr>
                   </tbody>
                 </table>
