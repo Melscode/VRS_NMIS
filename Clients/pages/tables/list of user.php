@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>List of Requests</title>
+  <title>List of Users</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -166,7 +165,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
+          <li class="nav-item ">
             <a href="../../index.html" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -176,7 +175,7 @@
           </li>
           <!--end dashboard-->
           <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
+            <a href="../../pages/calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Calendar
@@ -184,7 +183,16 @@
               </p>
             </a>
           </li>
-          <!--end  tables-->
+          <li class="nav-item">
+            <a href="../UI/timeline.html" class="nav-link">
+              <i class="nav-icon fas fa-project-diagram"></i>
+              <p>
+                Tracking
+              </p>
+            </a>
+          </li>
+          <!--end UI-->
+         
           <li class="nav-item">
             <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
@@ -206,81 +214,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List of Requests</h1>
+            <h1>List of Users</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-     <!-- Main content -->
-     <div class="card-footer clearfix">
-      <div class="card-header"></h3>
-       <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add request</button>
-      </div>
-     </div>
-
-     <div class="modal fade" role="dialog" id="addrequestModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title">Add request</h3>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-
-          <div class="modal-body">
-            <div class="form-group">
-              <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="Fullname" class="form-control" placeholder="Fullname" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="email" name="Govmail" class="form-control" placeholder="Govmail" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="Position" class="form-control" placeholder="Position" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="Division" class="form-control" placeholder="Division" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="number" name="Contact No." class="form-control" placeholder="Contact No." required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="Region" class="form-control" placeholder="Region" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="date" name="Date Start" class="form-control" placeholder="Date Start" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="date" name="Date End" class="form-control" placeholder="Date End" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="time" name="Time Start" class="form-control" placeholder="Time Start" required="required">
-            </div>
-
-            <div class="form-group">
-              <input type="time" name="Time End" class="form-control" placeholder="Time End" required="required">
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Add request</button>
-          </div>
-
-        </div>
-      </div>
-     </div>
-             
+   
               
 
               <!-- /.card-header -->
@@ -288,126 +228,50 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Transaction_ID</th>
+                    <th>Employee_ID</th>
                     <th>Fullname</th>
+                    <th>Username</th>
                     <th>Govmail</th>
                     <th>Position</th>
                     <th>Division</th>
                     <th>Contact No.</th>
                     <th>Region</th>
-                    <th>Date Start</th>
-                    <th>Date End</th>
-                    <th>Time Start</th>
-                    <th>Time End</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>Role</th>
+                   
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>NMIS-202303-01</td>
-                    <td>Sean Cruz</td>
-                    <td>sean@govmail.com</td>
-                    <td>Programmer III</td>
-                    <td>PIMD-ICT</td>
-                    <td>09124373485</td>
-                    <td>RTOC 1</td>
-                    <td>April 13 2023</td>
-                    <td>April 15 2023</td>
-                    <td>5:00 AM</td>
-                    <td>5:00 PM</td>
-                    <td><h5><span class="badge badge-warning">Pending</span></h5></td>
-                   
-                    <td>
+                  <?php
+                      require_once '../../../Connection/conn.php';
+                      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
+                      if ($sql){
+                          while ($row = mysqli_fetch_assoc($sql)){
+                          
+                            $employee_id =$row['employee_id'];
+                            $first_name =$row['first_name'];
+                            $last_name =$row['last_name']; 
+                            $username=$row['username'];
+                            $position=$row['position'];
+                            $division =$row['division'];
+                            $govmail =$row['govmail'];
+                            $contact_number=$row['contact_number'];
+                            $role =$row['role'];
 
-                      <button type="button" class="btn btn-warning float-md-none" data-toggle="modal" data-target="#editModal"><i class='fa fa-edit'></i></button>
-                      <button type="button" class="btn btn-danger float-md-none" data-toggle="modal" data-target="#deleteModal"><i class='fa fa-trash'></i></button>
-       
-                      <!-- Delete  -->
-                      <div class="modal fade" role="dialog" id="deleteModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Delete Request</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
+                        echo '<tr>
+                        <th scope="row">'.$employee_id.'</th>
+                        <td>'.$first_name.'</td>
+                        <td>'.$last_name.'</td>
+                        <td>'.$username.'</td>
+                        <td>'.$position.'</td>
+                        <td>'.$division.'</td>
+                        <td>'.$govmail.'</td>
+                        <td>'.$contact_number.'</td>
+                        <td>'.$role.'</td>
 
-                            <div class="modal-body">
-                              <p>Are you sure you want to delete the request?</p>
-                    
-                            </div>
-                    
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-danger">Delete</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                                      <!-- EDIT  -->
-                      <div class="modal fade" role="dialog" id="editModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Edit Request</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="text" name="Fullname" class="form-control" placeholder="Fullname">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="email" name="Govmail" class="form-control" placeholder="Govmail">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="text" name="Position" class="form-control" placeholder="Position">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="text" name="Division" class="form-control" placeholder="Division">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="number" name="Contact No." class="form-control" placeholder="Contact No.">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="text" name="Region" class="form-control" placeholder="Region">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="date" name="Date Start" class="form-control" placeholder="Date Start">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="date" name="Date End" class="form-control" placeholder="Date End">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="time" name="Time Start" class="form-control" placeholder="Time Start">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="time" name="Time End" class="form-control" placeholder="Time End">
-                              </div>
-                            </div>
-                    
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-success">Edit </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                   </td>
-                   
-                  </tr>
+                        </tr>';
+                          }
+                        }
+                    ?>
                   </tbody>
                 </table>
               </div>

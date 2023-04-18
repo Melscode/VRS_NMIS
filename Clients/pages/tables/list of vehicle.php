@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List of Drivers</title>
+  <title>List of Vehicles</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,6 +38,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+     
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -165,27 +166,28 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="../../index.html" class="nav-link">
+          <li class="nav-item ">
+            <a href="../../clientdashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <!--end dashboard-->
+      
+
           <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+            <a href="../UI/timeline.php" class="nav-link">
+              <i class="nav-icon fas fa-project-diagram"></i>
               <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
+                Tracking
               </p>
             </a>
           </li>
-          <!--end  tables-->
+          <!--end UI-->
+          
           <li class="nav-item">
-            <a href="../../../login form/login.html" class="nav-link">
+            <a href="../../../login form/login.php" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
               <p>
                 Logout
@@ -205,135 +207,54 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List of Drivers</h1>
+            <h1>List of Vehicles</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-   <!-- Main content -->
-   <div class="card-footer clearfix">
-    <div class="card-header"></h3>
-     <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#adddriverModal"><i class="fas fa-plus"></i> Add Driver</button>
-    </div>
-   </div>
-
-   <div class="modal fade" role="dialog" id="adddriverModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Add driver</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <div class="modal-body">
-         
-          <div class="form-group">
-            <input type="text" name="Fullname" class="form-control" placeholder="Fullname" required="required">
-          </div>
-
-          <div class="form-group">
-            <input type="text" name="Position" class="form-control" placeholder="Position" required="required">
-          </div>
-
-          <div class="form-group">
-            <input type="text" name="Address" class="form-control" placeholder="Address" required="required">
-          </div>
-
-          <div class="form-group">
-            <input type="text" name="Division" class="form-control" placeholder="Division" required="required">
-          </div>
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Add Driver</button>
-        </div>
-
-      </div>
-    </div>
-   </div>
+   
 
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Fullname</th>
-                    <th>Position</th>
-                    <th>Address</th>
-                    <th>Division</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Eddie Cascayan</td>
-                    <td>Driver I</td>
-                    <td>D.Tuazon 12th Ave.</td>
-                    <td>Motorpool</td>
-                    <td>
-                      <button type="button" class="btn btn-warning float-md-none" data-toggle="modal" data-target="#editModal"><i class='fa fa-edit'></i></button>
-
-                      <button type="button" class="btn btn-danger float-md-none" data-toggle="modal" data-target="#deleteModal"><i class='fa fa-trash'></i></button>
-
-                      <!-- Delete  -->
-                      <div class="modal fade" role="dialog" id="deleteModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Delete Driver</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-                              <p>Are you sure you want to delete the driver?</p>
-                    
-                            </div>
-                    
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-danger">Delete</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                                      <!-- EDIT  -->
-                      <div class="modal fade" role="dialog" id="editModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Edit Driver</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-
-                              <div class="form-group">
-                                <input type="text" name="Fullname" class="form-control" placeholder="Fullname">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="text" name="Position" class="form-control" placeholder="Position">
-                              </div>
-
-                              <div class="form-group">
-                                <input type="text" name="Address" class="form-control" placeholder="Address">
-                              </div>
-                  
-                              <div class="form-group">
-                                <input type="text" name="Division" class="form-control" placeholder="Division">
-                              </div>
-                            </div>
-                    
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-success">Edit</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                   </td>
-                  </tr>
+                 <!-- /.card-header -->
+                 <div class="card-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Plate No.</th>
+                      <th>Vehicle Model</th>
+                      <th>Start-Odometer</th>
+                      <th>End-Odometer</th>
+                      <th>Assigned Driver</th>
+                     
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        require_once '../../../Connection/conn.php';
+                        $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl ");
+                        if ($sql){
+                            while ($row = mysqli_fetch_assoc($sql)){
+                            
+                              $plate_number =$row['plate_number'];
+                              $vehicle_model =$row['vehicle_model'];
+                              $start_odometer=$row['start_odometer']; 
+                              $end_odometer=$row['end_odometer'];
+                              $assigned_driver=$row['assigned_driver'];
+                              
+  
+  
+                          echo '<tr>
+                          <th scope="row">'.$plate_number.'</th>
+                          <td>'.$vehicle_model.'</td>
+                          <td>'.$start_odometer.'</td>
+                          <td>'.$end_odometer.'</td>
+                          <td>'.$assigned_driver.'</td>
+                          
+                          </tr>';
+                            }
+                          }
+                      ?>
                   </tbody>
                 </table>
               </div>

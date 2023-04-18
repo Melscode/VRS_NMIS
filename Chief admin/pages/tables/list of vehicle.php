@@ -227,20 +227,35 @@
                     <th>Start-Odometer</th>
                     <th>End-Odometer</th>
                     <th>Assigned Driver</th>
-                    <th>Date Assigned</th>
-                    
+                   
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>NMIS-977</td>
-                    <td>Mazda CX9</td>
-                    <td>2486</td>
-                    <td>91308</td>
-                    <td>Eddie Cascayan</td>
-                    <td>April 3, 2023</td>
-                  </tr>
-                  </tbody>
+                  <?php
+                      require_once '../../../Connection/conn.php';
+                      $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl ");
+                      if ($sql){
+                          while ($row = mysqli_fetch_assoc($sql)){
+                          
+                            $plate_number =$row['plate_number'];
+                            $vehicle_model =$row['vehicle_model'];
+                            $start_odometer=$row['start_odometer']; 
+                            $end_odometer=$row['end_odometer'];
+                            $assigned_driver=$row['assigned_driver'];
+                            
+
+
+                        echo '<tr>
+                        <th scope="row">'.$plate_number.'</th>
+                        <td>'.$vehicle_model.'</td>
+                        <td>'.$start_odometer.'</td>
+                        <td>'.$end_odometer.'</td>
+                        <td>'.$assigned_driver.'</td>
+                        
+                        </tr>';
+                          }
+                        }
+                    ?>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -310,5 +325,22 @@
     });
   });
 </script>-->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

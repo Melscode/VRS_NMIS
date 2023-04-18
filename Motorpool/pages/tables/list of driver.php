@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List of Requests</title>
+  <title>List of Drivers</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -166,7 +166,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../../index.html" class="nav-link ">
+            <a href="../../index.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -174,8 +174,8 @@
             </a>
           </li>
           <!--end dashboard-->
-          <li class="nav-item ">
-            <a href="../../pages/calendar.html" class="nav-link ">
+          <li class="nav-item">
+            <a href="../calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Calendar
@@ -183,6 +183,7 @@
               </p>
             </a>
           </li>
+          <!--end  tables-->
           <li class="nav-item">
             <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
@@ -204,143 +205,216 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List of Requests</h1>
+            <h1>List of Drivers</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-   <!-- Main content -->
-   <!-- <div class="card-footer clearfix">
-    <div class="card-header"></h3>
-     <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add request</button>
-    </div>
-   </div>
+    <?php
+  include "..\..\..\Connection\conn.php";
 
-   <div class="modal fade" role="dialog" id="addrequestModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Add request</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  //Add Function
+
+if(isset($_POST['save'])){
+
+
+  $employee_id=mysqli_real_escape_string($conn,$_POST['employee_id']);
+  $first_name=mysqli_real_escape_string($conn, $_POST['first_name']);
+  $last_name=mysqli_real_escape_string($conn, $_POST['last_name']);
+  $username=mysqli_real_escape_string($conn, $_POST['username']);
+  $position= mysqli_real_escape_string($conn,$_POST['position']);
+  $division= mysqli_real_escape_string($conn,$_POST['division']);
+  $govmail=mysqli_real_escape_string($conn,$_POST['govmail']);
+  $contact_number=mysqli_real_escape_string($conn,$_POST['contact_number']);
+  $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
+  $role =mysqli_real_escape_string($conn,$_POST['role']);
+
+
+
+  $sql = "INSERT INTO users_tbl (employee_id, first_name, last_name, username, position, division, govmail, contact_number, password, role) 
+
+  		  VALUES  ('$employee_id', '$first_name', '$last_name', '$username', '$position', '$division', '$govmail', '$contact_number', '$password', '$role')";
+  $result = mysqli_query($conn, $sql);
+  if($result){
+
+    echo "<script>alert('SWABE!!');</script>";
+    
+  }
+}
+?>
+
+
+       <!-- Main content -->
+       <div class="card-footer clearfix">
+        <div class="card-header"></h3>
+         <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addriverModal"><i class="fas fa-plus"></i> Add User</button>
         </div>
+       </div>
 
-        <div class="modal-body">
-          <div class="form-group">
-            <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID">
-          </div>
+       <div class="modal fade" role="dialog" id="addriverModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Add Driver</h3>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
-          <div class="form-group">
-            <input type="text" name="Fullname" class="form-control" placeholder="Fullname">
-          </div>
+            <form  method="POST">
 
-          <div class="form-group">
-            <input type="email" name="Govmail" class="form-control" placeholder="Govmail">
-          </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="text" name="employee_id" class="form-control" placeholder="Employee_ID">
+              </div>
 
-          <div class="form-group">
-            <input type="text" name="Position" class="form-control" placeholder="Position">
-          </div>
+              <div class="form-group">
+                <input type="text" name="first_name" class="form-control" placeholder="First name">
+              </div>
 
-          <div class="form-group">
-            <input type="text" name="Division" class="form-control" placeholder="Division">
-          </div>
+              
+              <div class="form-group">
+                <input type="text" name="last_name" class="form-control" placeholder="Last name">
+              </div>
 
-          <div class="form-group">
-            <input type="number" name="Contact No." class="form-control" placeholder="Contact No.">
-          </div>
+              <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username">
+              </div> 
+              
+              
+              <div class="form-group">
+                <input type="text" name="position" class="form-control" placeholder="Position">
+              </div> 
+              
+              <div class="form-input">
+							<select name="division" class="form-control">
+								<option  id= "division" value="">--Select Division--</option>
+									<option value="Laboratory">Laboratory</option>
+									<option value="POSMD">POSMD</option>
+									<option value="MIED" >MIED</option>
+									<option value="Cashier">Cashier</option>
+									<option value="Engineering">Engineering</option>
+									<option value="ARD">ARD</option>
+									<option value="Property">Property</option>
+									<option value="Records">Records</option>
+									<option value="OED">OED</option>
+									<option value="HRM">HRM</option>
+									<option value="PIMD">PIMD</option>
+									<option value="Admin">Admin</option>
+									<option value="BAC">BAC</option>
+									<option value="Accounting">Accounting</option>
+							</select>
+						</div><br>
 
-          <div class="form-group">
-            <input type="text" name="Region" class="form-control" placeholder="Region">
-          </div>
+              <div class="form-group">
+                <input type="email" name="govmail" class="form-control" placeholder="Govmail">
+              </div>
 
-          <div class="form-group">
-            <input type="date" name="Date Start" class="form-control" placeholder="Date Start">
-          </div>
+              
+              <div class="form-group">
+                <input type="number" name="contact_number" class="form-control" placeholder="Contact No.">
+              </div>
 
-          <div class="form-group">
-            <input type="date" name="Date End" class="form-control" placeholder="Date End">
-          </div>
+              <div class="form-group">
+                <input type="text" name="password" class="form-control" placeholder="Password">
+              </div>
 
-          <div class="form-group">
-            <input type="time" name="Time Start" class="form-control" placeholder="Time Start">
-          </div>
+              
+            <div class="form-input">
+							<select name="role" class="form-control">
+								<option  id= "role" value="Driver">Driver</option>
+									
+									
+									
+							</select>
+						</div><br>
 
-          <div class="form-group">
-            <input type="time" name="Time End" class="form-control" placeholder="Time End">
+            </div>
+          
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success" name = "save">Add Driver</button>
+            </div>
+
           </div>
         </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Add request</button>
-        </div>
-
-      </div>
-    </div>
-   </div> -->
+       </div>        
 
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Transaction_ID</th>
-                    <th>Fullname</th>
-                    <th>Govmail</th>
+                  <th>Fullname</th>
                     <th>Position</th>
+                    <th>Address</th>
                     <th>Division</th>
-                    <th>Contact No.</th>
-                    <th>Region</th>
-                    <th>Date Start</th>
-                    <th>Date End</th>
-                    <th>Time Start</th>
-                    <th>Time End</th>
-                    <th>Status</th>
                     <th>Action</th>
+                    
                   </tr>
                   </thead>
-                  <tbody>
-                  <tr>
-                    <td>NMIS-202303-01</td>
-                    <td>Sean Cruz</td>
-                    <td>sean@govmail.com</td>
-                    <td>Programmer III</td>
-                    <td>PIMD-ICT</td>
-                    <td>09124373485</td>
-                    <td>RTOC 1</td>
-                    <td>April 13 2023</td>
-                    <td>April 15 2023</td>
-                    <td>5:00 AM</td>
-                    <td>5:00 PM</td>
-                    <td><h5><span class="badge badge-primary">Initialed</span></h5></td>
-                    <td>
 
-                      <button type="button" class="btn btn-default float-md-none" data-toggle="modal" data-target="#initialedModal"><i class='fa fa-check-double'></i></button>
+                  <tbody>
+                    <?php
+                      require_once '../../../Connection/conn.php';
+                      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
+                      if ($sql){
+                          while ($row = mysqli_fetch_assoc($sql)){
+                          
+                            $employee_id =$row['employee_id'];
+                            $first_name =$row['first_name'];
+                            $last_name =$row['last_name']; 
+                            $username=$row['username'];
+                            $position=$row['position'];
+                            $division =$row['division'];
+                            $govmail =$row['govmail'];
+                            $contact_number=$row['contact_number'];
+                            $role =$row['role'];
+
+                            if($role=='Driver'){
+
+                              echo '<tr>
+                              <th scope="row">'.$first_name.' '.$last_name.'</th>
+                              <td>'.$position.'</td> 
+                               <td>'.$contact_number.'</td>
+                              <td>'.$division.'</td>
+                            <td>
+                                   <button type="button" class="btn btn-warning float-right" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i> Edit </button>
+ 
+                            </td>
+                              </tr>';
+                            }
+                          }
+                        }
+                    ?>
+                            
+                        
                       
-                                      <!-- EDIT  -->
-                      <div class="modal fade" role="dialog" id="initialedModal">
+                  </tbody>
+                </table>
+              </div>
+
+
+
+              <div class="modal fade" role="dialog" id="editModal">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h3 class="modal-title">Request</h3>
+                              <h3 class="modal-title">Assign Driver</h3>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
                             <div class="modal-body">
                               <div class="form-group">
-                               <p>The request has been approved</p>
+                                <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID">
                               </div>
-                  
+
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-success">Edit </button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      </div>
 
-                   </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -408,5 +482,22 @@
     });
   });
 </script>-->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

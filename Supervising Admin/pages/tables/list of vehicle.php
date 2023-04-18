@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List of Requests</title>
+  <title>List of Vehicles</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,6 +38,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+     
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -165,7 +166,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
+          <li class="nav-item ">
             <a href="../../index.html" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -174,14 +175,7 @@
             </a>
           </li>
           <!--end dashboard-->
-          <!--<li class="nav-item">
-            <a href="../UI/timeline.html" class="nav-link">
-              <i class="nav-icon fas fa-project-diagram"></i>
-              <p>
-                Tracking
-              </p>
-            </a>
-          </li>-->
+          
           <!--end UI-->
           <li class="nav-item">
             <a href="../tables/data.html" class="nav-link ">
@@ -191,8 +185,6 @@
               </p>
             </a>
           </li>
-          <!--end  tables-->
-
           <li class="nav-item ">
             <a href="../calendar.html" class="nav-link ">
               <i class="nav-icon far fa-calendar-alt"></i>
@@ -202,7 +194,7 @@
               </p>
             </a>
           </li>
-
+          <!--end  tables-->
           <li class="nav-item">
             <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
@@ -224,80 +216,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List of Requests</h1>
+            <h1>List of Vehicles</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
-            <!-- <div class="card-footer clearfix">
-              <div class="card-header"></h3>
-               <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add request</button>
-              </div>
-             </div>
-
-             <div class="modal fade" role="dialog" id="addrequestModal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="modal-title">Add request</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Fullname" class="form-control" placeholder="Fullname">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="email" name="Govmail" class="form-control" placeholder="Govmail">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Position" class="form-control" placeholder="Position">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Division" class="form-control" placeholder="Division">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="number" name="Contact No." class="form-control" placeholder="Contact No.">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Region" class="form-control" placeholder="Region">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="date" name="Date Start" class="form-control" placeholder="Date Start">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="date" name="Date End" class="form-control" placeholder="Date End">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="time" name="Time Start" class="form-control" placeholder="Time Start">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="time" name="Time End" class="form-control" placeholder="Time End">
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Add request</button>
-                  </div>
-
-                </div>
-              </div>
-             </div> -->
+   
              
               
 
@@ -306,140 +231,40 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Transaction_ID</th>
-                    <th>Fullname</th>
-                    <th>Govmail</th>
-                    <th>Position</th>
-                    <th>Division</th>
-                    <th>Contact No.</th>
-                    <th>Region</th>
-                    <th>Date Start</th>
-                    <th>Date End</th>
-                    <th>Time Start</th>
-                    <th>Time End</th>
-                    <th>Status</th>
-                    <th>Action</th>
-              
+                    <th>Plate No.</th>
+                    <th>Vehicle Model</th>
+                    <th>Start-Odometer</th>
+                    <th>End-Odometer</th>
+                    <th>Assigned Driver</th>
+                   
                   </tr>
                   </thead>
-
                   <tbody>
-
-                  <tr>
-                    <td>NMIS-202303-01</td>
-                    <td>Sean Cruz</td>
-                    <td>sean@govmail.com</td>
-                    <td>Programmer III</td>
-                    <td>PIMD-ICT</td>
-                    <td>09124373485</td>
-                    <td>RTOC 1</td>
-                    <td>March 13 2023</td>
-                    <td>March 15 2023</td>
-                    <td>5:00 AM</td>
-                    <td>5:00 PM</td>
-                    <td><h5><span class="badge badge-primary">Initialed</span></h5></td>
-                    <td>
-
-                      <button type="button" class="btn btn-default float-md-none" data-toggle="modal" data-target="#initialedModal"><i class='fa fa-check'></i></button>
-                      <button type="button" class="btn btn-danger float-md-none" data-toggle="modal" data-target="#disapprovedModal"><i class='fa fa-times'></i></button>
-                                      <!-- Initial -->
-                      <div class="modal fade" role="dialog" id="initialedModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Request initialed</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-                              <div class="form-group">
-                               <p>The request have been initialized</p>
-                              </div>
-                  
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                       <!-- disapproved -->
-                       <div class="modal fade" role="dialog" id="disapprovedModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Request disapproved</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-                              <div class="form-group">
-                               <p>The request have been disapproved</p>
-                              </div>
-                  
-                          </div>
-                        </div>
-                      </div>
-                      </div>
+                  <?php
+                      require_once '../../../Connection/conn.php';
+                      $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl ");
+                      if ($sql){
+                          while ($row = mysqli_fetch_assoc($sql)){
+                          
+                            $plate_number =$row['plate_number'];
+                            $vehicle_model =$row['vehicle_model'];
+                            $start_odometer=$row['start_odometer']; 
+                            $end_odometer=$row['end_odometer'];
+                            $assigned_driver=$row['assigned_driver'];
+                            
 
 
-                   </td>
-                  </tr>
-
-                  <tr>
-                    <td>NMIS-202303-05</td>
-                    <td>Cathy Cruz</td>
-                    <td>cathy@govmail.com</td>
-                    <td>Programmer X</td>
-                    <td>PIMD-ICT</td>
-                    <td>09124375585</td>
-                    <td>RTOC 1</td>
-                    <td>April 28 2023</td>
-                    <td>April 30 2023</td>
-                    <td>5:00 AM</td>
-                    <td>5:00 PM</td>
-                    <td><h5><span class="badge badge-warning">Pending</span></h5></td>
-                    <td>
-
-                      <button type="button" class="btn btn-default float-md-none" data-toggle="modal" data-target="#initialedModal"><i class='fa fa-check'></i></button>
-                      <button type="button" class="btn btn-danger float-md-none" data-toggle="modal" data-target="#disapprovedModal"><i class='fa fa-times'></i></button>
-                                      <!-- Initial -->
-                      <div class="modal fade" role="dialog" id="initialedModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Request initialed</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-                              <div class="form-group">
-                               <p>The request have been initialized</p>
-                              </div>
-                  
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                       <!-- disapproved -->
-                       <div class="modal fade" role="dialog" id="disapprovedModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Request disapproved</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-                              <div class="form-group">
-                               <p>The request have been disapproved</p>
-                              </div>
-                  
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-
-
-                   </td>
-                  </tr>
+                        echo '<tr>
+                        <th scope="row">'.$plate_number.'</th>
+                        <td>'.$vehicle_model.'</td>
+                        <td>'.$start_odometer.'</td>
+                        <td>'.$end_odometer.'</td>
+                        <td>'.$assigned_driver.'</td>
+                        
+                        </tr>';
+                          }
+                        }
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -447,7 +272,6 @@
             </div>
             <!-- /.card -->
           </div>
-
           <!-- /.col -->
         </div>
         <!-- /.row -->
@@ -455,10 +279,8 @@
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    
   </div>
   <!-- /.content-wrapper -->
-
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </head>
 <body>
-	
+
 	<div class="container-fluid">
 		<div class="row ">
 			<!-- IMAGE CONTAINER BEGIN -->
@@ -27,17 +28,33 @@
 					<div class="text-center mb-4">
 			      <h4>Login into your account</h4>
 			    </div>
+				
+
+					<?php if(isset($_GET['error'])) { ?>
+					<div class="alert alert-danger" role="alert">
+						<?php echo $_GET['error']; ?>
+					</div>
+					<?php }elseif(isset($_GET['logout'])){ ?>
+					<div class="alert alert-success" role="alert">
+						<?php echo $_GET['logout'];?>
+					</div>
+					<?php } ?> 
+
 			    <!-- Form -->
-					<form class="px-3">
+					<form action ="./login-admin.php" class="px-3" method = "POST">
 						<!-- Input Box -->
 						<div class="form-input">
 							<span><i class="fa fa-envelope-o"></i></span>
-							<input type="text" name="" placeholder="Employee_ID" tabindex="20"required>
+							<input type="text" name="employee_id" placeholder="Employee_ID" tabindex="20">
 						</div>
 						<div class="form-input">
 							<span><i class="fa fa-lock"></i></span>
-							<input type="password" name="" placeholder="Password" required>
+							<input type="password" name="password" placeholder="Password">
 						</div>
+
+
+						<div class="form-input">
+						</div><br>
 						<div class="row mb-3">
 						<!-- Remember Checkbox -->
 			        <div class="col-auto d-flex align-items-center">
@@ -50,14 +67,23 @@
 			 	    <!-- Login Button -->
 			      <div class="mb-3"> 
 							<button type="submit" class="btn btn-block">Login</button>
-							<a href="../../index.html"></a>
+
+
+							
 						</div>
 						<div class="text-right ">
 			        <a href="reset.html" class="forget-link">Forgot password?</a>
 			      </div>
+						<!--<div class="text-center mb-2">
+		         	<div class="text-center mb-2 text-white">or login with</div>--> 
+		         	<!-- Google Button -->
+					<!--<div class="mb-3"> 
+						<button type="submit" href="" class="btn btn-block">Govmail</button>
+					</div>
+						</div>--> 
 
 						<div class="text-center mb-5 text-white">Don't have an account? 
-							<a class="register-link" href="register.html">Register here</a>
+							<a class="register-link" href="register.php">Register here</a>
 			     	</div>
 					</form>
 				</div>					

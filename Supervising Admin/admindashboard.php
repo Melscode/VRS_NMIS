@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
  <!-- fullcalendar -->
- <link rel="stylesheet" href="/plugins/fullcalendar/main.css">
+ <link rel="stylesheet" href="plugins/fullcalendar/main.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -156,7 +157,7 @@
     <!-- Brand Logo -->
     <a href="index.html" class="brand-link">
       <img src="dist/img/NMIS_LOGO.png" alt="NMIS_LOGO" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Supervising Admin</span>
+      <span class="brand-text font-weight-light">NMIS_VRS</span>
     </a>
 
     <!-- Sidebar -->
@@ -167,7 +168,7 @@
           <img src="dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="pages/examples/profile.html" class="d-block">Alexander the Great </a>
+          <a href="pages/examples/profile.html" class="d-block"> </a>
         </div>
       </div>
 
@@ -189,37 +190,26 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="./index.html" class="nav-link active">
+            <a href="./admindashboard.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <!--end dashboard-->
-          
+                
           <li class="nav-item">
-            <a href="pages/tables/data.html" class="nav-link">
+            <a href="pages/tables/data.php" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Reports
               </p>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
           
           <li class="nav-item">
-            <a href="../login form/login.html" class="nav-link">
-              <i class="nav-icon fas fa-sign-out"></i>
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-sign-out"></i>
               <p>
                 Logout
               </p>
@@ -252,15 +242,24 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150+</h3>
+                <?php 
+                
+                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
-                <th>Reservation Requests</th>
+                  $query = 'SELECT id FROM request_tbl ORDER BY Id';
+                  $query_execute = mysqli_query($conn, $query);     
+                  
+                  $row = mysqli_num_rows($query_execute);
+                  echo "<p>Reservation Request</p>";
+                  echo "<h3>$row</h3>"; 
+                  
+                ?>
               </div>
              
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of request.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="pages/tables/list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Reservation Requests-->
@@ -268,15 +267,30 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
-              <div class="inner">
-                <h3>5<sup style="font-size: 20px"></sup></h3>
+            <div class="inner">
+              
+            <?php 
+                
+                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
-                <th>Drivers</th>
+                  $query = 'SELECT id FROM users_tbl ORDER BY Id';
+                  $query_execute = mysqli_query($conn, $query);     
+                  
+                  $row = mysqli_num_rows($query_execute);
+                  echo "<p>Drivers</p>";
+                  echo "<h3>$row</h3>"; 
+                  
+                ?>
+              
+
+
+            
+                
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of driver.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="pages/tables/list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Driver-->
@@ -285,14 +299,23 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>9</h3>
+              <?php 
+                
+                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
-                <th>Vehicles</th>
+                $query = 'SELECT id FROM vehicles_tbl ORDER BY Id';
+                $query_execute = mysqli_query($conn, $query);     
+                
+                $row = mysqli_num_rows($query_execute);
+                echo "<p>Vehicles</p>";
+                echo "<h3>$row</h3>"; 
+                
+              ?>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of vehicle.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="pages/tables/list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!--end Vehicle-->
@@ -301,14 +324,23 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>50+</h3>
+              <?php 
+                
+                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
-                <th>Users</th>
+                $query = 'SELECT id FROM users_tbl ORDER BY Id';
+                $query_execute = mysqli_query($conn, $query);     
+                
+                $row = mysqli_num_rows($query_execute);
+                echo "<p>User</p>";
+                echo "<h3>$row</h3>"; 
+                
+              ?>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of user.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="pages/tables/list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           
@@ -316,14 +348,118 @@
         </div>
         <!--end User-->
 
+<!---add calendar--->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Calendar</h1>
+          </div>
+          
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+   
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="sticky-top mb-3">
 
-  <!-- <footer class="main-footer">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Add Details</h3>
+                </div>
+                <div class="card-body">
+                  <div class="btn-group" style="width: 100%; margin-bottom: 5px;">
+                    <!--<ul class="fc-color-picker" id="color-chooser">
+                      <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                    </ul>-->
+                  </div>
+                  <!-- /btn-group -->
+                  <div class="input-group">
+                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                    <div class="input-group-append">
+                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                    </div>
+                    <!-- /btn-group -->
+                  </div>
+                  <!-- /input-group -->
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Reservation Details</h4>
+                </div>
+                <div class="card-body">
+                  <!-- the events -->
+                  <div id="external-events">
+                    <div class="external-event bg-gradient-primary">Travel To Pampanga</div>
+                    <div class="external-event bg-gradient-primary">Travel to Quezon City</div>
+                    <div class="external-event bg-gradient-primary">Travel to Ilocos Norte</div>
+                    <div class="external-event bg-gradient-primary">Travel to Davao</div><br>
+                    <div class="checkbox">
+                      <label for="drop-remove">
+                        <input type="checkbox" id="drop-remove">
+                        Remove after drop
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+
+              <!-- /.card -->
+              
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card card-primary">
+              <div class="card-body p-0">
+                <!-- THE CALENDAR -->
+                <div id="calendar"></div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+        <!-- /.row -->
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  
+  <footer class="main-footer">
     <strong>Copyright &copy; 2023 <a href="https://nmis.gov.ph">NMIS_VRS</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
     </div>
-  </footer> -->
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -370,11 +506,11 @@
 
 
 <!-- fullCalendar 2.2.5 -->
-<script src="../plugins/moment/moment.min.js"></script>
-<script src="../plugins/fullcalendar/main.js"></script>
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/fullcalendar/main.js"></script>
 
 <!-- Page specific script -->
-<!-- <script>
+<script>
   $(function () {
 
     /* initialize the external events
@@ -540,6 +676,6 @@
       $('#new-event').val('')
     })
   })
-</script> -->
+</script>
 </body>
 </html>

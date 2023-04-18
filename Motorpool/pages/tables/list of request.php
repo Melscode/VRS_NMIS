@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List of Vehicles</title>
+
+  <title>List of Requests</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,7 +39,6 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-     
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -166,8 +166,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item ">
-            <a href="../../index.html" class="nav-link ">
+          <li class="nav-item">
+            <a href="../../motorpooldashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -175,15 +175,7 @@
             </a>
           </li>
           <!--end dashboard-->
-          <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
+          <!--end  tables-->
           <li class="nav-item">
             <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
@@ -205,158 +197,249 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List of Vehicles</h1>
+            <h1>List of Requests</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
+<!-- 
+    <?php
+  // include "..\..\..\Connection\conn.php";
 
-  <!-- Main content -->
-  <div class="card-footer clearfix">
-    <div class="card-header"></h3>
-     <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addvehicleModal"><i class="fas fa-plus"></i> Add Vehicle</button>
-    </div>
-   </div>
+  //Add Function
 
-   <div class="modal fade" role="dialog" id="addvehicleModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Add Vehicle</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+// if(isset($_POST['save'])){
+
+
+//   $asigned_driver=$_POST['asigned_driver'];
+
+
+
+
+//   $sql = "INSERT INTO _tbl (asigned_driver) 
+
+//   		  VALUES  ('$asigned_driver')";
+//   $result = mysqli_query($conn, $sql);
+//   if($result){
+
+
+
+//     echo "<script>alert('SWABE!!');</script>";
+//     header ('Location: ../pages/tables/liost of driver.php');
+//   }
+// } -->
+// ?> -->
+
+
+       <!-- Main content -->
+       <div class="card-footer clearfix">
+        <div class="card-header"></h3>
+         <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addriverModal"><i class="fas fa-plus"></i> Add Driver</button>
         </div>
+       </div>
 
-        <div class="modal-body">
-         
-          <div class="form-group">
-            <input type="text" name="Plate No." class="form-control" placeholder="Plate No." required="required">
+       <div class="modal fade" role="dialog" id="addriverModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Assigned</h3>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <form  method="POST">
+
+           
+
+              
+            
+              
+              
+               
+              
+              <div class="form-input">
+							<select name="division" class="form-control">
+								<option  id= "division" value="">--Select Division--</option>
+									<option value="Laboratory">Laboratory</option>
+									<option value="POSMD">POSMD</option>
+									<option value="MIED" >MIED</option>
+									<option value="Cashier">Cashier</option>
+									<option value="Engineering">Engineering</option>
+									<option value="ARD">ARD</option>
+									<option value="Property">Property</option>
+									<option value="Records">Records</option>
+									<option value="OED">OED</option>
+									<option value="HRM">HRM</option>
+									<option value="PIMD">PIMD</option>
+									<option value="Admin">Admin</option>
+									<option value="BAC">BAC</option>
+									<option value="Accounting">Accounting</option>
+							</select>
+						</div><br>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success" name = "save">Add Driver</button>
+            </div>
+
           </div>
-
-          <div class="form-group">
-            <input type="text" name="Vehicle Model" class="form-control" placeholder="Vehicle Model" required="required">
-          </div>
-
-          <div class="form-group">
-            <input type="number" name="Start-Odometer" class="form-control" placeholder="Start-Odometer" required="required">
-          </div>
-
-          <div class="form-group">
-            <input type="number" name="End-Odometer" class="form-control" placeholder="End-Odometer" required="required">
-          </div>
-
-          <div class="form-group">
-            <input type="text" name="Assigned Driver" class="form-control" placeholder="Assigned Driver" required="required">
-          </div>
-
-          <div class="form-group">
-            <input type="date" name="Date Assigned" class="form-control" placeholder="Date Assigned" required="required">
-          </div>
-
         </div>
+       </div>        
 
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Add Vehicle</button>
-        </div>
-
-      </div>
-    </div>
-   </div>
-             
              
               
 
-              <!-- /.card-header -->
-              <div class="card-body">
+                 <!-- /.card-header -->
+                 <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Plate No.</th>
-                    <th>Vehicle Model</th>
-                    <th>Start-Odometer</th>
-                    <th>End-Odometer</th>
-                    <th>Assigned Driver</th>
-                    <th>Date Assigned</th>
+                  <th>Transaction_ID</th>
+                    <th>Fullname</th>
+                    <th>Govmail</th>
+                    <th>Position</th>
+                    <th>Division</th>
+                    <th>Contact No.</th>
+                    <th>Region</th>
+                    <th>Location</th>
+                    <th>Destination</th>
+                    <th>Date Start</th>
+                    <th>Date End</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Purpose</th>
+                    <th>Travel Order</th>
+                    <th>Assigned_Driver</th>
+                    <th>Status</th>
                     <th>Action</th>
+              
                   </tr>
                   </thead>
+
                   <tbody>
-                  <tr>
-                    <td>NMIS-977</td>
-                    <td>Mazda CX9</td>
-                    <td>2486</td>
-                    <td>91308</td>
-                    <td>Eddie Cascayan</td>
-                    <td>April 3, 2023</td>
-                    <td>
-                      <button type="button" class="btn btn-warning float-md-none" data-toggle="modal" data-target="#editModal"><i class='fa fa-edit'></i></button>
+                  <?php
+                      require_once '../../../Connection/conn.php';
+                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+                        while($row = mysqli_fetch_array($sql))
+                        {
+                          
+                            $transaction_id =$row['transaction_id'];
+                            $requestor_name =$row['requestor_name'];
+                            $requestor_govmail=$row['requestor_govmail']; 
+                            $requestor_position=$row['requestor_position'];
+                            $requestor_division=$row['requestor_division'];
+                            $requestor_contact_number =$row['requestor_contact_number'];
+                            $region=$row['region'];
+                            $location=$row['location'];
+                            $destination =$row['destination'];
+                            $start_date =$row['start_date'];
+                            $end_date =$row['end_date'];
+                            $start_time =$row['start_time'];
+                            $end_time =$row['end_time'];
+                            $purpose =$row['purpose'];
+                            $travel_order =$row['travel_order'];
+                            $reservation_status=$row['reservation_status'];
+                      
+                          ?>
 
-                      <button type="button" class="btn btn-danger float-md-none" data-toggle="modal" data-target="#deleteModal"><i class='fa fa-trash'></i></button>
 
-                      <!-- Delete  -->
-                      <div class="modal fade" role="dialog" id="deleteModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Delete Vehicle</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
+                        <tr>
+                            <th><?php echo $transaction_id; ?></th>
+                            <th><?php echo $requestor_name ; ?></th>
+                            <th><?php echo $requestor_govmail; ?></th>
+                            <th><?php echo $requestor_position; ?></th>
+                            <th><?php echo $requestor_division; ?></th>
+                            <th><?php echo $requestor_contact_number; ?></th>
+                            <th><?php echo $region; ?></th>
+                            <th><?php echo $location ; ?></th>
+                            <th><?php echo $destination; ?></th>
+                            <th><?php echo $start_date; ?></th>
+                            <th><?php echo $end_date; ?></th>
+                            <th><?php echo $start_time; ?></th>
+                            <th><?php echo $end_time; ?></th>
+                            <th><?php echo $purpose ; ?></th>
+                            <th><?php echo $travel_order; ?></th>
+                            <th></th>
+                         
 
-                            <div class="modal-body">
-                              <p>Are you sure you want to delete the vehicle?</p>
-                    
-                            </div>
-                    
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-danger">Delete</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                                      <!-- EDIT  -->
-                      <div class="modal fade" role="dialog" id="editModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Edit Vehicle</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
+                            <th>
+                              
+                              <?php 
+                                if($reservation_status == "Verified")
+                                {
+                                  echo "
+                                  <span class='badge badge-success'>Verified</span>
+                                  <th>
+                                  <a href='../../../Connection/set-status-technical3.php?transaction_id=$transaction_id &reservation_status=Checked' class='btn btn-info btn-sm'>Check</a>
+                                  </th>
+                                  
+                                  ";
+                              
+                                }
+                                else if($reservation_status == "Approved")
+                                {
+                                  echo "
+                                  <span class='badge badge-success'>Approved</span>
+                                  <th>
+                                  
+                                  </th>
+                                  
+                                  ";
+                              
+                                } else if($reservation_status == "Pending")
+                                {
+                                  echo "
+                                  <span class='badge badge-warning'>Pending</span>
+                                  <th>
+                                    
+                                  </th>
+                                  
+                                  ";
+                              
+                                }else if ($reservation_status == "Checked")
+                                {
 
-                            <div class="modal-body">
+                                  echo "
+                                  <span class='badge badge-info'>Checked</span>
+                                  <th>
+                                    
+                                  </th>
+                                  
+                                  ";
+                                }
+                                
+                                else if ( $reservation_status == "Processing"){
+                                  echo "
+                                  <span class='badge badge-info'>Processing</span>
+                                  <th>
+                                 
+                                  </th>
+                                  
+                                  ";
+                              
+                                }else{
 
-                              <div class="form-group">
-                                <input type="text" name="Plate No." class="form-control" placeholder="Plate No.">
-                              </div>
-                    
-                              <div class="form-group">
-                                <input type="text" name="Vehicle Model" class="form-control" placeholder="Vehicle Model">
-                              </div>
-                    
-                              <div class="form-group">
-                                <input type="number" name="Start-Odometer" class="form-control" placeholder="Start-Odometer">
-                              </div>
-                    
-                              <div class="form-group">
-                                <input type="number" name="End-Odometer" class="form-control" placeholder="End-Odometer">
-                              </div>
-                    
-                              <div class="form-group">
-                                <input type="text" name="Assigned Driver" class="form-control" placeholder="Assigned Driver">
-                              </div>
-                    
-                              <div class="form-group">
-                                <input type="date" name="Date Assigned" class="form-control" placeholder="Date Assigned">
-                              </div>
-                    
-                            </div>
-                    
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-success">Edit</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                                  echo "
+                                  <span class='badge badge-danger'>Canceled</span>
+                                  <th>
+                                 
+                                  </th>
+                                  
+                                  ";
+
+                                }
+
+                              ?> 
+
+                            </th>
+                            
+                            
+                          </tr>
+
+                        <?php }?>
+
+                
+                      
 
                    </td>
+                   
                   </tr>
                   </tbody>
                 </table>
@@ -428,5 +511,22 @@
     });
   });
 </script>-->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

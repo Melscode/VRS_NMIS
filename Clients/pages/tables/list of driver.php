@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List of Vehicles</title>
+  <title>List of Drivers</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,7 +38,6 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-     
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -166,37 +165,27 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item ">
-            <a href="../../index.html" class="nav-link ">
+          <li class="nav-item">
+            <a href="../../clientdashboard.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <!--end dashboard-->
-          
+        
+          <li class="nav-item">
+            <a href="../UI/timeline.html" class="nav-link">
+              <i class="nav-icon fas fa-project-diagram"></i>
+              <p>
+                Tracking
+              </p>
+            </a>
+          </li>
           <!--end UI-->
+          
           <li class="nav-item">
-            <a href="../tables/data.html" class="nav-link ">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Reports
-              </p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a href="../calendar.html" class="nav-link ">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
-          <!--end  tables-->
-          <li class="nav-item">
-            <a href="../../../login form/login.html" class="nav-link">
+            <a href="../../../login form/login.php" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
               <p>
                 Logout
@@ -216,40 +205,60 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List of Vehicles</h1>
+            <h1>List of Drivers</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-   
-             
+    
               
 
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Plate No.</th>
-                    <th>Vehicle Model</th>
-                    <th>Start-Odometer</th>
-                    <th>End-Odometer</th>
-                    <th>Assigned Driver</th>
-                    <th>Date Assigned</th>
-                   
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>NMIS-977</td>
-                    <td>Mazda CX9</td>
-                    <td>2486</td>
-                    <td>91308</td>
-                    <td>Eddie Cascayan</td>
-                    <td>April 3, 2023</td>
-                    
-                  </tr>
+                 <!-- /.card-header -->
+             <!-- /.card-header -->
+             <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Fullname</th>
+                  <th>Position</th>
+                  <th>Address</th>
+                  <th>Division</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <?php
+                    require_once '../../../Connection/conn.php';
+                    $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
+                    if ($sql){
+                        while ($row = mysqli_fetch_assoc($sql)){
+                        
+                          $employee_id =$row['employee_id'];
+                          $first_name =$row['first_name'];
+                          $last_name =$row['last_name']; 
+                          $username=$row['username'];
+                          $position=$row['position'];
+                          $division =$row['division'];
+                          $address = $row['address'];
+                          $govmail =$row['govmail'];
+                          $contact_number=$row['contact_number'];
+                          $role =$row['role'];
+
+
+                      if($role=='Driver'){
+
+                      echo '<tr>
+                      <th scope="row">'.$first_name.' '.$last_name.'</th>
+                      <td>'.$position.'</td> 
+                       <td>'.$address.'</td>
+                      <td>'.$division.'</td>
+                      </tr>';
+                    }
+                        }
+                      }
+                  ?>
                   </tbody>
                 </table>
               </div>

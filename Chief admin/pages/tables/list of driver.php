@@ -174,17 +174,8 @@
             </a>
           </li>
           <!--end dashboard-->
-          <li class="nav-item">
-            <a href="../tables/data.html" class="nav-link ">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Reports
-              </p>
-            </a>
-          </li>
-          <!--end  tables-->
           <li class="nav-item ">
-            <a href="../calendar.html" class="nav-link ">
+            <a href="../../pages/calendar.html" class="nav-link ">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Calendar
@@ -219,8 +210,10 @@
       </div><!-- /.container-fluid -->
     </section>
 
-              <!-- /.card-header -->
-              <div class="card-body">
+              
+
+               <!-- /.card-header -->
+               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -233,12 +226,36 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Eddie Cascayan</td>
-                    <td>Driver I</td>
-                    <td>D.Tuazon 12th Ave.</td>
-                    <td>Motorpool</td>
-                    
-                  </tr>
+                  <?php
+                      require_once '../../../Connection/conn.php';
+                      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
+                      if ($sql){
+                          while ($row = mysqli_fetch_assoc($sql)){
+                          
+                            $employee_id =$row['employee_id'];
+                            $first_name =$row['first_name'];
+                            $last_name =$row['last_name']; 
+                            $username=$row['username'];
+                            $position=$row['position'];
+                            $division =$row['division'];
+                            $address = $row['address'];
+                            $govmail =$row['govmail'];
+                            $contact_number=$row['contact_number'];
+                            $role =$row['role'];
+
+
+                        if($role=='Driver'){
+
+                        echo '<tr>
+                        <th scope="row">'.$first_name.' '.$last_name.'</th>
+                        <td>'.$position.'</td> 
+                         <td>'.$address.'</td>
+                        <td>'.$division.'</td>
+                        </tr>';
+                      }
+                          }
+                        }
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -292,7 +309,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!--<script>
+<script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -308,6 +325,23 @@
       "responsive": true,
     });
   });
-</script>-->
+</script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

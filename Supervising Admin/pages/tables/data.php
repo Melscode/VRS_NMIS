@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List of Drivers</title>
+  <title>Reports</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -132,7 +132,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../index.html" class="brand-link">
-      <img src="../../dist/img/NMIS_LOGO.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../dist/img/NMIS_LOGO.png" alt="NMIS_LOGO" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">NMIS_VRS</span>
     </a>
 
@@ -166,7 +166,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../../index.html" class="nav-link">
+            <a href="../../admindashboard.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -174,8 +174,18 @@
             </a>
           </li>
           <!--end dashboard-->
+          
+          <!--end UI-->
+          <li class="nav-item menu-open">
+            <a href="../tables/data.php" class="nav-link active">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Reports
+              </p>
+            </a>
+          </li>
           <li class="nav-item ">
-            <a href="../../pages/calendar.html" class="nav-link ">
+            <a href="../calendar.html" class="nav-link ">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Calendar
@@ -183,6 +193,7 @@
               </p>
             </a>
           </li>
+          <!--end  tables-->
           <li class="nav-item">
             <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
@@ -204,12 +215,20 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>List of Drivers</h1>
+            <h1><b>MONITORING OF NMIS TRAVEL VEHICLES</b></h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
+    <!-- Main content 
+            <div class="card-footer clearfix">
+              <div class="card-header"></h3>
+               <button type="button" class="btn btn-success float-right" ><i class="fas fa-plus"></i> Add new request</button>
+               
+              </div>
+             </div>-->
+             
               
 
               <!-- /.card-header -->
@@ -217,21 +236,54 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Fullname</th>
-                    <th>Position</th>
-                    <th>Address</th>
-                    <th>Division</th>
-                    
+                    <th>Date of Travel</th>
+                    <th>Driver's Name</th>
+                    <th>Region</th>
+                    <th>Location</th>
+                    <th>Remarks</th>
+                    <!--<th>Action</th>-->
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Eddie Cascayan</td>
-                    <td>Driver I</td>
-                    <td>D.Tuazon 12th Ave.</td>
-                    <td>Motorpool</td>
-                  </tr>
-                  </tbody>
+
+                  <?php
+                      require_once '../../../Connection/conn.php';
+                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+                      if ($sql){
+                          while ($row = mysqli_fetch_assoc($sql)){
+                          
+                            $start_date =$row['start_date'];
+                            $asigned_driver =$row['asigned_driver'];
+                            $region =$row['region']; 
+                            $destination=$row['destination'];
+                            $remarks=$row['remarks'];
+
+                        
+                            
+
+                        if($remarks =='Rejected'){
+
+                        echo '<tr>
+                        <th scope="row">'.$start_date.'</th>
+                        <td>'.$asigned_driver.'</td> 
+                         <td>'.$region.'</td>
+                        <td>'.$destination.'</td>
+                        <td><span class="badge badge-danger">'.$remarks.'</span></td>
+                        </tr>';
+                      }else{
+
+                        echo '<tr>
+                        <th scope="row">'.$start_date.'</th>
+                        <td>'.$asigned_driver.'</td> 
+                         <td>'.$region.'</td>
+                        <td>'.$destination.'</td>
+                        <td ><span class="badge badge-success">'.$remarks.'</span></td>
+                        </tr>';
+                      }
+                          }
+                        }
+                    ?>
+                    </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -284,7 +336,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!--<script>
+<script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -300,6 +352,6 @@
       "responsive": true,
     });
   });
-</script>-->
+</script>
 </body>
 </html>
