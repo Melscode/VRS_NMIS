@@ -18,20 +18,27 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
-     
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../pages/examples/contacts.html" class="nav-link">Contacts</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../pages/examples/faq.html" class="nav-link">FAQs</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-    <div class="dropdown-divider"></div>
-       
-     
-      
-      
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -52,7 +59,7 @@
           <img src="../../dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="../examples/profile.html" class="d-block">Alexander the Great</a>
+          <a href="" class="d-block">Alexander the Great</a>
         </div>
       </div>
 
@@ -91,16 +98,6 @@
             </a>
           </li>
           <!--end  tables-->
-
-          <li class="nav-item ">
-            <a href="../calendar.php" class="nav-link ">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
             <a href="../../../login form/login.php" class="nav-link">
@@ -193,12 +190,6 @@
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Add request</button>
                   </div>-->
-
-    
-
-
-             
-              
 
               <!-- /.card-header -->
               <div class="card-body">
