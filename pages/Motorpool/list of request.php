@@ -22,9 +22,7 @@
 //   }
 // } 
  ?> -->
-  <div class="container-fluid">
-    <div class="col-md-12">
-      <div class="row">
+
 
        <!-- Main content -->
        <div class="card-footer clearfix">
@@ -70,7 +68,9 @@
 
              
               
-
+       <div class="container-fluid">
+          <div class="col-md-12">
+            <div class="row">
                  <!-- /.card-header -->
                  <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -78,20 +78,14 @@
                   <tr>
                   <th>Transaction_ID</th>
                     <th>Fullname</th>
-                    <th>Govmail</th>
-                    <th>Position</th>
                     <th>Division</th>
-                    <th>Contact No.</th>
-                    <th>Region</th>
-                    <th>Location</th>
                     <th>Destination</th>
                     <th>Date Start</th>
                     <th>Date End</th>
                     <th>Time Start</th>
                     <th>Time End</th>
                     <th>Purpose</th>
-                    <th>Travel Order</th>
-                    <th>Assigned_Driver</th>
+                    <th>Driver</th>
                     <th>Status</th>
                     <th>Action</th>
               

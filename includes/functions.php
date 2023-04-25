@@ -26,43 +26,55 @@ function list_of_request()
           $purpose =$row['purpose'];
           $travel_order =$row['travel_order'];
           $reservation_status=$row['reservation_status'];
+          $assigned_driver=$row['asigned_driver'];
+
+          if($reservation_status == 'Verified')
+          {
+            $status = "<span class='badge badge-success'>Verified</span>";
+          }
+          else if($reservation_status == "Approved")
+          {
+            $status = "<span class='badge badge-success'>Approved</span>";
+          } 
+          else if($reservation_status == "Pending")
+          {
+             $status = "<span class='badge badge-warning'>Pending</span>";
+          }
+          else if ($reservation_status == "Checked")
+          {
+              $status = "<span class='badge badge-info'>Checked</span>";
+          }
+          else if ( $reservation_status == "Processing")
+          {
+              $status = "<span class='badge badge-info'>Processing</span>";
+          }
+          else{
+              $status = "<span class='badge badge-danger'>Canceled</span>";
+
+              }
     
         ?>
 
 
       <tr>
-          <th><?php echo $transaction_id; ?></th>
-          <th><?php echo $requestor_name ; ?></th>
-          <th><?php echo $requestor_govmail; ?></th>
-          <th><?php echo $requestor_position; ?></th>
-          <th><?php echo $requestor_division; ?></th>
-          <th><?php echo $requestor_contact_number; ?></th>
-          <th><?php echo $region; ?></th>
-          <th><?php echo $location ; ?></th>
-          <th><?php echo $destination; ?></th>
-          <th><?php echo $start_date; ?></th>
-          <th><?php echo $end_date; ?></th>
-          <th><?php echo $start_time; ?></th>
-          <th><?php echo $end_time; ?></th>
-          <th><?php echo $purpose ; ?></th>
-          <th><?php echo $travel_order; ?></th>
-          <th></th>
-       
-
-          <th>
-            
-            <?php 
-              if($reservation_status == "Verified")
-              {
-                echo "
-                <span class='badge badge-success'>Verified</span>
-                <th>
-                <a href='../../Connection/set-status-technical3.php?transaction_id=$transaction_id &reservation_status=Checked' class='btn btn-info btn-sm'>Check</a>";
-                ?>
+          <td><?php echo $transaction_id; ?></td>
+          <td><?php echo $requestor_name ; ?></td>
+          <td><?php echo $requestor_division; ?></td>
+          <td><?php echo $destination; ?></td>
+          <td><?php echo $start_date; ?></td>
+          <td><?php echo $end_date; ?></td>
+          <td><?php echo date('H:i a',strtotime($start_time)); ?></td>
+          <td><?php echo date('H:i a',strtotime($end_time)); ?></td>
+          <td><?php echo $purpose; ?></td>
+          <td><?php echo $assigned_driver; ?></td>
+          <td><?php echo $status; ?></td>
+          
+          <td>
                 <form method="POST">
                 <input type="hidden" name="transaction_id" value="<?php echo $transaction_id;?>">
-                <button type="submit" class="btn btn-warning btn-sm" name="assign_driver">Assign</button>
+                <button type="submit" class="btn btn-primary btn-sm" name="assign_driver">Edit</button>
                 </form>
+              </td>
                 <?php
                     if(isset($_POST['assign_driver'])){
                         session_start();
@@ -71,74 +83,16 @@ function list_of_request()
 
                     }
                 ?>
-                </th>
-                <?php
-                
-            
-              }
-              else if($reservation_status == "Approved")
-              {
-                echo "
-                <span class='badge badge-success'>Approved</span>
-                <th>
-                
-                </th>
-                
-                ";
-            
-              } else if($reservation_status == "Pending")
-              {
-                echo "
-                <span class='badge badge-warning'>Pending</span>
-                <th>
-                  
-                </th>
-                
-                ";
-            
-              }else if ($reservation_status == "Checked")
-              {
 
-                echo "
-                <span class='badge badge-info'>Checked</span>
-                <th>
-                  
-                </th>
-                
-                ";
-              }
-              
-              else if ( $reservation_status == "Processing"){
-                echo "
-                <span class='badge badge-info'>Processing</span>
-                <th>
-               
-                </th>
-                
-                ";
-            
-              }else{
 
-                echo "
-                <span class='badge badge-danger'>Canceled</span>
-                <th>
-               
-                </th>
-                
-                ";
 
-              }
-
-            ?> 
-
-          </th>
+            </td>
           
         </tr>
 
       <?php } ?>
 
- </td>
-</tr>
+
 
 
 <?php
