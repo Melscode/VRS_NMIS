@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2023 at 10:45 AM
+-- Generation Time: Apr 25, 2023 at 04:09 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -49,7 +49,7 @@ CREATE TABLE `request_tbl` (
   `vehicle_plate_number` varchar(255) DEFAULT NULL,
   `start_odometer` int(100) DEFAULT NULL,
   `end_odometer` int(100) DEFAULT NULL,
-  `reservation_status` varchar(255) NOT NULL
+  `reservation_status` enum('Initialed','Processing','Approved','Pending','Verified','Canceled','Checked') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -57,10 +57,38 @@ CREATE TABLE `request_tbl` (
 --
 
 INSERT INTO `request_tbl` (`id`, `transaction_id`, `requestor_name`, `requestor_govmail`, `requestor_position`, `requestor_division`, `requestor_contact_number`, `region`, `location`, `destination`, `start_date`, `end_date`, `start_time`, `end_time`, `purpose`, `remarks`, `travel_order`, `asigned_driver`, `vehicle_plate_number`, `start_odometer`, `end_odometer`, `reservation_status`) VALUES
-(1, '12313', 'wq', 'qw', 'qw', '', 94892800, 'qw', 'cubao', 'Tarlac', '2023-04-15', '2023-04-16', '00:00:00.000000', '18:19:55.000000', 'sdadsa', 'Approved', '23121', NULL, NULL, NULL, NULL, 'Pending'),
-(2, '1221', '23123', '12312', '1231', '123213', 213213, '3213213', '21312', '21312', '2023-04-15', '2023-04-16', '00:00:00.000000', '18:19:55.000000', '213213', 'Rejected', 'wqewe', 'Ernisto', 'adsdas', NULL, NULL, 'Processing'),
-(3, 'asdads', 'sdadsa', 'sdad', 'asdsad', 'asdsa', 213213, 'asdad', 'Cubao', 'Cubao', '2023-04-22', '2023-04-29', '08:13:52.000000', '27:13:52.000000', 'sadadasdas', 'Appproved', 'sadad', 'Melanie', 'dasd', NULL, NULL, 'Approved'),
-(4, 'nmis-02', 'Marss', 'g@govmail.com.ph', 'Dancer', 'PIMD', 213213, 'IV', 'CUBAO', 'Hongkong', '2023-04-15', '2023-04-19', '08:13:52.000000', '45:30:56.000000', 'swabe', 'Approved', '1234', 'Swabe', '1234', NULL, NULL, 'Initialed');
+(17, 'nmis-123', 'Mark Ferdinand', 'asda@wqeqw.com', 'dancer', 'PIMD', 12312, '1231', 'Ali mall', 'Quezon Ave', '2023-04-23', '2023-04-24', '15:46:00.000000', '00:00:00.000000', '12321', NULL, '231', 'Melanie', NULL, NULL, NULL, 'Initialed'),
+(18, 'nmis-09', 'John Paul', '1231@GMAIL.COM', 'ProgrammerII', 'PIMD', 12345, 'NCR', 'Fairview', 'cubao', '2023-04-19', '2023-04-26', '15:39:00.000000', '15:39:00.000000', 'Travel', NULL, 'TRA-00-1-02', 'asda asd21', NULL, NULL, NULL, 'Verified'),
+(21, 'vrs-123', 'Juffrey Bayog', 'Mark@abayan.com', 'OJT', 'PIMD', 989665, 'IV', 'HONGKONG', 'USA', '2023-04-20', '2023-04-27', '07:50:00.000000', '08:50:00.000000', 'Swabe', NULL, 'TRA-098', 'juffs', NULL, NULL, NULL, 'Initialed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_tbl`
+--
+
+CREATE TABLE `transaction_tbl` (
+  `id` int(100) NOT NULL,
+  `transaction_id` varchar(255) NOT NULL,
+  `transaction_description` varchar(255) NOT NULL,
+  `transaction_date_time` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaction_tbl`
+--
+
+INSERT INTO `transaction_tbl` (`id`, `transaction_id`, `transaction_description`, `transaction_date_time`) VALUES
+(4, 'nmis-09 ', 'Verified', '0000-00-00 00:00:00.000000'),
+(5, 'nmis-123 ', 'Verified', '0000-00-00 00:00:00.000000'),
+(6, 'nmis-09 ', 'Verified', '0000-00-00 00:00:00.000000'),
+(7, 'nmis-123 ', 'Verified', '0000-00-00 00:00:00.000000'),
+(8, 'nmis-09 ', 'Verified', '0000-00-00 00:00:00.000000'),
+(9, 'vrs-123 ', 'Verified', '0000-00-00 00:00:00.000000'),
+(10, 'vrs-123 ', 'Checked', '0000-00-00 00:00:00.000000'),
+(11, 'vrs-123 ', 'Initialed', '0000-00-00 00:00:00.000000'),
+(12, 'vrs-123 ', 'Approved', '0000-00-00 00:00:00.000000'),
+(13, 'nmis-09 ', 'Checked', '0000-00-00 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -90,8 +118,8 @@ CREATE TABLE `users_tbl` (
 INSERT INTO `users_tbl` (`id`, `employee_id`, `first_name`, `last_name`, `username`, `position`, `division`, `address`, `govmail`, `contact_number`, `password`, `role`) VALUES
 (72, 'vr-54', 'asdasd', 'sadasd', 'admin', '1231', 'Accounting', NULL, 'fsdfsfs@gov.ph', '4213', '$2y$10$BomU3FqfrQHIypL4NMAAqeaDuFPdKregMrsQUMgt4Nf5LK1oEAIbq', 'Supervising Admin'),
 (73, 'nmis-1', '123', '321', 'fsdfsdsfs', 'Programmer II', 'PIMD', NULL, 'ict@gov.com.ph', '09898765432', '$2y$10$SpezDsBmO5rzk7QHWHPzJezgL0Q8RubVcurkJPwtrWYPyN5YonJRC', 'Supervising Admin'),
-(74, 'nmis-2', 'mark', 'abayan', 'admin', 'Programmer II', 'PIMD', NULL, 'ict@gov.com.ph', '09898765432', '$2y$10$5UusOYRGtILUbXzjvGyRo.Mweiv.DD5/8sVt8xoiNkEZihz1I93FS', 'Driver'),
-(75, 'nmis-1', '123', '321', 'fsdfsdsfs', 'Programmer II', 'PIMD', NULL, 'ict@gov.com.ph', '09898765432', '$2y$10$PlF7d55otHmkbE2w3.EDW.a.twu/24Sna7kaAENYf7fhVTlmNJvKu', 'Supervising Admin');
+(75, 'nmis-1', '123', '321', 'fsdfsdsfs', 'Programmer II', 'PIMD', NULL, 'ict@gov.com.ph', '09898765432', '$2y$10$PlF7d55otHmkbE2w3.EDW.a.twu/24Sna7kaAENYf7fhVTlmNJvKu', 'Driver'),
+(76, 'sadsa', 'asda', 'asd21', '231232', '21321', 'POSMD', NULL, '123213@gmail.fsd', '2322342', '$2y$10$iKXLsFO6fysT7xB0/FdUhu7/8yvoZT8BZOq37pYqHVzSd7kzFdMtO', 'Driver');
 
 -- --------------------------------------------------------
 
@@ -127,6 +155,12 @@ ALTER TABLE `request_tbl`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `transaction_tbl`
+--
+ALTER TABLE `transaction_tbl`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users_tbl`
 --
 ALTER TABLE `users_tbl`
@@ -146,19 +180,25 @@ ALTER TABLE `vehicles_tbl`
 -- AUTO_INCREMENT for table `request_tbl`
 --
 ALTER TABLE `request_tbl`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `transaction_tbl`
+--
+ALTER TABLE `transaction_tbl`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users_tbl`
 --
 ALTER TABLE `users_tbl`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `vehicles_tbl`
 --
 ALTER TABLE `vehicles_tbl`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
