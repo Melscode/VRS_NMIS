@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reports</title>
+  <title>List of Drivers</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -47,7 +47,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../index.html" class="brand-link">
-      <img src="../../dist/img/NMIS_LOGO.png" alt="NMIS_LOGO" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../dist/img/NMIS_LOGO.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">NMIS_VRS</span>
     </a>
 
@@ -81,7 +81,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../../admindashboard.php" class="nav-link">
+            <a href="../../index.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -89,10 +89,8 @@
             </a>
           </li>
           <!--end dashboard-->
-          
-          <!--end UI-->
-          <li class="nav-item menu-open">
-            <a href="../tables/data.php" class="nav-link active">
+          <li class="nav-item">
+            <a href="../tables/data.html" class="nav-link ">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Reports
@@ -121,75 +119,60 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>MONITORING OF NMIS TRAVEL VEHICLES</b></h1>
+            <h1>List of Drivers</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-    <!-- Main content 
-            <div class="card-footer clearfix">
-              <div class="card-header"></h3>
-               <button type="button" class="btn btn-success float-right" ><i class="fas fa-plus"></i> Add new request</button>
-               
-              </div>
-             </div>-->
-             
-              
 
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Date of Travel</th>
-                    <th>Driver's Name</th>
-                    <th>Region</th>
-                    <th>Location</th>
-                    <th>Remarks</th>
-                    <!--<th>Action</th>-->
+                    <th>Fullname</th>
+                    <th>Position</th>
+                    <th>Address</th>
+                    <th>Division</th>
+                   
                   </tr>
                   </thead>
                   <tbody>
-
+                  <tr>
                   <?php
                       require_once '../../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+                      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
                       if ($sql){
                           while ($row = mysqli_fetch_assoc($sql)){
                           
-                            $start_date =$row['start_date'];
-                            $asigned_driver =$row['asigned_driver'];
-                            $region =$row['region']; 
-                            $destination=$row['destination'];
-                            $remarks=$row['remarks'];
+                            $employee_id =$row['employee_id'];
+                            $first_name =$row['first_name'];
+                            $last_name =$row['last_name']; 
+                            $username=$row['username'];
+                            $position=$row['position'];
+                            $division =$row['division'];
+                            $address = $row['address'];
+                            $govmail =$row['govmail'];
+                            $contact_number=$row['contact_number'];
+                            $role =$row['role'];
 
-                        
-                            
 
-                        if($remarks =='Rejected'){
-
-                        echo '<tr>
-                        <th scope="row">'.$start_date.'</th>
-                        <td>'.$asigned_driver.'</td> 
-                         <td>'.$region.'</td>
-                        <td>'.$destination.'</td>
-                        <td><span class="badge badge-danger">'.$remarks.'</span></td>
-                        </tr>';
-                      }else{
+                        if($role=='Driver'){
 
                         echo '<tr>
-                        <th scope="row">'.$start_date.'</th>
-                        <td>'.$asigned_driver.'</td> 
-                         <td>'.$region.'</td>
-                        <td>'.$destination.'</td>
-                        <td ><span class="badge badge-success">'.$remarks.'</span></td>
+                        <th scope="row">'.$first_name.' '.$last_name.'</th>
+                        <td>'.$position.'</td> 
+                         <td>'.$address.'</td>
+                        <td>'.$division.'</td>
                         </tr>';
                       }
                           }
                         }
                     ?>
-                    </tbody>
+                        
+                    
+                 
+                  </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -242,7 +225,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
+<!--<script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -258,6 +241,6 @@
       "responsive": true,
     });
   });
-</script>
+</script>-->
 </body>
 </html>

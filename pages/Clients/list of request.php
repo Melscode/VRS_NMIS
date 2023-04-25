@@ -145,11 +145,6 @@ if(isset($_POST['save'])){
                 <input type="text" name="travel_order" class="form-control" placeholder="Travel Order">
               </div>
 
-              
-             
-
-            
-
             </div>
           
 

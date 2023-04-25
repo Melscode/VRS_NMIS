@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reports</title>
+  <title>List of Vehicles</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,7 +38,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-
+     
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -47,7 +47,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../index.html" class="brand-link">
-      <img src="../../dist/img/NMIS_LOGO.png" alt="NMIS_LOGO" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../dist/img/NMIS_LOGO.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">NMIS_VRS</span>
     </a>
 
@@ -59,7 +59,7 @@
           <img src="../../dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="" class="d-block">Alexander the Great</a>
+          <a href="../examples/profile.html" class="d-block">Alexander the Great</a>
         </div>
       </div>
 
@@ -80,8 +80,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="../../admindashboard.php" class="nav-link">
+          <li class="nav-item ">
+            <a href="../../index.html" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -90,22 +90,11 @@
           </li>
           <!--end dashboard-->
           
-          <!--end UI-->
-          <li class="nav-item menu-open">
-            <a href="../tables/data.php" class="nav-link active">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Reports
-              </p>
-            </a>
-          </li>
-          <!--end  tables-->
           <li class="nav-item">
             <a href="../../../login form/login.html" class="nav-link">
               <i class="nav-icon far fa-sign-out-alt"></i>
               <p>
                 Logout
-                
               </p>
             </a>
       </nav>
@@ -121,19 +110,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>MONITORING OF NMIS TRAVEL VEHICLES</b></h1>
+            <h1>List of Vehicles</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content 
-            <div class="card-footer clearfix">
-              <div class="card-header"></h3>
-               <button type="button" class="btn btn-success float-right" ><i class="fas fa-plus"></i> Add new request</button>
-               
-              </div>
-             </div>-->
+    <!-- Main content -->
+          
              
               
 
@@ -142,54 +126,40 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Date of Travel</th>
-                    <th>Driver's Name</th>
-                    <th>Region</th>
-                    <th>Location</th>
-                    <th>Remarks</th>
-                    <!--<th>Action</th>-->
+                    <th>Plate No.</th>
+                    <th>Vehicle Model</th>
+                    <th>Start-Odometer</th>
+                    <th>End-Odometer</th>
+                    <th>Assigned Driver</th>
+                   
                   </tr>
                   </thead>
                   <tbody>
-
                   <?php
                       require_once '../../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+                      $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl ");
                       if ($sql){
                           while ($row = mysqli_fetch_assoc($sql)){
                           
-                            $start_date =$row['start_date'];
-                            $asigned_driver =$row['asigned_driver'];
-                            $region =$row['region']; 
-                            $destination=$row['destination'];
-                            $remarks=$row['remarks'];
-
-                        
+                            $plate_number =$row['plate_number'];
+                            $vehicle_model =$row['vehicle_model'];
+                            $start_odometer=$row['start_odometer']; 
+                            $end_odometer=$row['end_odometer'];
+                            $assigned_driver=$row['assigned_driver'];
                             
 
-                        if($remarks =='Rejected'){
 
                         echo '<tr>
-                        <th scope="row">'.$start_date.'</th>
-                        <td>'.$asigned_driver.'</td> 
-                         <td>'.$region.'</td>
-                        <td>'.$destination.'</td>
-                        <td><span class="badge badge-danger">'.$remarks.'</span></td>
+                        <th scope="row">'.$plate_number.'</th>
+                        <td>'.$vehicle_model.'</td>
+                        <td>'.$start_odometer.'</td>
+                        <td>'.$end_odometer.'</td>
+                        <td>'.$assigned_driver.'</td>
+                        
                         </tr>';
-                      }else{
-
-                        echo '<tr>
-                        <th scope="row">'.$start_date.'</th>
-                        <td>'.$asigned_driver.'</td> 
-                         <td>'.$region.'</td>
-                        <td>'.$destination.'</td>
-                        <td ><span class="badge badge-success">'.$remarks.'</span></td>
-                        </tr>';
-                      }
                           }
                         }
                     ?>
-                    </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
