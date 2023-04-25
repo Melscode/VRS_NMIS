@@ -1,32 +1,7 @@
 <?php include 'includes/header.php'; ?>
 
-
-<?php
-  include "..\..\Connection\conn.php";
-
-  //Add Function
-
-if(isset($_POST['save'])){
-
-
-  $plate_number=$_POST['plate_number'];
-  $vehicle_model=$_POST['vehicle_model'];
-  $start_odometer=$_POST['start_odometer'];
-  $end_odometer=$_POST['end_odometer'];
-  $assigned_driver= $_POST['assigned_driver'];
- 
-
-
-  $sql = "INSERT INTO vehicles_tbl (plate_number, vehicle_model, start_odometer, end_odometer, assigned_driver) 
-
-  		  VALUES  ('$plate_number', '$vehicle_model', '$start_odometer', '$end_odometer', '$assigned_driver')";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-
-    echo "<script>alert('Naka Assigned kana!!');</script>";
-  }
-}
-?>
+<?php include '../../includes/functions.php'; ?>
+<?php echo add_vehicle();?>
 
    <!-- Main content -->
    <div class="card-footer clearfix">
@@ -65,13 +40,8 @@ if(isset($_POST['save'])){
 
               <div class ="form-group">
               <select name="assigned_driver" class="form-control">
-                                <option value="">--Choose Driver--</option>
-                                    <option value="Melanie">Melanie</option>
-                                    <option value="Mark">Mark</option>
-                                    <option value="jp">Jp</option>
-                                    <option value="juffs">Juffs</option>
-                                    <option value="Cj">Cj</option>
-                                    <option value="Marss">Marss</option>
+                            <option value="">-- Select Driver--</option>
+                               <?php echo all_driver();?>
 							</select>
               </div>
       
@@ -107,34 +77,7 @@ if(isset($_POST['save'])){
                   </thead>
                   <tbody>
                   <tr>
-                  <?php
-                      require_once '../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl");
-                      if ($sql){
-                          while ($row = mysqli_fetch_assoc($sql)){
-                          
-                            $plate_number =$row['plate_number'];
-                            $vehicle_model =$row['vehicle_model'];
-                            $start_odometer =$row['start_odometer']; 
-                            $end_odometer=$row['end_odometer'];
-                            $assigned_driver=$row['assigned_driver'];
-                           
-
-                        echo '<tr>
-                        <th scope="row">'.$plate_number.'</th>
-                        <td>'.$vehicle_model.'</td>
-                        <td>'.$start_odometer.'</td>
-                        <td>'.$end_odometer.'</td>
-                        <td>'.$assigned_driver.'</td>
-                      
-                        <td>
-                  
-
-                        </td>
-                        </tr>';
-                          }
-                        }
-                    ?>
+                  <?php echo view_vehicle();?>
                       <!-- Delete  -->
                       <div class="modal fade" role="dialog" id="deleteModal">
                         <div class="modal-dialog">

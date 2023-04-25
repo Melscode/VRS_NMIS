@@ -229,6 +229,17 @@
             </a>
           </li>
 
+          
+          <li class="nav-item">
+            <a href="data.php" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+              Report
+              </p>
+            </a>
+          </li>
+
+
           <li class="nav-item">
             <a href="login form/login.html" class="nav-link">
               <i class="nav-icon fas fa-sign-out"></i>

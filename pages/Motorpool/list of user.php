@@ -1,13 +1,4 @@
 <?php include 'includes/header.php'; ?>
-    <!-- Main content -->
-            <!--<div class="card-footer clearfix">
-              <div class="card-header"></h3>
-               <button type="button" class="btn btn-success float-right" ><i class="fas fa-plus"></i> Add User</button>
-               
-              </div>
-             </div>-->
-             
-              
 
               <!-- /.card-header -->
               <div class="card-body">
@@ -46,4 +37,4 @@
             <!-- /.card -->
           </div>
           <!-- /.col -->
-          <?php include 'includes/footer.php'; ?>
+ <?php include 'includes/footer.php'; ?>

@@ -3,6 +3,7 @@ session_start();
 
 ?>
 <?php include 'includes/header.php';?>
+<?php include '../../includes/functions.php';?>
 
 
   <!-- Delete Function-->
@@ -23,39 +24,8 @@ if(mysqli_query($conn,$sql)){
 }
 ?>
 
-    <?php
-  include "..\..\Connection\conn.php";
-
-  //Add Function
-
-if(isset($_POST['save'])){
-
-
-  $employee_id=mysqli_real_escape_string($conn,$_POST['employee_id']);
-  $first_name=mysqli_real_escape_string($conn, $_POST['first_name']);
-  $last_name=mysqli_real_escape_string($conn, $_POST['last_name']);
-  $username=mysqli_real_escape_string($conn, $_POST['username']);
-  $position= mysqli_real_escape_string($conn,$_POST['position']);
-  $division= mysqli_real_escape_string($conn,$_POST['division']);
-  $govmail=mysqli_real_escape_string($conn,$_POST['govmail']);
-  $contact_number=mysqli_real_escape_string($conn,$_POST['contact_number']);
-  $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
-  $role =mysqli_real_escape_string($conn,$_POST['role']);
-
-
-
-  $sql = "INSERT INTO users_tbl (employee_id, first_name, last_name, username, position, division, govmail, contact_number, password, role) 
-
-  		  VALUES  ('$employee_id', '$first_name', '$last_name', '$username', '$position', '$division', '$govmail', '$contact_number', '$password', '$role')";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-
-
-
-    echo "<script>alert('SWABE!!');</script>";
-  }
-}
-?>
+   
+   <?php echo add_user(); ?>
 
 
        <!-- Main content -->
@@ -175,41 +145,7 @@ if(isset($_POST['save'])){
                   </thead>
 
                   <tbody>
-                    <?php
-                      require_once '../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
-                      if ($sql){
-                          while ($row = mysqli_fetch_assoc($sql)){
-                          
-                            $employee_id =$row['employee_id'];
-                            $first_name =$row['first_name'];
-                            $last_name =$row['last_name']; 
-                            $username=$row['username'];
-                            $position=$row['position'];
-                            $division =$row['division'];
-                            $govmail =$row['govmail'];
-                            $contact_number=$row['contact_number'];
-                            $role =$row['role'];
-
-                        echo '<tr>
-                        <th scope="row">'.$employee_id.'</th>
-                        <td>'.$first_name.'</td>
-                        <td>'.$last_name.'</td>
-                        <td>'.$username.'</td>
-                        <td>'.$position.'</td>
-                        <td>'.$division.'</td>
-                        <td>'.$govmail.'</td>
-                        <td>'.$contact_number.'</td>
-                        <td>'.$role.'</td>
-                        <td>
-                          <a href="list of user.php?employee_id='.$employee_id. '" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
-                          <button type="button" class="btn btn-warning float-right" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i> Edit </button> 
-
-                        </td>
-                        </tr>';
-                          }
-                        }
-                    ?>
+                  <?php echo list_user(); ?>
                                    
                         <!-- Delete  -->
                         <div class="modal fade" role="dialog" id="deleteModal">

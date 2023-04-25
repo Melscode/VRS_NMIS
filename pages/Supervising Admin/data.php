@@ -1,3 +1,4 @@
+<?php include '../../includes/functions.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,43 +153,7 @@
                   </thead>
                   <tbody>
 
-                  <?php
-                      require_once '../../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
-                      if ($sql){
-                          while ($row = mysqli_fetch_assoc($sql)){
-                          
-                            $start_date =$row['start_date'];
-                            $asigned_driver =$row['asigned_driver'];
-                            $region =$row['region']; 
-                            $destination=$row['destination'];
-                            $remarks=$row['remarks'];
-
-                        
-                            
-
-                        if($remarks =='Rejected'){
-
-                        echo '<tr>
-                        <th scope="row">'.$start_date.'</th>
-                        <td>'.$asigned_driver.'</td> 
-                         <td>'.$region.'</td>
-                        <td>'.$destination.'</td>
-                        <td><span class="badge badge-danger">'.$remarks.'</span></td>
-                        </tr>';
-                      }else{
-
-                        echo '<tr>
-                        <th scope="row">'.$start_date.'</th>
-                        <td>'.$asigned_driver.'</td> 
-                         <td>'.$region.'</td>
-                        <td>'.$destination.'</td>
-                        <td ><span class="badge badge-success">'.$remarks.'</span></td>
-                        </tr>';
-                      }
-                          }
-                        }
-                    ?>
+                  <?php echo report(); ?>
                     </tbody>
                 </table>
               </div>

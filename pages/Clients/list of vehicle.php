@@ -1,4 +1,5 @@
 <?php include 'includes/header.php'; ?>
+<?php include "../../includes/functions.php";?>
 
               <!-- /.card-header -->
                  <!-- /.card-header -->
@@ -15,31 +16,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                        require_once '../../Connection/conn.php';
-                        $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl ");
-                        if ($sql){
-                            while ($row = mysqli_fetch_assoc($sql)){
-                            
-                              $plate_number =$row['plate_number'];
-                              $vehicle_model =$row['vehicle_model'];
-                              $start_odometer=$row['start_odometer']; 
-                              $end_odometer=$row['end_odometer'];
-                              $assigned_driver=$row['assigned_driver'];
-                              
-  
-  
-                          echo '<tr>
-                          <th scope="row">'.$plate_number.'</th>
-                          <td>'.$vehicle_model.'</td>
-                          <td>'.$start_odometer.'</td>
-                          <td>'.$end_odometer.'</td>
-                          <td>'.$assigned_driver.'</td>
-                          
-                          </tr>';
-                            }
-                          }
-                      ?>
+                    <?php echo vehicle_list();?>
                   </tbody>
                 </table>
               </div>

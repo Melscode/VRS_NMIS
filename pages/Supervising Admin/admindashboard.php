@@ -1,4 +1,5 @@
 <?php include 'includes/header.php'; ?>
+<?php include '../../includes/functions.php'; ?>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -8,24 +9,13 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <?php 
-                
-                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                  $query = 'SELECT id FROM request_tbl ORDER BY Id';
-                  $query_execute = mysqli_query($conn, $query);     
-                  
-                  $row = mysqli_num_rows($query_execute);
-                  echo "<p>Reservation Request</p>";
-                  echo "<h3>$row</h3>"; 
-                  
-                ?>
+              <?php echo total_request();?>
               </div>
              
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Reservation Requests-->
@@ -34,29 +24,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
             <div class="inner">
-              
-            <?php 
-                
-                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                  $query = 'SELECT id FROM users_tbl ORDER BY Id';
-                  $query_execute = mysqli_query($conn, $query);     
-                  
-                  $row = mysqli_num_rows($query_execute);
-                  echo "<p>Drivers</p>";
-                  echo "<h3>$row</h3>"; 
-                  
-                ?>
-              
-
-
-            
+       
+            <?php echo total_driver();?>
                 
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Driver-->
@@ -65,23 +40,12 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              <?php 
-                
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                $query = 'SELECT id FROM vehicles_tbl ORDER BY Id';
-                $query_execute = mysqli_query($conn, $query);     
-                
-                $row = mysqli_num_rows($query_execute);
-                echo "<p>Vehicles</p>";
-                echo "<h3>$row</h3>"; 
-                
-              ?>
+              <?php echo total_vehicle();?>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!--end Vehicle-->
@@ -90,23 +54,12 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              <?php 
-                
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                $query = 'SELECT id FROM users_tbl ORDER BY Id';
-                $query_execute = mysqli_query($conn, $query);     
-                
-                $row = mysqli_num_rows($query_execute);
-                echo "<p>User</p>";
-                echo "<h3>$row</h3>"; 
-                
-              ?>
+             <?php echo total_user();?>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           

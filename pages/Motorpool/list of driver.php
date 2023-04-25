@@ -1,37 +1,7 @@
 <?php include 'includes/header.php'; ?>
+<?php include '../../includes/functions.php';?>
 
-    <?php
-  include "..\..\Connection\conn.php";
-
-  //Add Function
-
-if(isset($_POST['save'])){
-
-
-  $employee_id=mysqli_real_escape_string($conn,$_POST['employee_id']);
-  $first_name=mysqli_real_escape_string($conn, $_POST['first_name']);
-  $last_name=mysqli_real_escape_string($conn, $_POST['last_name']);
-  $username=mysqli_real_escape_string($conn, $_POST['username']);
-  $position= mysqli_real_escape_string($conn,$_POST['position']);
-  $division= mysqli_real_escape_string($conn,$_POST['division']);
-  $govmail=mysqli_real_escape_string($conn,$_POST['govmail']);
-  $contact_number=mysqli_real_escape_string($conn,$_POST['contact_number']);
-  $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
-  $role =mysqli_real_escape_string($conn,$_POST['role']);
-
-
-
-  $sql = "INSERT INTO users_tbl (employee_id, first_name, last_name, username, position, division, govmail, contact_number, password, role) 
-
-  		  VALUES  ('$employee_id', '$first_name', '$last_name', '$username', '$position', '$division', '$govmail', '$contact_number', '$password', '$role')";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-
-    echo "<script>alert('SWABE!!');</script>";
-    
-  }
-}
-?>
+   <?php echo add_user();?>
 
        <!-- Main content -->
        <div class="card-footer clearfix">
@@ -139,76 +109,21 @@ if(isset($_POST['save'])){
                     <th>Position</th>
                     <th>Address</th>
                     <th>Division</th>
-                    <th>Action</th>
+              
                     
                   </tr>
                   </thead>
 
                   <tbody>
-                    <?php
-                      require_once '../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
-                      if ($sql){
-                          while ($row = mysqli_fetch_assoc($sql)){
-                          
-                            $employee_id =$row['employee_id'];
-                            $first_name =$row['first_name'];
-                            $last_name =$row['last_name']; 
-                            $username=$row['username'];
-                            $position=$row['position'];
-                            $division =$row['division'];
-                            $govmail =$row['govmail'];
-                            $contact_number=$row['contact_number'];
-                            $role =$row['role'];
-
-                            if($role=='Driver'){
-
-                              echo '<tr>
-                              <th scope="row">'.$first_name.' '.$last_name.'</th>
-                              <td>'.$position.'</td> 
-                               <td>'.$contact_number.'</td>
-                              <td>'.$division.'</td>
-                            <td>
-                                   <button type="button" class="btn btn-warning float-right" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i> Edit </button>
- 
-                            </td>
-                              </tr>';
-                            }
-                          }
-                        }
-                    ?>
-                            
-                        
-                      
+                  <?php echo add_driver();?>
+   
                   </tbody>
                 </table>
               </div>
-
-
-
-              <div class="modal fade" role="dialog" id="editModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title">Assign Driver</h3>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID">
-                              </div>
-
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-success">Edit </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->
+          
    <?php include 'includes/footer.php'; ?>

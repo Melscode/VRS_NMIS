@@ -1,70 +1,5 @@
 <?php include 'includes/header.php';?>
 
-    <!-- Main content -->
-            <!-- <div class="card-footer clearfix">
-              <div class="card-header"></h3>
-               <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add request</button>
-              </div>
-             </div>
-
-             <div class="modal fade" role="dialog" id="addrequestModal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="modal-title">Add request</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <input type="text" name="Transaction_ID" class="form-control" placeholder="Transaction_ID">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Fullname" class="form-control" placeholder="Fullname">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="email" name="Govmail" class="form-control" placeholder="Govmail">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Position" class="form-control" placeholder="Position">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Division" class="form-control" placeholder="Division">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="number" name="Contact No." class="form-control" placeholder="Contact No.">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" name="Region" class="form-control" placeholder="Region">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="date" name="Date Start" class="form-control" placeholder="Date Start">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="date" name="Date End" class="form-control" placeholder="Date End">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="time" name="Time Start" class="form-control" placeholder="Time Start">
-                    </div>
-
-                    <div class="form-group">
-                      <input type="time" name="Time End" class="form-control" placeholder="Time End">
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Add request</button>
-                  </div>-->
-
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -147,7 +82,7 @@
                                   echo "
                                   <span class='badge badge-success'>Verified</span>
                                   <th>
-                                  <a href='../../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+                                  <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
                                   </th>
                                   
                                   ";
@@ -179,7 +114,7 @@
                                   echo "
                                   <span class='badge badge-info'>Checked</span>
                                   <th>
-                                   <a href='../../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+                                   <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
                                   </th>
                                   
                                   ";
@@ -189,7 +124,7 @@
                                   echo "
                                   <span class='badge badge-primary'>Initialed</span>
                                   <th>
-                                  <a href='../../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+                                  <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
                                   </th>
                                   
                                   ";
@@ -200,7 +135,7 @@
                                   echo "
                                   <span class='badge badge-danger'>Canceled</span>
                                   <th>
-                                  
+                                
                                   </th>
                                   
                                   ";
@@ -210,7 +145,7 @@
                                   echo "
                                   <span class='badge badge-info'>Processing</span>
                                   <th>
-                                  <a href='../../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+                                  <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
                                   </th>
                                   
                                   ";

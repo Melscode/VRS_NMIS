@@ -222,15 +222,6 @@
           </li>
 
           <li class="nav-item">
-            <a href="timeline.php" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
-              <p>
-                Tracking 
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
             <a href="login form/login.html" class="nav-link">
               <i class="nav-icon fas fa-sign-out"></i>
               <p>

@@ -1,4 +1,5 @@
 <?php include 'includes/header.php';?>
+<?php include '../../includes/functions.php';?>
 
 
     <!-- Main content -->
@@ -12,14 +13,7 @@
               <div class="inner">
               <?php 
                 
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                $query = 'SELECT id FROM request_tbl ORDER BY Id';
-                $query_execute = mysqli_query($conn, $query);     
-                
-                $row = mysqli_num_rows($query_execute);
-                echo "<p>Reservation Request</p>";
-                echo "<h3>$row</h3>"; 
+               echo total_request();
                 
               ?>
               </div>
@@ -38,14 +32,7 @@
               <div class="inner">
               <?php 
                 
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                $query = 'SELECT id FROM users_tbl ORDER BY Id';
-                $query_execute = mysqli_query($conn, $query);     
-                
-                $row = mysqli_num_rows($query_execute);
-                echo "<p>Drivers</p>";
-                echo "<h3>$row</h3>"; 
+               echo total_driver(); 
                 
               ?>
               </div>
@@ -63,14 +50,7 @@
               <div class="inner">
               <?php 
                 
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                $query = 'SELECT id FROM vehicles_tbl ORDER BY Id';
-                $query_execute = mysqli_query($conn, $query);     
-                
-                $row = mysqli_num_rows($query_execute);
-                echo "<p>Vehicles</p>";
-                echo "<h3>$row</h3>"; 
+              echo total_vehicle();
                 
               ?>
               </div>
@@ -88,14 +68,7 @@
               <div class="inner">
               <?php 
                 
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-                $query = 'SELECT id FROM users_tbl ORDER BY Id';
-                $query_execute = mysqli_query($conn, $query);     
-                
-                $row = mysqli_num_rows($query_execute);
-                echo "<p>User</p>";
-                echo "<h3>$row</h3>"; 
+              echo total_user(); 
                 
               ?>
               </div>
@@ -369,4 +342,3 @@
     })
   })
 </script>
-<?php include 'includes/footer.php';?>

@@ -5,6 +5,7 @@ session_start();
 ?>
 
 <?php include 'includes/header.php'; ?>
+<?php include '../../includes/functions.php';?>
 
 
 
@@ -32,29 +33,10 @@ session_start();
               <!-- timeline time label -->
               <div class="time-label">
                 <span class="bg-info">  
-                <?php 
-                if(isset($_POST['test'])){
 
-                $transaction_id =$_POST['transaction_id'];
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-                $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
-                if($sql){
-                  while ($row = mysqli_fetch_array($sql)<0){
-
-          
-
-                   echo "Today :" .date('Y/m/d');
-
-              
-                    
-                  }
-
-                  
-             
-                  
-                  }
-                }
-                ?></span>
+                <?php  echo first_view(); ?>
+                
+              </span>
               </div>
               <!-- /.timeline-label -->
               <!-- timeline item -->
@@ -64,89 +46,15 @@ session_start();
                   <span class="time"><i class="fas fa-clock"></i> 10:09 AM</span>
                   <h3 class="timeline-header"><a href="#">
                   
-                  <tr>
+                <tr>
                  <th>
-                 <?php 
-                
-                if(isset($_POST['test']))
-                {
-                  $transaction_id = $_POST['transaction_id'];
-                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-                  $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
 
-                  while($result = mysqli_fetch_array($sql))
-                  {
-                    
-                        if($result['transaction_description'] == "Verified"){
-                            
-                              echo "
-                              <span class='btn btn-success'> The request was Verified by Supervising Admin</span>
-                              <th>
-                              </th>
-                              
-                              ";
-                              
-                              
-                             }else if($result['transaction_description'] == "Processing") 
-                             
-                             {
+                 <?php echo second_view();?>
 
-                              echo "
-                              <span class=''>Processing</span>
-                              <th>
-                              </th>
-                              
-                              ";
-
-                             }else   if($result['transaction_description'] == "Canceled")
-                             
-                             {
-                              echo "
-                              <span class=''>Cancelled</span>
-                              <th>
-                              </th>
-                              
-                              ";
-
-                             }
-                             
-                             
-                             
-                             else{
-
-                              
-                              echo "
-                              <span class=''> </span>
-                              <th>
-                              </th>
-                              
-                              ";
-
-                      
-                             }
-                            }
-                          }
-
-                ?>
-
-
-                   </tr></th>  
-
-                  </a>
-                  <?php 
-                      ?>
+                </tr></th> </a>
+                  <?php?>
                 </h3>
 
-                  <!--<div class="timeline-body">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                    quora plaxo ideeli hulu weebly balihoo...
-                  </div>
-                  <div class="timeline-footer">
-                    <a class="btn btn-primary btn-sm">Read more</a>
-                    <a class="btn btn-danger btn-sm">Delete</a>
-                  </div>-->
                 </div>
               </div>
               <!-- END timeline item -->
@@ -155,96 +63,7 @@ session_start();
                 <span class="bg-info">
 
                 <?php 
-                if(isset($_POST['test'])){
-
-                $transaction_id =$_POST['transaction_id'];
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-                $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
-                if($sql){
-                  while ($row = mysqli_fetch_array($sql)<0){
-
-          
-
-                   echo "Today :" .date('Y/m/d');
-
-              
-                    
-                  }
-
-                  
-             
-                  
-                  }
-                }
-                ?>
-                </span>
-              </div>
-              
-              <div>
-                
-                <div class="timeline-item">
-                  <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
-                  <h3 class="timeline-header no-border"><a href="#"></a> 
-                
-                <?php  if(isset($_POST['test']))
-                {
-                  $transaction_id = $_POST['transaction_id'];
-                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-                  $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
-
-                  while($result = mysqli_fetch_array($sql))
-                  {
-                    
-                        if($result['transaction_description'] == "Checked"){
-                            
-                              echo "
-                              <span class='btn btn-info'>The request was Checked by Motorpool</span>
-                              <th>
-                              </th>
-                              
-                              ";
-                              
-                              
-                             }else if($result['transaction_description'] == "Processing") 
-                             
-                             {
-
-                              echo "
-                              <span class=''>  Your Request is on Processing</span>
-                              <th>
-                              </th>
-                              
-                              ";
-
-                             }else   if($result['transaction_description'] == "Canceled")
-                             
-                             {
-                              echo "
-                              <span class=''> Rerquest was Cancelled</span>
-                              <th>
-                              </th>
-                              
-                              ";
-
-                             }
-                             
-                             
-                             
-                             else{
-
-                              
-                              echo "
-                              <span class=''></span>
-                              <th>
-                              </th>
-                              
-                              ";
-
-                      
-                             }
-                            }
-                          }
-
+                echo third_view();
                 ?>
                 
                 
@@ -259,27 +78,7 @@ session_start();
                 <span class="bg-info">
 
                 <?php 
-                if(isset($_POST['test'])){
-
-                $transaction_id =$_POST['transaction_id'];
-                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-                $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
-                if($sql){
-                  while ($row = mysqli_fetch_array($sql)<0){
-
-          
-
-                   echo "Today :" .date('Y/m/d');
-
-              
-                    
-                  }
-
-                  
-             
-                  
-                  }
-                }
+                echo fourth();
                 ?>
                 </span>
               </div>

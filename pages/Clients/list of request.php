@@ -3,48 +3,10 @@ session_start();
 
 ?>
 <?php include 'includes/header.php'; ?>
+<?php include '../../includes/functions.php';?>
   
 
-    <?php
-  include "..\..\Connection\conn.php";
-
-  //Add Function
-
-if(isset($_POST['save'])){
-
-
-  $transaction_id=mysqli_real_escape_string($conn,$_POST['transaction_id']);
-  $requestor_name=mysqli_real_escape_string($conn, $_POST['requestor_name']);
-  $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);
-  $requestor_position=mysqli_real_escape_string($conn, $_POST['requestor_position']);
-  $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
-  $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
-  $region=mysqli_real_escape_string($conn,$_POST['region']);
-  $location=mysqli_real_escape_string($conn,$_POST['location']);
-  $destination =mysqli_real_escape_string($conn,$_POST['destination']);
-  $start_date=mysqli_real_escape_string($conn,$_POST['start_date']);
-  $end_date=mysqli_real_escape_string($conn, $_POST['end_date']);
-  $start_time=mysqli_real_escape_string($conn, $_POST['start_time']);
-  $end_time=mysqli_real_escape_string($conn, $_POST['end_time']);
-  $purpose= mysqli_real_escape_string($conn,$_POST['purpose']);
-  $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
- 
- 
-
-
-
-  $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, location, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
-
-  		  VALUES  ('$transaction_id', '$requestor_name', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$location', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-
-
-
-    echo "<script>alert('SWABE!!');</script>";
-  }
-}
-?>
+    <?php echo add_request(); ?>
 
 
 <div class="card-footer clearfix">
@@ -185,107 +147,7 @@ if(isset($_POST['save'])){
                   </thead>
 
                   <tbody>
-                  <?php
-                      require_once '../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
-                        while($row = mysqli_fetch_array($sql))
-                        {
-                          
-                            $transaction_id =$row['transaction_id'];
-                            $requestor_name =$row['requestor_name'];
-                            $requestor_govmail=$row['requestor_govmail']; 
-                            $requestor_position=$row['requestor_position'];
-                            $requestor_division=$row['requestor_division'];
-                            $requestor_contact_number =$row['requestor_contact_number'];
-                            $region=$row['region'];
-                            $location=$row['location'];
-                            $destination =$row['destination'];
-                            $start_date =$row['start_date'];
-                            $end_date =$row['end_date'];
-                            $start_time =$row['start_time'];
-                            $end_time =$row['end_time'];
-                            $purpose =$row['purpose'];
-                            $travel_order =$row['travel_order'];
-                            $asigned_driver =$row['asigned_driver'];
-                            $reservation_status=$row['reservation_status'];
-                      
-                          ?>
-
-
-                        <tr>
-                            <th><?php echo $transaction_id; ?></th>
-                            <th><?php echo $requestor_name ; ?></th>
-                            <th><?php echo $requestor_govmail; ?></th>
-                            <th><?php echo $requestor_position; ?></th>
-                            <th><?php echo $requestor_division; ?></th>
-                            <th><?php echo $requestor_contact_number; ?></th>
-                            <th><?php echo $region; ?></th>
-                            <th><?php echo $location ; ?></th>
-                            <th><?php echo $destination; ?></th>
-                            <th><?php echo $start_date; ?></th>
-                            <th><?php echo $end_date; ?></th>
-                            <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
-                            <th><?php echo $end_time; ?></th>
-                            <th><?php echo $purpose ; ?></th>
-                            <th><?php echo $travel_order; ?></th>
-                            <th><?php echo $asigned_driver; ?></th>
-
-                         
-
-                            <th>
-                              
-                              <?php 
-                                if($reservation_status == "Initialled")
-                                {
-                                  echo "
-                                  <span class='badge badge-primary'>Initialed</span>
-                                  <th>
-                                  <a href='../../Connection/set-status-technical3.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'>Approve</a>
-                                  </th>
-                                  
-                                  ";
-                              
-                                }
-                                else if($reservation_status == "Approved")
-                                {
-                                  echo "
-                                  <span class='badge badge-success'>Approved</span>
-                                  <th>
-                                    
-                                  </th>
-                                  
-                                  ";
-                              
-                                } else if($reservation_status == "Pending")
-                                {
-                                  echo "
-                                  <span class='badge badge-warning'>Pending</span>
-                                  <th>
-                                    
-                                  </th>
-                                  
-                                  ";
-                              
-                                }else
-                                {
-                                  echo "
-                                  <span class='badge badge-info'>Processing</span>
-                                  <th>
-                                   
-                                  </th>
-                                  
-                                  ";
-                              
-                                }
-
-                              ?> 
-
-                            </th>
-                            
-                            
-                          </tr>
-
-                        <?php }?>
+                 <?php client_request(); ?>
                                    
                         <!-- Delete  -->
                         <div class="modal fade" role="dialog" id="deleteModal">
