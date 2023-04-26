@@ -11,6 +11,9 @@ session_start();
 <div class="card-footer clearfix">
         <div class="card-header"></h3>
          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
+         <button type="button" class="btn btn-primary float-right" id="click" >  Click</button>
+
+         <input type="text" name="" id="sample_text">
         </div>
        </div>
 

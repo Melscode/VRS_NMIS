@@ -78,6 +78,8 @@
 <!-- fullCalendar 2.2.5 -->
 <script src="../../plugins/moment/moment.min.js"></script>
 <script src="../../plugins/fullcalendar/main.js"></script>
+<!-- ALERTS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
   $(function () {

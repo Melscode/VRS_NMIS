@@ -92,13 +92,13 @@ while($row = mysqli_fetch_array($result))
             <div class="row">
               <div class="col-md-3">
               <label>Travel Purpose</label>
-                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $purpose; ?>" disabled>
+                  <input type="text" class="form-control travel_purpose" name="requestor_name" value="<?php echo $purpose; ?>" disabled>
               </div>
 
 
               <div class="col-md-3">
               <label>Select Driver</label>
-              <select name="asigned_driver" class="form-control">
+              <select name="asigned_driver" id="asigned_driver" class="form-control driver">
                   <option  value="">--Choose Driver--</option>
 									  <?php echo all_driver();?>
             </select>
@@ -112,8 +112,8 @@ while($row = mysqli_fetch_array($result))
             </div>
 
             </div>
-            <input type="hidden" name="transaction_id" value="<?php echo $transaction_id; ?>">
-            <input type="hidden" name="update" value="update">
+            <input type="hidden" name="transaction_id" id="transaction_id" value="<?php echo $transaction_id; ?>">
+            <input type="hidden" name="update" id="update" value="update">
         </form>
 
 
@@ -122,15 +122,40 @@ while($row = mysqli_fetch_array($result))
       <script>
       $(function(){
 
+        // Swal.fire({
+        //   icon: 'info',
+        //   title: 'Oops...',
+        //   text: 'Something went wrong!',
+        // })
+
+
         $('.add-btn').click( e=> { 
 
-          e.preventDefault();
+          e.preventDefault()
+          
+          var asigned_driver = $('#asigned_driver').val()
+          var transaction_id = $('#transaction_id').val()
+          var update = $('#update').val()
+
+          var data = { update : update, asigned_driver : asigned_driver,  transaction_id : transaction_id}
+              
           $.ajax({
             type : 'POST',
             url : 'assigned driver.php',
-            data : $('#update_request').serialize(),
+            data : data,
             success : function(res){
-              alert('sample')
+             
+              Swal.fire({
+              title: 'Success!',
+              icon : 'success',
+              html: 'Driver assigned.',
+              timer: 2000,
+            }).then((result) => {
+
+              if (result.dismiss === Swal.DismissReason.timer) {
+                window.location = 'list of request.php';
+              }
+            })
 
             },
             error : function(resp){
