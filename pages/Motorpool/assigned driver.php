@@ -15,6 +15,15 @@ $result=mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 {
   $transaction_id = $row['transaction_id'];
+  $requestor_name = $row['requestor_name'];
+  $requestor_position = $row['requestor_position'];
+  $requestor_contact_number = $row['requestor_contact_number'];
+  $requestor_division = $row['requestor_division'];
+  $destination = $row['destination'];
+  $start_date = $row['start_date'];
+  $end_date = $row['end_date'];
+  $start_time = $row['start_time'];
+  $purpose = $row['purpose'];
 }
 
 
@@ -22,48 +31,100 @@ while($row = mysqli_fetch_array($result))
 
 ?>
 
+<div class="card card-default">
+<?php assign_driver();?>
 
-<center><div class="register-box">
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="#" class="h1"><b>Assign </b>Driver</a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg"></p>
+        <form method="POST">
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                  <label>Requestor Name </label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $requestor_name; ?>" disabled>
+              </div>
+              <!-- /.col -->
+            <div class="col-md-3">
+                  <label>Requestor Position</label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $requestor_position; ?>" disabled>
+              </div>
+              <!-- /.col -->
 
-      <?php assign_driver();?>
-    
-      <form method="POST">
+            <div class="col-md-3">
+                  <label>Requestor Division</label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $requestor_division; ?>" disabled>
+              </div>
+              <!-- /.col -->
 
-      <div class="input-group mb-3">
+              <div class="col-md-3">
+                 <label>Requestor Contact Number</label>
+                 <input type="text" class="form-control" name="requestor_name" value="<?php echo $requestor_contact_number; ?>" disabled>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
 
-      <input type="text" class="form_control" name="transaction_id" value="<?php echo $transaction_id; ?>" >
+            <div class="row">
+              <div class="col-md-3">
+                  <label>Destination</label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $destination; ?>" disabled>
+              </div>
+              <!-- /.col -->
+            <div class="col-md-3">
+                  <label>Travel Start Date</label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $start_date; ?>" disabled>
+              </div>
+              <!-- /.col -->
 
-      </div>
+              <div class="col-md-3">
+                  <label>Travel End Date</label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $end_date; ?>" disabled>
+              </div>
+              <!-- /.col -->
+
+              <div class="col-md-3">
+                  <label>Travel Start Time</label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo date('H:i a',strtotime($start_time)); ?>" disabled>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-md-3">
+              <label>Travel Purpose</label>
+                  <input type="text" class="form-control" name="requestor_name" value="<?php echo $purpose; ?>" disabled>
+              </div>
 
 
-        <div class="input-group mb-3">
-          <select name="asigned_driver" class="form-control">
+              <div class="col-md-3">
+              <label>Select Driver</label>
+              <select name="asigned_driver" class="form-control">
                   <option  value="">--Choose Driver--</option>
 									  <?php echo all_driver();?>
             </select>
+              </div>
+            </div>
+            <br>
 
-        </div>
-      
-       
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-success add-btn" name="update">Assigned</button>
+            <div class="row">
+            <div class="col-md-4">
+            <button type="submit" class="btn btn-success add-btn" name="update">Update Request</button>
+            </div>
 
-          </div>
+            </div>
+            <input type="hidden" name="transaction_id" value="<?php echo $transaction_id; ?>">
+        </form>
 
-           
-           <a href="../Motorpool/list of request.php">Cancel</a>
-           </label>
-          <!-- /.col -->
-        </div>
-      </form>
-</center>
-  
 
       <?php include 'includes/footer.php'; ?>
+      <!-- <script>
+$(function(){
+
+  $('.add-btn').click( e=> { 
+
+    e.preventDefault();
+    alert('sample')
+
+  })
+})
+
+</script> -->
