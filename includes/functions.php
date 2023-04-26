@@ -103,7 +103,6 @@ function list_of_request()
 function assign_driver()
 {
     global $conn;
-
     if(isset($_POST['update'])){
 
   $transaction_id=$_POST['transaction_id'];
@@ -111,12 +110,8 @@ function assign_driver()
   $sql1= "UPDATE request_tbl SET asigned_driver = '$asigned_driver', reservation_status ='Checked'WHERE transaction_id ='$transaction_id' ";
 
   $result =mysqli_query($conn, $sql1);
-    if($result){
-       echo "<script>alert('Update The Record Successfully!!');</script>"; 
-        header('location: ../Motorpool/list of request.php');      
-    }else{
-        echo "<script>alert('Something went Wrong  Successfully!!');</script>"; 
-    }
+       die(json_encode(array('success' => 1)));
+        // echo "<script>alert('Something went Wrong  Successfully!!');</script>"; 
     
 }
 }

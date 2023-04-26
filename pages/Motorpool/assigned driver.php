@@ -32,9 +32,10 @@ while($row = mysqli_fetch_array($result))
 ?>
 
 <div class="card card-default">
-<?php assign_driver();?>
 
-        <form method="POST">
+        <form method="POST" id="update_request">
+        <?php assign_driver();?>
+
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row">
@@ -112,19 +113,32 @@ while($row = mysqli_fetch_array($result))
 
             </div>
             <input type="hidden" name="transaction_id" value="<?php echo $transaction_id; ?>">
+            <input type="hidden" name="update" value="update">
         </form>
 
 
       <?php include 'includes/footer.php'; ?>
-      <!-- <script>
-$(function(){
 
-  $('.add-btn').click( e=> { 
+      <script>
+      $(function(){
 
-    e.preventDefault();
-    alert('sample')
+        $('.add-btn').click( e=> { 
 
-  })
-})
+          e.preventDefault();
+          $.ajax({
+            type : 'POST',
+            url : 'assigned driver.php',
+            data : $('#update_request').serialize(),
+            success : function(res){
+              alert('sample')
 
-</script> -->
+            },
+            error : function(resp){
+              // console.log(resp)
+            }
+          })
+
+        })
+      })
+
+</script>
