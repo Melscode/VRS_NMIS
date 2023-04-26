@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/header.php';   ?>
 <?php include "../../includes/functions.php";?>
 
     <!-- Main content -->
@@ -20,7 +20,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Reservation Requests-->
@@ -38,7 +38,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Driver-->
@@ -56,7 +56,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!--end Vehicle-->
@@ -74,7 +74,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           

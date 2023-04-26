@@ -8,7 +8,7 @@ function list_of_request()
 
     global $conn;
 
-    $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+    $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE reservation_status ='Verified'");
       while($row = mysqli_fetch_array($sql))
       {
         
@@ -108,7 +108,7 @@ function assign_driver()
 
   $transaction_id=$_POST['transaction_id'];
   $asigned_driver = $_POST['asigned_driver'];
-  $sql1= "UPDATE request_tbl SET asigned_driver = '$asigned_driver' WHERE transaction_id ='$transaction_id'";
+  $sql1= "UPDATE request_tbl SET asigned_driver = '$asigned_driver', reservation_status ='Checked'WHERE transaction_id ='$transaction_id' ";
 
   $result =mysqli_query($conn, $sql1);
     if($result){
@@ -391,6 +391,147 @@ global $conn;
 
 ?>
 
+<!-- SUPERVISING REQUEST LIST  -->
+
+<?php
+include 'connection.php';
+function admin_list_request(){
+  global $conn;
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Checked'OR reservation_status ='Processing'");
+while($row = mysqli_fetch_array($sql))
+{
+  
+    $transaction_id =$row['transaction_id'];
+    $requestor_name =$row['requestor_name'];
+    $requestor_govmail=$row['requestor_govmail']; 
+    $requestor_position=$row['requestor_position'];
+    $requestor_division=$row['requestor_division'];
+    $requestor_contact_number =$row['requestor_contact_number'];
+    $region=$row['region'];
+    $location=$row['location'];
+    $destination =$row['destination'];
+    $start_date =$row['start_date'];
+    $end_date =$row['end_date'];
+    $start_time =$row['start_time'];
+    $end_time =$row['end_time'];
+    $purpose =$row['purpose'];
+    $travel_order =$row['travel_order'];
+    $asigned_driver =$row['asigned_driver'];
+    $reservation_status=$row['reservation_status'];
+
+  ?>
+
+
+<tr>
+    <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $requestor_govmail; ?></th>
+    <th><?php echo $requestor_position; ?></th>
+    <th><?php echo $requestor_division; ?></th>
+    <th><?php echo $requestor_contact_number; ?></th>
+    <th><?php echo $region; ?></th>
+    <th><?php echo $location ; ?></th>
+    <th><?php echo $destination; ?></th>
+    <th><?php echo $start_date; ?></th>
+    <th><?php echo $end_date; ?></th>
+    <th><?php echo $start_time; ?></th>
+    <th><?php echo $end_time; ?></th>
+    <th><?php echo $purpose ; ?></th>
+    <th><?php echo $travel_order; ?></th>
+    <th><?php echo $asigned_driver; ?></th>
+  
+
+    <th>
+      
+      <?php 
+        if($reservation_status == "Verified")
+        {
+          echo "
+          <span class='badge badge-success'>Verified</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          </th>
+          
+          ";
+      
+        }
+        else if($reservation_status == "Approved")
+        {
+          echo "
+          <span class='badge badge-success'>Approved</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        } else if($reservation_status == "Pending")
+        {
+          echo "
+          <span class='badge badge-warning'>Pending</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        }else if ($reservation_status == "Checked")
+        {
+
+          echo "
+          <span class='badge badge-info'>Checked</span>
+          <th>
+            <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+          </th>
+          
+          ";
+        }else if ($reservation_status == "Initialed")
+        {
+
+          echo "
+          <span class='badge badge-primary'>Initialed</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          </th>
+          
+          ";
+        }
+        
+        else if ($reservation_status == 'Canceled')
+        {
+          echo "
+          <span class='badge badge-danger'>Canceled</span>
+          <th>
+        
+          </th>
+          
+          ";
+      
+        }else
+        {
+          echo "
+          <span class='badge badge-info'>Processing</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+          </th>
+          
+          ";
+        }
+
+      ?> 
+
+    </th>
+    
+    
+  </tr>
+
+<?php }}?>
+
+
+
+
+
+
 <!--Motorpool Function -->
 
 <!-- Motorpool Add Driver -->
@@ -432,7 +573,7 @@ global $conn;
 <!-- Motorpool Add Vehicle -->
 
 <?php 
-include 'connection.php';
+
 
 function add_vehicle(){
 
@@ -509,10 +650,15 @@ function view_vehicle(){
 if(isset($_POST['save'])){
 
 
-  $transaction_id=mysqli_real_escape_string($conn,$_POST['transaction_id']);
-  $requestor_name=mysqli_real_escape_string($conn, $_POST['requestor_name']);
-  $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);
-  $requestor_position=mysqli_real_escape_string($conn, $_POST['requestor_position']);
+  $employee_id = $_SESSION['employee_id'];
+  // $transaction_id=mysqli_real_escape_string($conn,$_POST['transaction_id']);
+  $transaction_id = 'NMISVRS-'.rand(1,7);
+  $requestor_name= $_SESSION['name'];
+  // $requestor_name=mysqli_real_escape_string($conn, $_POST[$employee_id]);
+  // $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);
+  $requestor_govmail=$_SESSION['govmail'];
+  // $requestor_position=mysqli_real_escape_string($conn, $_POST['requestor_position']);
+  $requestor_position=$_SESSION['position'];
   $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
   $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
   $region=mysqli_real_escape_string($conn,$_POST['region']);
@@ -531,7 +677,7 @@ if(isset($_POST['save'])){
 
   $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, location, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
 
-  		  VALUES  ('$transaction_id', '$requestor_name', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$location', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
+  		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$location', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
   $result = mysqli_query($conn, $sql);
   if($result){
 
@@ -545,11 +691,13 @@ if(isset($_POST['save'])){
 <!-- Client List Request -->
 
 <?php
-include 'connection.php';          
 function client_request()
 
 {
-  $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+  global $conn;
+
+  $employee_id = $_SESSION['employee_id'];
+  $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE requestor_name ='$employee_id' ");
     while($row = mysqli_fetch_array($sql))
     {
       
@@ -576,7 +724,7 @@ function client_request()
 
     <tr>
         <th><?php echo $transaction_id; ?></th>
-        <th><?php echo $requestor_name ; ?></th>
+        <th><?php echo $_SESSION['name'] ; ?></th>
         <th><?php echo $requestor_govmail; ?></th>
         <th><?php echo $requestor_position; ?></th>
         <th><?php echo $requestor_division; ?></th>
@@ -930,6 +1078,127 @@ function first_view()
   
   
   ?>
+
+
+<!-- Function LOgin -->
+<?php
+
+function login(){
+  global $conn;
+
+if(isset($_POST['employee_id']) && isset($_POST['password']))
+{
+    $employee_id = mysqli_real_escape_string($conn,$_POST['employee_id']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
+
+    if(empty($employee_id)){
+        header("Location: ./login.php?error=Username is required!");
+    }elseif(empty($password)){
+        header("Location: ./login.php?error=Password is required!");
+    
+    }else{
+
+        $sql = "SELECT * FROM users_tbl WHERE employee_id='$employee_id'";
+        $result = mysqli_query($conn, $sql);
+
+        if(mysqli_num_rows($result)){
+            
+            $row = mysqli_fetch_assoc($result);
+            $role = $row['role'];
+            $hash = $row['password'];
+    
+
+
+
+                if(password_verify($password, $hash) && $role == 'Supervising Admin')
+                {
+                    session_start();
+                    $_SESSION['employee_id'] = $row['employee_id'];
+                    $_SESSION['name'] = $row['first_name'] . ' '.$row['last_name'];
+                    $_SESSION['role'] = $row['role'];
+                    header("Location: ./Supervising Admin/admindashboard.php");
+                    exit();
+                }
+                else if(password_verify($password, $hash) && $role == 'Chief Admin')
+                {
+                    session_start();
+                    $_SESSION['employee_id'] = $row['employee_id'];
+                    $_SESSION['name'] = $row['first_name'] . ' '.$row['last_name'];
+                    $_SESSION['role'] = $row['role'];
+                    header("Location: ../Chief admin/chiefadmindashboard.php");
+                    exit();
+                }
+                else if(password_verify($password, $hash) && $role == 'Motorpool')
+                {
+                    session_start();
+                    $_SESSION['employee_id'] = $row['employee_id'];
+                    $_SESSION['name'] = $row['first_name'] . ' '.$row['last_name'];
+                    $_SESSION['role'] = $row['role'];
+                    header("Location: ../Motorpool/motorpooldashboard.php");
+                    exit();
+                }
+                else if(password_verify($password, $hash) && is_null($role)){
+                    session_start();
+                    $_SESSION['employee_id'] = $row['employee_id'];
+                    $_SESSION['name'] = $row['first_name'] . ' '.$row['last_name'];
+                    $_SESSION['role'] = $row['role'];
+                    $_SESSION['govmail'] = $row['govmail'];
+                    $_SESSION['position'] = $row['position'];
+                    ?>
+                    <script>window.location='../Clients/clientdashboard.php'</script>
+                    <?php
+                }
+                else {
+                    header("Location: ./login.php?error=Incorrect Username or Password!");
+                    exit();
+                }
+
+
+        }else{
+            header("Location: ./login.php?error=Incorrect Username or Password!");
+            exit();
+        }
+    }
+}
+
+}
+
+
+
+// Register Function 
+
+function register(){
+
+  global $conn;
+if(isset($_POST['register'])){
+
+
+  $employee_id=mysqli_real_escape_string($conn,$_POST['employee_id']);
+  $first_name=mysqli_real_escape_string($conn, $_POST['first_name']);
+  $last_name=mysqli_real_escape_string($conn, $_POST['last_name']);
+  $username=mysqli_real_escape_string($conn, $_POST['username']);
+  $position= mysqli_real_escape_string($conn,$_POST['position']);
+  $division= mysqli_real_escape_string($conn,$_POST['division']);
+  $govmail=mysqli_real_escape_string($conn,$_POST['govmail']);
+  $contact_number=mysqli_real_escape_string($conn,$_POST['contact_number']);
+  $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+
+
+  $sql = "INSERT INTO users_tbl (employee_id, first_name, last_name, username, position, division, govmail, contact_number, password) 
+
+  		  VALUES  ('$employee_id', '$first_name', '$last_name', '$username', '$position', '$division', '$govmail', '$contact_number', '$password')";
+  $result = mysqli_query($conn, $sql);
+  if($result){
+    echo "<script>alert('New Record Successfully Added!!');</script>";
+
+	header("Location: ./login.php?");
+}else{
+    echo "<script>alert('Something went Wrong!!');</script>";
+  }
+}
+}
+?>
 
 
 

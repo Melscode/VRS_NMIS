@@ -156,16 +156,10 @@ session_start();
                 if($sql){
                   while ($row = mysqli_fetch_array($sql)<0){
 
-          
-
                    echo "Today :" .date('Y/m/d');
-
-              
-                    
+       
                   }
 
-                  
-             
                   
                   }
                 }

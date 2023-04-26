@@ -1,4 +1,4 @@
-
+<?php include '../../includes/functions.php';?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,7 @@
 					<div class="text-center mb-4">
 			      <h4>Login into your account</h4>
 			    </div>
-				
+					<?php echo login();?>
 
 					<?php if(isset($_GET['error'])) { ?>
 					<div class="alert alert-danger" role="alert">
@@ -41,7 +41,7 @@
 					<?php } ?> 
 
 			    <!-- Form -->
-					<form action ="./login-admin.php" class="px-3" method = "POST">
+					<form  class="px-3" method = "POST">
 						<!-- Input Box -->
 						<div class="form-input">
 							<span><i class="fa fa-envelope-o"></i></span>

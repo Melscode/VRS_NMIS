@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <?php include 'includes/header.php'; ?>
 <?php include '../../includes/functions.php';?>
@@ -26,22 +25,7 @@ session_start();
             <form  method="POST">
 
             <div class="modal-body">
-              <div class="form-group">
-                <input type="text" name="transaction_id" class="form-control" placeholder="Transaction ID">
-              </div>
 
-              <div class="form-group">
-                <input type="text" name="requestor_name" class="form-control" placeholder="Fullname">
-              </div>
-
-              
-              <div class="form-group">
-                <input type="email" name="requestor_govmail" class="form-control" placeholder="Govmail">
-              </div>
-
-              <div class="form-group">
-                <input type="text" name="requestor_position" class="form-control" placeholder="Position">
-              </div> 
               
               <div class="form-input">
 							<select name="requestor_division" class="form-control">

@@ -1,6 +1,19 @@
 <?php
 
-include_once "../Connection/conn.php";
+$hostname = "localhost";
+$username = "root";
+$password = "";
+$dbname = "nmisvr_db";
+
+$conn = mysqli_connect($hostname, $username, $password, $dbname);
+if (!$conn){
+    die;
+
+    }
+?>
+
+<?php
+
 if(isset($_POST['employee_id']) && isset($_POST['password']))
 {
     $employee_id = mysqli_real_escape_string($conn,$_POST['employee_id']);
@@ -21,6 +34,7 @@ if(isset($_POST['employee_id']) && isset($_POST['password']))
             $row = mysqli_fetch_assoc($result);
             $role = $row['role'];
             $hash = $row['password'];
+    
 
 
 
@@ -30,7 +44,7 @@ if(isset($_POST['employee_id']) && isset($_POST['password']))
                     $_SESSION['employee_id'] = $row['employee_id'];
                     $_SESSION['name'] = $row['name'];
                     $_SESSION['role'] = $row['role'];
-                    header("Location: ../Supervising Admin/admindashboard.php");
+                    header("Location: ./Supervising Admin/admindashboard.php");
                     exit();
                 }
                 else if(password_verify($password, $hash) && $role == 'Chief Admin')

@@ -12,10 +12,6 @@
                   <tr>
                   <th>Transaction_ID</th>
                     <th>Fullname</th>
-                    <th>Govmail</th>
-                    <th>Position</th>
-                    <th>Division</th>
-                    <th>Contact No.</th>
                     <th>Region</th>
                     <th>Location</th>
                     <th>Destination</th>
@@ -35,7 +31,7 @@
                   <tbody>
                   <?php
                       require_once '../../Connection/conn.php';
-                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+                      $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE reservation_status ='Initialed'");
                         while($row = mysqli_fetch_array($sql))
                         {
                           
@@ -62,11 +58,7 @@
 
                         <tr>
                             <th><?php echo $transaction_id; ?></th>
-                            <th><?php echo $requestor_name ; ?></th>
-                            <th><?php echo $requestor_govmail; ?></th>
-                            <th><?php echo $requestor_position; ?></th>
-                            <th><?php echo $requestor_division; ?></th>
-                            <th><?php echo $requestor_contact_number; ?></th>
+                            <th><?php echo $requestor_name ; ?></th>        
                             <th><?php echo $region; ?></th>
                             <th><?php echo $location ; ?></th>
                             <th><?php echo $destination; ?></th>

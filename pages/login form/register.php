@@ -1,34 +1,9 @@
 <?php
-  include_once "../Connection/conn.php";
-
-if(isset($_POST['register'])){
+  include_once "../../includes/functions.php";
 
 
-  $employee_id=mysqli_real_escape_string($conn,$_POST['employee_id']);
-  $first_name=mysqli_real_escape_string($conn, $_POST['first_name']);
-  $last_name=mysqli_real_escape_string($conn, $_POST['last_name']);
-  $username=mysqli_real_escape_string($conn, $_POST['username']);
-  $position= mysqli_real_escape_string($conn,$_POST['position']);
-  $division= mysqli_real_escape_string($conn,$_POST['division']);
-  $govmail=mysqli_real_escape_string($conn,$_POST['govmail']);
-  $contact_number=mysqli_real_escape_string($conn,$_POST['contact_number']);
-  $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-
-
-  $sql = "INSERT INTO users_tbl (employee_id, first_name, last_name, username, position, division, govmail, contact_number, password) 
-
-  		  VALUES  ('$employee_id', '$first_name', '$last_name', '$username', '$position', '$division', '$govmail', '$contact_number', '$password')";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-    echo "<script>alert('New Record Successfully Added!!');</script>";
-
-	header("Location: ./login.php?");
-}else{
-    echo "<script>alert('Something went Wrong!!');</script>";
-  }
-}
 ?>
+<?php echo register();?>
 <!DOCTYPE html>
 <html>
 <head>
