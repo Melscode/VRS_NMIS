@@ -11,9 +11,6 @@ session_start();
 <div class="card-footer clearfix">
         <div class="card-header"></h3>
          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
-         <button type="button" class="btn btn-primary float-right" id="click" >  Click</button>
-
-         <input type="text" name="" id="sample_text">
         </div>
        </div>
 
@@ -98,7 +95,7 @@ session_start();
           
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success" name = 'save' >Add Request</button>
+              <button type="submit" class="btn btn-success add-request" name = 'save' >Add Request</button>
             </div>
 
           </div>
@@ -108,7 +105,7 @@ session_start();
  
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                   <th>Transaction_ID</th>
@@ -223,3 +220,34 @@ session_start();
           </div>
           <!-- /.col -->
           <?php include 'includes/footer.php'; ?>
+<script>
+$(function(){
+
+  var division= $('#division').val()
+
+  $('.add-request').click( e=> { 
+    $.ajax({
+    type : 'POST',
+    url : 'list of request.php',
+    data: data,
+    success : function(res){
+    swal.fire({
+      title:'Success!',
+      icon : 'success',
+      html : 'Submitted Request',
+      timer : 2000,
+    }).then((result)=>{
+     if (result.dismiss === Swal.DismissReason.timer) {
+      window.location = 'list of request.php';
+     }
+    })
+  }, error : function(resp){
+
+  }
+})
+
+  })
+})
+
+
+</script>

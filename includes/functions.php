@@ -93,8 +93,8 @@ function list_of_request()
         </tr>
 
       <?php } ?>
-
-
+<!-- ALERST FOR MOTORPOOL LIST REQUEST -->
+ 
 
 
 <?php
@@ -676,9 +676,6 @@ if(isset($_POST['save'])){
   $result = mysqli_query($conn, $sql);
   if($result){
 
-
-
-    echo "<script>alert('SWABE!!');</script>";
   }
 }
 }
