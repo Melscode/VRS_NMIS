@@ -244,7 +244,7 @@ function report()
 <?php
 include 'connection.php';
 
-function lis_driver()
+function list_driver()
 {
 
   global $conn;
@@ -358,9 +358,9 @@ global $conn;
 <?php
    include 'connection.php';
    function vehicle_list(){
+    global $conn;
 
-
-    $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl ");
+    $sql = mysqli_query($conn, "SELECT * FROM vehicles_tbl");
     if ($sql){
         while ($row = mysqli_fetch_assoc($sql)){
         
@@ -392,7 +392,8 @@ global $conn;
 include 'connection.php';
 function admin_list_request(){
   global $conn;
-$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Checked'OR reservation_status ='Processing'");
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+//$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Checked'OR reservation_status ='Processing'");
 while($row = mysqli_fetch_array($sql))
 {
   
@@ -455,7 +456,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          
+          <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
           </th>
           
           ";
@@ -976,7 +977,7 @@ function first_view()
       ?>
       </span>
     </div>
-<div>
+    <div>
       
       <div class="timeline-item">
         <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>

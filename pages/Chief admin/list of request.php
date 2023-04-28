@@ -79,7 +79,7 @@
                                   echo "
                                   <span class='badge badge-primary'>Initialed</span>
                                   <th>
-                                  <a href='../../../Connection/set-status-technical3.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'>Approve</a>
+                                  <a href='../../Connection/set-status-technical4.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'>Approve</a>
                                   </th>
                                   
                                   ";

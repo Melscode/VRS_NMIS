@@ -112,8 +112,7 @@ session_start();
                               </th>
                               
                               ";
-                              
-                              
+              
                              }
                              
                              
@@ -155,8 +154,8 @@ session_start();
                 $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
                 if($sql){
                   while ($row = mysqli_fetch_array($sql)<0){
-
-                   echo "Today :" .date('Y/m/d');
+                      
+                 
        
                   }
 
