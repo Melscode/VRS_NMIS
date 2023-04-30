@@ -23,54 +23,55 @@
               <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+
            <!--end Reservation Requests-->
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <!-- <div class="col-lg-3 col-6"> -->
             <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
+            <!-- <div class="small-box bg-info"> -->
+              <!-- <div class="inner"> -->
               <?php 
-                
-             echo total_driver();
-                
+            // echo total_driver(); 
               ?>
-              </div>
+              <!-- </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
-              </div>
-              <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div> -->
+              <!-- <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
+          </div> -->
            <!--end Driver-->
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          
+          <!-- <div class="col-lg-3 col-6"> -->
             <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
+            <!-- <div class="small-box bg-info"> -->
+              <!-- <div class="inner"> -->
               <?php 
                 
-              echo total_vehicle();
+              // echo total_vehicle();
                 
               ?>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+              <!-- </div> -->
+              <!-- <div class="icon"> -->
+                <!-- <i class="ion ion-person-add"></i> -->
+              <!-- </div> -->
+              <!-- <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+            <!-- </div> -->
+          <!-- </div> -->
           <!--end Vehicle-->
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <!-- <div class="col-lg-3 col-6"> -->
             <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
+            <!-- <div class="small-box bg-info"> -->
+              <!-- <div class="inner"> -->
               <?php 
                 
-                echo total_user();
+                // echo total_user();
                 
               ?>
-              </div>
+              <!-- </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
@@ -78,8 +79,8 @@
             </div>
           </div>
           
-          <!-- ./col -->
-        </div>
+           ./col -->
+        <!-- </div> --> 
         <!--end User-->
 
 <!---add calendar--->

@@ -1,17 +1,372 @@
 <?php
-
 include 'connection.php';
+?>
+<!-- CLIENT LIST OF REQUEST -->
 
-//Motorpool
-function list_of_request()
+<?php
+function add_request()
 {
+ global $conn;
+   if(isset($_POST['save']))
+  {
 
+
+            $employee_id = $_SESSION['employee_id'];
+            // $transaction_id=mysqli_real_escape_string($conn,$_POST['transaction_id']);
+            $transaction_id = 'NMISVRS-'.rand(1,7);
+            $requestor_name= $_SESSION['name'];
+            // $requestor_name=mysqli_real_escape_string($conn, $_POST[$employee_id]);
+            // $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);
+            $requestor_govmail=$_SESSION['govmail'];
+            // $requestor_position=mysqli_real_escape_string($conn, $_POST['requestor_position']);
+            $requestor_position=$_SESSION['position'];
+            $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
+            $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
+            $region=mysqli_real_escape_string($conn,$_POST['region']);
+            $location=mysqli_real_escape_string($conn,$_POST['location']);
+            $destination =mysqli_real_escape_string($conn,$_POST['destination']);
+            $start_date=mysqli_real_escape_string($conn,$_POST['start_date']);
+            $end_date=mysqli_real_escape_string($conn, $_POST['end_date']);
+            $start_time=mysqli_real_escape_string($conn, $_POST['start_time']);
+            $end_time=mysqli_real_escape_string($conn, $_POST['end_time']);
+            $purpose= mysqli_real_escape_string($conn,$_POST['purpose']);
+            $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
+
+        $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, location, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
+  		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$location', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
+        $result = mysqli_query($conn, $sql);
+
+        if($result){
+
+    }
+  }
+}
+?>
+
+
+<!-- Client List Request -->
+
+<?php
+function client_request()
+{
+  global $conn;
+    $employee_id = $_SESSION['employee_id'];
+    $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE requestor_name ='$employee_id' ");
+   
+    while($row = mysqli_fetch_array($sql))
+    {
+      
+        $transaction_id =$row['transaction_id'];
+        $requestor_name =$row['requestor_name'];
+        $requestor_govmail=$row['requestor_govmail']; 
+        $requestor_position=$row['requestor_position'];
+        $requestor_division=$row['requestor_division'];
+        $requestor_contact_number =$row['requestor_contact_number'];
+        $region=$row['region'];
+        $location=$row['location'];
+        $destination =$row['destination'];
+        $start_date =$row['start_date'];
+        $end_date =$row['end_date'];
+        $start_time =$row['start_time'];
+        $end_time =$row['end_time'];
+        $purpose =$row['purpose'];
+        $travel_order =$row['travel_order'];
+        $asigned_driver =$row['asigned_driver'];
+        $reservation_status=$row['reservation_status'];
+?>
+
+    <tr>
+        <th><?php echo $transaction_id; ?></th>
+        <th><?php echo $_SESSION['name'] ; ?></th>
+        <th><?php echo $requestor_govmail; ?></th>
+        <th><?php echo $requestor_position; ?></th>
+        <th><?php echo $requestor_division; ?></th>
+        <th><?php echo $requestor_contact_number; ?></th>
+        <th><?php echo $region; ?></th>
+        <th><?php echo $location ; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo $end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo $travel_order; ?></th>
+        <th><?php echo $asigned_driver; ?></th>
+        <th>
+          <?php 
+            if($reservation_status == "Initialled")
+            {
+              echo "
+              <span class='badge badge-primary'>Initialed</span>
+              <th>
+              <a href='../../Connection/set-status-technical3.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'>Approve</a>
+              </th>
+              
+              ";
+          
+            }
+            else if($reservation_status == "Approved")
+            {
+              echo "
+              <span class='badge badge-success'>Approved</span>
+              <th>
+                
+              </th>
+              
+              ";
+          
+            } else if($reservation_status == "Pending")
+            {
+              echo "
+              <span class='badge badge-warning'>Pending</span>
+              <th>
+                
+              </th>
+              
+              ";
+          
+            }else
+            {
+              echo "
+              <span class='badge badge-info'>Processing</span>
+              <th>
+                
+              </th>
+              
+              ";
+            }
+          ?> 
+        </th> 
+      </tr>
+<?php }}?>
+
+
+<!--Client List Of Driver Driver-->
+<?php
+  function list_view_driver(){
     global $conn;
+      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
+        if ($sql){while ($row = mysqli_fetch_assoc($sql)){ 
+          $employee_id =$row['employee_id'];
+          $first_name =$row['first_name'];
+          $last_name =$row['last_name']; 
+          $username=$row['username'];
+          $position=$row['position'];
+          $division =$row['division'];
+          $address = $row['address'];
+          $govmail =$row['govmail'];
+          $contact_number=$row['contact_number'];
+          $role =$row['role'];
 
-    $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE reservation_status ='Verified'");
-      while($row = mysqli_fetch_array($sql))
+
+        if($role=='Driver'){
+              echo '<tr>
+              <th scope="row">'.$first_name.' '.$last_name.'</th>
+              <td>'.$position.'</td> 
+              <td>'.$address.'</td>
+              <td>'.$division.'</td>
+              </tr>';
+        }
+      }
+    }
+ } 
+ ?>
+
+
+<!-- Client List of User -->
+
+<?php
+  include 'connection.php';
+    function list_view_user(){
+      global $conn;
+       $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
+        if ($sql){
+         while ($row = mysqli_fetch_assoc($sql)){
+          
+            $employee_id =$row['employee_id'];
+            $first_name =$row['first_name'];
+            $last_name =$row['last_name']; 
+            $username=$row['username'];
+            $position=$row['position'];
+            $division =$row['division'];
+            $govmail =$row['govmail'];
+            $contact_number=$row['contact_number'];
+            $role =$row['role'];
+
+                echo '<tr>
+                <th scope="row">'.$employee_id.'</th>
+                <td>'.$first_name.'</td>
+                <td>'.$last_name.'</td>
+                <td>'.$username.'</td>
+                <td>'.$position.'</td>
+                <td>'.$division.'</td>
+                <td>'.$govmail.'</td>
+                <td>'.$contact_number.'</td>
+                <td>'.$role.'</td>
+                </tr>';
+     }
+   }
+ }
+?>
+
+
+
+<!-- Client Time Line-->
+<?php 
+  function first_view(){
+    global $conn;
+     if(isset($_POST['test'])){
+       $transaction_id =$_POST['transaction_id'];
+       $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
+     if($sql){
+     while ($row = mysqli_fetch_array($sql)<0){
+        echo "Today :" .date('Y/m/d');
+       }
+      }
+    }
+  } 
+
+   function second_view(){
+     global $conn;
+      if(isset($_POST['test'])) {
+
+          $transaction_id = $_POST['transaction_id'];
+          $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+          $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
+
+      while($result = mysqli_fetch_array($sql)){
+            if($result['transaction_description'] == "Verified")
+
+                 {
+                  echo "
+                  <span class='btn btn-success'> The request was Verified by Supervising Admin</span>
+                  <th>
+                  </th>";
+                  
+                 }
+            else if($result['transaction_description'] == "Processing")
+                 {
+                  echo "
+                  <span class=''>Processing</span>
+                  <th>
+                  </th>";
+                 }
+            else   if($result['transaction_description'] == "Canceled") 
+                 {
+                  echo "
+                  <span class=''>Cancelled</span>
+                  <th>
+                  </th>";
+                 }   
+            else 
+                 {
+                  echo "
+                  <span class=''> </span>
+                  <th>
+                  </th>";
+                 }
+        }
+      }
+     }
+
+function third_view(){
+  global $conn;
+    if(isset($_POST['test'])){
+      $transaction_id =$_POST['transaction_id'];
+      $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
+
+      if($sql){while ($row = mysqli_fetch_array($sql)<0){
+       echo "Today :" .date('Y/m/d');    
+      } 
+    }
+  }
+?>
+          </span>
+        </div>
+      <div>
+      <div class="timeline-item">
+        <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
+          <h3 class="timeline-header no-border"><a href="#"></a> 
+
+
+     
+<?php  if(isset($_POST['test']))
       {
-        
+        $transaction_id = $_POST['transaction_id'];
+        $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+        $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
+        while($result = mysqli_fetch_array($sql))
+       {
+          
+          if($result['transaction_description'] == "Checked"){
+                  
+              echo "
+              <span class='btn btn-info'>The request was Checked by Motorpool</span>
+              <th>
+              </th>
+              
+              ";
+              
+              
+              }else if($result['transaction_description'] == "Processing") 
+              
+              {
+
+              echo "
+              <span class=''>  Your Request is on Processing</span>
+              <th>
+              </th>
+              
+              ";
+
+              }else   if($result['transaction_description'] == "Canceled")
+              
+              {
+              echo "
+              <span class=''> Rerquest was Cancelled</span>
+              <th>
+              </th>
+              
+              ";
+
+              }
+              else
+              {
+              echo "
+              <span class=''></span>
+              <th>
+              </th>";
+              }
+    }
+  }
+}
+
+function fourth(){
+    global $conn;
+     if(isset($_POST['test'])){
+      global $conn;
+       $transaction_id =$_POST['transaction_id'];
+        $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
+
+      if($sql){
+        while ($row = mysqli_fetch_array($sql)<0){
+         echo "Today :" .date('Y/m/d');  
+        }
+      }
+    }
+  }
+?>
+
+
+<!-- Motorpool Function -->
+<?php
+    function list_of_request(){
+      global $conn;
+        $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE reservation_status ='Verified'");
+
+         while($row = mysqli_fetch_array($sql))
+          {
+
           $transaction_id =$row['transaction_id'];
           $requestor_name =$row['requestor_name'];
           $requestor_govmail=$row['requestor_govmail']; 
@@ -52,11 +407,8 @@ function list_of_request()
           }
           else{
               $status = "<span class='badge badge-danger'>Canceled</span>";
-
               }
-    
-        ?>
-
+?>
 
       <tr>
           <td><?php echo $transaction_id; ?></td>
@@ -70,32 +422,29 @@ function list_of_request()
           <td><?php echo $purpose; ?></td>
           <td><?php echo $assigned_driver; ?></td>
           <td><?php echo $status; ?></td>
-          
           <td>
-                <form method="POST">
-                <input type="hidden" name="transaction_id" value="<?php echo $transaction_id;?>">
-                <button type="submit" class="btn btn-primary btn-sm" name="assign_driver">Edit</button>
-                </form>
-              </td>
-                <?php
-                    if(isset($_POST['assign_driver'])){
-                        session_start();
-                        $_SESSION['transaction_id'] = $_POST['transaction_id'];
-                        echo"<script>window.location='assigned driver.php'</script>";
+              <form method="POST">
+              <input type="hidden" name="transaction_id" value="<?php echo $transaction_id;?>">
+              <button type="submit" class="btn btn-primary btn-sm" name="assign_driver">Edit</button>
+              </form>
+          </td>
 
-                    }
-                ?>
+             <?php
+                if(isset($_POST['assign_driver'])){
+                   session_start();
+                     $_SESSION['transaction_id'] = $_POST['transaction_id'];
+                       echo"<script>window.location='assigned driver.php'</script>";
+                }
+              ?>
+
+            </td>  
+          </tr>
+<?php }?>
 
 
 
-            </td>
-          
-        </tr>
-
-      <?php } ?>
 <!-- ALERST FOR MOTORPOOL LIST REQUEST -->
  
-
 
 <?php
 }
@@ -636,441 +985,7 @@ function view_vehicle(){
 
 
 
-<!-- CLIENT LIST OF REQUEST -->
 
-<?php
- 
- function add_request(){
-
- global $conn;
-if(isset($_POST['save'])){
-
-
-  $employee_id = $_SESSION['employee_id'];
-  // $transaction_id=mysqli_real_escape_string($conn,$_POST['transaction_id']);
-  $transaction_id = 'NMISVRS-'.rand(1,7);
-  $requestor_name= $_SESSION['name'];
-  // $requestor_name=mysqli_real_escape_string($conn, $_POST[$employee_id]);
-  // $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);
-  $requestor_govmail=$_SESSION['govmail'];
-  // $requestor_position=mysqli_real_escape_string($conn, $_POST['requestor_position']);
-  $requestor_position=$_SESSION['position'];
-  $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
-  $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
-  $region=mysqli_real_escape_string($conn,$_POST['region']);
-  $location=mysqli_real_escape_string($conn,$_POST['location']);
-  $destination =mysqli_real_escape_string($conn,$_POST['destination']);
-  $start_date=mysqli_real_escape_string($conn,$_POST['start_date']);
-  $end_date=mysqli_real_escape_string($conn, $_POST['end_date']);
-  $start_time=mysqli_real_escape_string($conn, $_POST['start_time']);
-  $end_time=mysqli_real_escape_string($conn, $_POST['end_time']);
-  $purpose= mysqli_real_escape_string($conn,$_POST['purpose']);
-  $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
- 
- 
-
-
-
-  $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, location, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
-
-  		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$location', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-
-  }
-}
-}
-?>
-<!-- Client List Request -->
-
-<?php
-function client_request()
-
-{
-  global $conn;
-
-  $employee_id = $_SESSION['employee_id'];
-  $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE requestor_name ='$employee_id' ");
-    while($row = mysqli_fetch_array($sql))
-    {
-      
-        $transaction_id =$row['transaction_id'];
-        $requestor_name =$row['requestor_name'];
-        $requestor_govmail=$row['requestor_govmail']; 
-        $requestor_position=$row['requestor_position'];
-        $requestor_division=$row['requestor_division'];
-        $requestor_contact_number =$row['requestor_contact_number'];
-        $region=$row['region'];
-        $location=$row['location'];
-        $destination =$row['destination'];
-        $start_date =$row['start_date'];
-        $end_date =$row['end_date'];
-        $start_time =$row['start_time'];
-        $end_time =$row['end_time'];
-        $purpose =$row['purpose'];
-        $travel_order =$row['travel_order'];
-        $asigned_driver =$row['asigned_driver'];
-        $reservation_status=$row['reservation_status'];
-  
-      ?>
-
-
-    <tr>
-        <th><?php echo $transaction_id; ?></th>
-        <th><?php echo $_SESSION['name'] ; ?></th>
-        <th><?php echo $requestor_govmail; ?></th>
-        <th><?php echo $requestor_position; ?></th>
-        <th><?php echo $requestor_division; ?></th>
-        <th><?php echo $requestor_contact_number; ?></th>
-        <th><?php echo $region; ?></th>
-        <th><?php echo $location ; ?></th>
-        <th><?php echo $destination; ?></th>
-        <th><?php echo $start_date; ?></th>
-        <th><?php echo $end_date; ?></th>
-        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
-        <th><?php echo $end_time; ?></th>
-        <th><?php echo $purpose ; ?></th>
-        <th><?php echo $travel_order; ?></th>
-        <th><?php echo $asigned_driver; ?></th>
-
-      
-
-        <th>
-          
-          <?php 
-            if($reservation_status == "Initialled")
-            {
-              echo "
-              <span class='badge badge-primary'>Initialed</span>
-              <th>
-              <a href='../../Connection/set-status-technical3.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'>Approve</a>
-              </th>
-              
-              ";
-          
-            }
-            else if($reservation_status == "Approved")
-            {
-              echo "
-              <span class='badge badge-success'>Approved</span>
-              <th>
-                
-              </th>
-              
-              ";
-          
-            } else if($reservation_status == "Pending")
-            {
-              echo "
-              <span class='badge badge-warning'>Pending</span>
-              <th>
-                
-              </th>
-              
-              ";
-          
-            }else
-            {
-              echo "
-              <span class='badge badge-info'>Processing</span>
-              <th>
-                
-              </th>
-              
-              ";
-          
-            }
-
-          ?> 
-
-        </th>
-        
-        
-      </tr>
-<?php }}
-?>
-
-<?php
-
-    include 'connection.php';
-    function list_view_driver(){
-      global $conn;
-    $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
-    if ($sql){
-        while ($row = mysqli_fetch_assoc($sql)){
-        
-          $employee_id =$row['employee_id'];
-          $first_name =$row['first_name'];
-          $last_name =$row['last_name']; 
-          $username=$row['username'];
-          $position=$row['position'];
-          $division =$row['division'];
-          $address = $row['address'];
-          $govmail =$row['govmail'];
-          $contact_number=$row['contact_number'];
-          $role =$row['role'];
-
-
-      if($role=='Driver'){
-
-      echo '<tr>
-      <th scope="row">'.$first_name.' '.$last_name.'</th>
-      <td>'.$position.'</td> 
-       <td>'.$address.'</td>
-      <td>'.$division.'</td>
-      </tr>';
-    }
-        }
-      }
- } 
- ?>
-
-
-<!-- List OF User -->
-
-<?php
-    include 'connection.php';
-    function list_view_user()
-    {
-        global $conn;
-      $sql = mysqli_query($conn, "SELECT * FROM users_tbl");
-      if ($sql){
-          while ($row = mysqli_fetch_assoc($sql)){
-          
-            $employee_id =$row['employee_id'];
-            $first_name =$row['first_name'];
-            $last_name =$row['last_name']; 
-            $username=$row['username'];
-            $position=$row['position'];
-            $division =$row['division'];
-            $govmail =$row['govmail'];
-            $contact_number=$row['contact_number'];
-            $role =$row['role'];
-
-        echo '<tr>
-        <th scope="row">'.$employee_id.'</th>
-        <td>'.$first_name.'</td>
-        <td>'.$last_name.'</td>
-        <td>'.$username.'</td>
-        <td>'.$position.'</td>
-        <td>'.$division.'</td>
-        <td>'.$govmail.'</td>
-        <td>'.$contact_number.'</td>
-        <td>'.$role.'</td>
-        </tr>';
-          }
-        }
-     }
-     ?>
-
-
-
-<!-- TIME LINE -->
-
-<?php 
-
-include 'connection.php';
-
-function first_view()
-
-{
-  global $conn;
-    if(isset($_POST['test'])){
-
-    $transaction_id =$_POST['transaction_id'];
-    $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
-    if($sql){
-      while ($row = mysqli_fetch_array($sql)<0){
-
-        echo "Today :" .date('Y/m/d');
-      
-      }
-
-      
-  
-      
-      }
-    }
-  } 
-  
-  function second_view()
-  
-  {
- global $conn;
-
-    if(isset($_POST['test']))
-    {
-      $transaction_id = $_POST['transaction_id'];
-      $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-      $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
-
-      while($result = mysqli_fetch_array($sql))
-      {
-        
-            if($result['transaction_description'] == "Verified"){
-                
-                  echo "
-                  <span class='btn btn-success'> The request was Verified by Supervising Admin</span>
-                  <th>
-                  </th>
-                  
-                  ";
-                  
-                  
-                 }else if($result['transaction_description'] == "Processing") 
-                 
-                 {
-
-                  echo "
-                  <span class=''>Processing</span>
-                  <th>
-                  </th>
-                  
-                  ";
-
-                 }else   if($result['transaction_description'] == "Canceled")
-                 
-                 {
-                  echo "
-                  <span class=''>Cancelled</span>
-                  <th>
-                  </th>
-                  
-                  ";
-
-                 }
-                 
-                 
-                 
-                 else{
-
-                  
-                  echo "
-                  <span class=''> </span>
-                  <th>
-                  </th>
-                  
-                  ";
-
-          
-                 }
-                }
-              }
-
-  }
-
-  function third_view()
-  {
-  global $conn;
-    if(isset($_POST['test'])){
-
-      $transaction_id =$_POST['transaction_id'];
-     
-      $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
-      if($sql){
-        while ($row = mysqli_fetch_array($sql)<0){
-      echo "Today :" .date('Y/m/d');    
-        }
-        
-        }
-      }
-      ?>
-      </span>
-    </div>
-    <div>
-      
-      <div class="timeline-item">
-        <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
-        <h3 class="timeline-header no-border"><a href="#"></a> 
-      
-      <?php  if(isset($_POST['test']))
-      {
-        $transaction_id = $_POST['transaction_id'];
-        $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-        $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
-
-        while($result = mysqli_fetch_array($sql))
-        {
-          
-              if($result['transaction_description'] == "Checked"){
-                  
-                    echo "
-                    <span class='btn btn-info'>The request was Checked by Motorpool</span>
-                    <th>
-                    </th>
-                    
-                    ";
-                    
-                    
-                   }else if($result['transaction_description'] == "Processing") 
-                   
-                   {
-
-                    echo "
-                    <span class=''>  Your Request is on Processing</span>
-                    <th>
-                    </th>
-                    
-                    ";
-
-                   }else   if($result['transaction_description'] == "Canceled")
-                   
-                   {
-                    echo "
-                    <span class=''> Rerquest was Cancelled</span>
-                    <th>
-                    </th>
-                    
-                    ";
-
-                   }
-                   
-                   
-                   
-                   else{
-
-                    
-                    echo "
-                    <span class=''></span>
-                    <th>
-                    </th>
-                    
-                    ";
-
-            
-                   }
-                  }
-                }
-
-
-
-  }
-
-  function fourth(){
-
-    global $conn;
-    if(isset($_POST['test'])){
-     global $conn;
-      $transaction_id =$_POST['transaction_id'];
-      $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
-      if($sql){
-        while ($row = mysqli_fetch_array($sql)<0){
-         echo "Today :" .date('Y/m/d');
-
-    
-          
-        }
-
-        
-   
-        
-        }
-      }
-  }
-  
-  
-  
-  ?>
 
 
 <!-- Function LOgin -->

@@ -44,7 +44,7 @@ if(isset($_POST['employee_id']) && isset($_POST['password']))
                     $_SESSION['employee_id'] = $row['employee_id'];
                     $_SESSION['name'] = $row['name'];
                     $_SESSION['role'] = $row['role'];
-                    header("Location: ./Supervising Admin/admindashboard.php");
+                    header("Location: ../Supervising Admin/admindashboard.php");
                     exit();
                 }
                 else if(password_verify($password, $hash) && $role == 'Chief Admin')

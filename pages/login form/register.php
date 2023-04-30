@@ -103,7 +103,7 @@
 						</div>
 						
 						<div class="text-center mb-5 text-white">Already have an account?
-							<a class="login-link" href="SupervisingAdmin/login.php">Login here</a>
+							<a class="login-link" href="login.php">Login here</a>
 		       	</div>
 					</form>
 				</div>
