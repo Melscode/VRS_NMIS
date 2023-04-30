@@ -8,23 +8,22 @@
                   <tr>
                   <th>Transaction_ID</th>
                     <th>Fullname</th>
-                    <th>Govmail</th>
-                    <th>Position</th>
-                    <th>Division</th>
-                    <th>Contact No.</th>
-                    <th>Region</th>
-                    <th>Location</th>
-                    <th>Destination</th>
-                    <th>Date Start :</th>
-                    <th>Date End :</th>
-                    <th>Time Start :</th>
+                    <th>Are you the Passenger?</th>
+                    <th>No. of Passenger</th>
+                    <th>Name of Passenger</th>
+                    <th>Office</th>
+                    <th>Raduis</th>
+                    <th>Pick up Point</th>
+                    <th>Drop off Point</th>
+                    <th>Date Start</th>
+                    <th>Date End</th>
+                    <th>Time Start</th>
                     <th>Time End :</th>
                     <th>Purpose :</th>
                     <th>Travel Order :</th>
                     <th>Assigned Driver :</th>
                     <th>Status :</th>
                     <th>Action :</th>
-              
                   </tr>
                   </thead>
 

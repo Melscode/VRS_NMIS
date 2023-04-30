@@ -4,6 +4,7 @@ include 'connection.php';
 <!-- CLIENT LIST OF REQUEST -->
 
 <?php
+include 'connection.php';
 function add_request()
 {
  global $conn;
@@ -18,12 +19,20 @@ function add_request()
             // $requestor_name=mysqli_real_escape_string($conn, $_POST[$employee_id]);
             // $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);
             $requestor_govmail=$_SESSION['govmail'];
-            // $requestor_position=mysqli_real_escape_string($conn, $_POST['requestor_position']);
+            // $requestor_position=mysqli_real_escape_string($conn,$_POST['requestor_position']);
             $requestor_position=$_SESSION['position'];
             $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
+            // $requestor_division=$_SESSION['requestor_division'];
             $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
+            // $requestor_contact_number= $_SESSION['requestor_contact_number'];
             $region=mysqli_real_escape_string($conn,$_POST['region']);
-            $location=mysqli_real_escape_string($conn,$_POST['location']);
+            // $region=$_SESSION['region'];
+            $passenger =mysqli_real_escape_string($conn,$_POST['passenger']);
+            $number_of_passenger =mysqli_real_escape_string($conn,$_POST['number_of_passenger']);
+            $name_of_passenger =mysqli_real_escape_string($conn,$_POST['name_of_passenger']);
+            $office=$_POST['office'];
+            $raduis=mysqli_real_escape_string($conn,$_POST['raduis']);
+            $pickup_point=mysqli_real_escape_string($conn,$_POST['pickup_point']);
             $destination =mysqli_real_escape_string($conn,$_POST['destination']);
             $start_date=mysqli_real_escape_string($conn,$_POST['start_date']);
             $end_date=mysqli_real_escape_string($conn, $_POST['end_date']);
@@ -32,8 +41,8 @@ function add_request()
             $purpose= mysqli_real_escape_string($conn,$_POST['purpose']);
             $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
 
-        $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, location, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
-  		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$location', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
+        $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, office, raduis,pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
+  		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$passenger', '$number_of_passenger', '$name_of_passenger', '$office', '$raduis','$pickup_point', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
         $result = mysqli_query($conn, $sql);
 
         if($result){
@@ -63,7 +72,12 @@ function client_request()
         $requestor_division=$row['requestor_division'];
         $requestor_contact_number =$row['requestor_contact_number'];
         $region=$row['region'];
-        $location=$row['location'];
+        $passenger=$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger=$row['name_of_passenger'];
+        $office=$row['office'];
+        $raduis=$row['raduis'];
+        $pickup_point=$row['pickup_point'];
         $destination =$row['destination'];
         $start_date =$row['start_date'];
         $end_date =$row['end_date'];
@@ -76,14 +90,13 @@ function client_request()
 ?>
 
     <tr>
-        <th><?php echo $transaction_id; ?></th>
-        <th><?php echo $_SESSION['name'] ; ?></th>
-        <th><?php echo $requestor_govmail; ?></th>
-        <th><?php echo $requestor_position; ?></th>
-        <th><?php echo $requestor_division; ?></th>
-        <th><?php echo $requestor_contact_number; ?></th>
-        <th><?php echo $region; ?></th>
-        <th><?php echo $location ; ?></th>
+    <th><?php echo $transaction_id; ?></th>
+        <th><?php echo $passenger; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point ; ?></th>
         <th><?php echo $destination; ?></th>
         <th><?php echo $start_date; ?></th>
         <th><?php echo $end_date; ?></th>
@@ -92,7 +105,6 @@ function client_request()
         <th><?php echo $purpose ; ?></th>
         <th><?php echo $travel_order; ?></th>
         <th><?php echo $asigned_driver; ?></th>
-        <th>
           <?php 
             if($reservation_status == "Initialled")
             {
@@ -746,23 +758,28 @@ $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
 while($row = mysqli_fetch_array($sql))
 {
   
-    $transaction_id =$row['transaction_id'];
-    $requestor_name =$row['requestor_name'];
-    $requestor_govmail=$row['requestor_govmail']; 
-    $requestor_position=$row['requestor_position'];
-    $requestor_division=$row['requestor_division'];
-    $requestor_contact_number =$row['requestor_contact_number'];
-    $region=$row['region'];
-    $location=$row['location'];
-    $destination =$row['destination'];
-    $start_date =$row['start_date'];
-    $end_date =$row['end_date'];
-    $start_time =$row['start_time'];
-    $end_time =$row['end_time'];
-    $purpose =$row['purpose'];
-    $travel_order =$row['travel_order'];
-    $asigned_driver =$row['asigned_driver'];
-    $reservation_status=$row['reservation_status'];
+  $transaction_id =$row['transaction_id'];
+  $requestor_name =$row['requestor_name'];
+  $requestor_govmail=$row['requestor_govmail']; 
+  $requestor_position=$row['requestor_position'];
+  $requestor_division=$row['requestor_division'];
+  $requestor_contact_number =$row['requestor_contact_number'];
+  $region=$row['region'];
+  $passenger=$row['passenger'];
+  $number_of_passenger=$row['number_of_passenger'];
+  $name_of_passenger=$row['name_of_passenger'];
+  $office=$row['office'];
+  $raduis=$row['raduis'];
+  $pickup_point=$row['pickup_point'];
+  $destination =$row['destination'];
+  $start_date =$row['start_date'];
+  $end_date =$row['end_date'];
+  $start_time =$row['start_time'];
+  $end_time =$row['end_time'];
+  $purpose =$row['purpose'];
+  $travel_order =$row['travel_order'];
+  $asigned_driver =$row['asigned_driver'];
+  $reservation_status=$row['reservation_status'];
 
   ?>
 
@@ -770,20 +787,21 @@ while($row = mysqli_fetch_array($sql))
 <tr>
     <th><?php echo $transaction_id; ?></th>
     <th><?php echo $requestor_name ; ?></th>
-    <th><?php echo $requestor_govmail; ?></th>
-    <th><?php echo $requestor_position; ?></th>
-    <th><?php echo $requestor_division; ?></th>
-    <th><?php echo $requestor_contact_number; ?></th>
-    <th><?php echo $region; ?></th>
-    <th><?php echo $location ; ?></th>
-    <th><?php echo $destination; ?></th>
-    <th><?php echo $start_date; ?></th>
-    <th><?php echo $end_date; ?></th>
-    <th><?php echo $start_time; ?></th>
-    <th><?php echo $end_time; ?></th>
-    <th><?php echo $purpose ; ?></th>
-    <th><?php echo $travel_order; ?></th>
-    <th><?php echo $asigned_driver; ?></th>
+    <th><?php echo $transaction_id; ?></th>
+        <th><?php echo $passenger; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point ; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo $end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo $travel_order; ?></th>
+        <th><?php echo $asigned_driver; ?></th>
   
 
     <th>

@@ -8,7 +8,7 @@ session_start();
     <?php echo add_request(); ?>
 
 
-<div class="card-footer clearfix">
+    <div class="card-footer clearfix">
         <div class="card-header"></h3>
          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
         </div>
@@ -18,7 +18,7 @@ session_start();
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title">Send Request</h3>
+              <h3 class="modal-title">Add Request</h3>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -26,7 +26,7 @@ session_start();
 
             <div class="modal-body">
 
-              
+              <!-- $_Session['division'] Connect to Login -->
               <div class="form-input">
 							<select name="requestor_division" class="form-control">
 								<option  id= "division" value="">--Select Division--</option>
@@ -47,48 +47,100 @@ session_start();
 							</select>
 						</div><br>
 
+              
               <div class="form-group">
                 <input type="text" name="requestor_contact_number" class="form-control" placeholder="Contact Number">
               </div> 
               
               
-
+              <!-- $_SESSION ['Region'] -->
               <div class="form-group">
                 <input type="text" name="region" class="form-control" placeholder="Region">
+              </div> 
+
+              <!-- Need lagyan sa database $_SESSSION[Are you the Passenger?] -->
+              <div class="form-input">
+							<select name="passenger" class="form-control">
+								<option  id= "division" value="">--Are you the Passenger?--</option>
+									<option value="YES">YES</option>
+									<option value="NO">NO</option>
+							</select>
+						</div><br>
+          
+
+            <h4>Passenger's Information </h4><br>
+              <!-- Need Lagyan sa Database number_of_passenger-->
+              <h6>No. of Passengers :</h6>
+            <div class="form-group">
+                <input type="number" name="number_of_passenger" class="form-control" placeholder="No. of Passengers">
               </div>
 
-              
+              <h6>Name of Passengers :</h6>
               <div class="form-group">
-                <input type="text" name="location" class="form-control" placeholder="Location">
+                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name of Passenger">
               </div>
 
+              <h6>Office (RTOC/Division/Unit/Section) :</h6>
               <div class="form-group">
-                <input type="text" name="destination" class="form-control" placeholder="Destination">
+                <input type="text" name="Office" class="form-control" placeholder="Office">
               </div>
 
+
+              <h4>Trip Information</h4><br>
+              <h6>Kilometer Raduis :</h6>
+              <div class="form-input">
+							<select name="raduis" class="form-control">
+								<option  id= "division" value="">--Raduis--</option>
+									<option value="Within-Manila">Within-Manila</option>
+									<option value="Outside-Manila">Outside-Manila</option></option>
+							</select>
+						</div><br>
+
+              <!-- Source of Pickup -->
+              <h6>Source/Pick up point :</h6>
+              <div class="form-group">
+                <input type="text" name="pickup_point" class="form-control" placeholder="Source/ Pick up point">
+              </div>
+              <h6>Destination/ Drop off point :</h6>
+              <div class="form-group">
+                <input type="text" name="destination" class="form-control" placeholder="Destination/Drop off point">
+              </div>
+              <h6>From: Date of Trip :</h6>
               <div class="form-group">
                 <input type="date" name="start_date" class="form-control" placeholder="Start Date">
               </div>
-
+              <h6>To: Date of Trip :</h6>
               <div class="form-group">
                 <input type="date" name="end_date" class="form-control" placeholder="End Date">
               </div>
-
+              <h6>Departure Time :</h6>
               <div class="form-group">
                 <input type="time" name="start_time" class="form-control" placeholder="Start Time">
               </div>
-
+              <h6>Estimated Return Time:</h6>
               <div class="form-group">
                 <input type="time" name="end_time" class="form-control" placeholder="End Time">
               </div>
+              <!-- Trip Information -->
+              <!-- Purpose of Trip -->
+              <h6>Purpose of Trip:</h6>
+              <div class="form-input">
+							<select name="purpose" class="form-control">
+								<option  id= "division" value="">--Select Purpose--</option>
+									<option value="Seminar/Meeting">Seminar/Meeting</option>
+									<option value="Financial Matters">Financial Matters</option></option>
+									<option value="Skeletal Workface">Skeletal Workface</option></option>
+									<option value="Canvass/Purchase">Canvass/Purchase</option>
+									<option value="Enforcemen">Enforcement</option>
+									<option value="Monitoring">Monitoring</option>
+									<option value="Other:">Other:</option>
+							</select>
+						</div><br>
+          
 
+            <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available):</h6>
               <div class="form-group">
-                <input type="text" name="purpose" class="form-control" placeholder="Purpose">
-              </div>
-
-
-              <div class="form-group">
-                <input type="text" name="travel_order" class="form-control" placeholder="Travel Order">
+                <input type="file" name="travel_order" class="form-control" placeholder="Travel Order">
               </div>
 
             </div>
@@ -101,6 +153,7 @@ session_start();
           </div>
         </div>
        </div>        
+  
 
  
               <!-- /.card-header -->
@@ -109,14 +162,13 @@ session_start();
                   <thead>
                   <tr>
                   <th>Transaction_ID</th>
-                    <th>Fullname</th>
-                    <th>Govmail</th>
-                    <th>Position</th>
-                    <th>Division</th>
-                    <th>Contact No.</th>
-                    <th>Region</th>
-                    <th>Location</th>
-                    <th>Destination</th>
+                    <th>Are you the Passenger?</th>
+                    <th>No. of Passenger</th>
+                    <th>Name of Passenger</th>
+                    <th>Office</th>
+                    <th>Raduis</th>
+                    <th>Pick up Point</th>
+                    <th>Drop off Point</th>
                     <th>Date Start</th>
                     <th>Date End</th>
                     <th>Time Start</th>
