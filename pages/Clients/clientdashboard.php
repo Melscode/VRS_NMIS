@@ -15,7 +15,7 @@
                 echo total_request();  
               ?>
               </div>
-             
+             <?php print_r($_SESSION['employee_id']);?>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>

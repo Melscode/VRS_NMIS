@@ -7,12 +7,12 @@ session_start();
 
     <?php echo add_request(); ?>
 
-
     <div class="card-footer clearfix">
         <div class="card-header"></h3>
          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
         </div>
        </div>
+       <?php print_r($_SESSION[]);?>
 
        <div class="modal fade" role="dialog" id="addrequestModal">
         <div class="modal-dialog">
@@ -82,7 +82,7 @@ session_start();
 
               <h6>Office (RTOC/Division/Unit/Section) :</h6>
               <div class="form-group">
-                <input type="text" name="Office" class="form-control" placeholder="Office">
+                <input type="text" name="office" class="form-control" placeholder="Office">
               </div>
 
 
@@ -161,28 +161,30 @@ session_start();
                 <table id="" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                  <th>Transaction_ID</th>
+                    <th> Transaction_ID</th>
                     <th>Are you the Passenger?</th>
-                    <th>No. of Passenger</th>
-                    <th>Name of Passenger</th>
-                    <th>Office</th>
-                    <th>Raduis</th>
-                    <th>Pick up Point</th>
-                    <th>Drop off Point</th>
-                    <th>Date Start</th>
-                    <th>Date End</th>
+                    <th >No. of Passenger</th>
+                    <th >Name of Passenger</th>
+                    <th >Office</th>
+                    <th >Raduis</th>
+                    <th >Pick up Point</th>
+                    <th >Drop off Point</th>
+                    <th >Date Start</th>
+                    <th >Date End</th>
                     <th>Time Start</th>
                     <th>Time End :</th>
-                    <th>Purpose :</th>
-                    <th>Travel Order :</th>
-                    <th>Assigned Driver :</th>
-                    <th>Status :</th>
-                    <th>Action :</th>
+                    <th >Purpose :</th>
+                    <th >Travel Order :</th>
+                    <th >Assigned Driver :</th>
+                    <th >Status :</th>
+                    <th >Action :</th>
                     
                   </tr>
                   </thead>
 
                   <tbody>
+                    <tr>
+                      <td>
                  <?php client_request(); ?>
                                    
                         <!-- Delete  -->

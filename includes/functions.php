@@ -4,14 +4,14 @@ include 'connection.php';
 <!-- CLIENT LIST OF REQUEST -->
 
 <?php
+
+session_start();
 include 'connection.php';
 function add_request()
 {
  global $conn;
    if(isset($_POST['save']))
   {
-
-
             $employee_id = $_SESSION['employee_id'];
             // $transaction_id=mysqli_real_escape_string($conn,$_POST['transaction_id']);
             $transaction_id = 'NMISVRS-'.rand(1,7);
@@ -30,7 +30,7 @@ function add_request()
             $passenger =mysqli_real_escape_string($conn,$_POST['passenger']);
             $number_of_passenger =mysqli_real_escape_string($conn,$_POST['number_of_passenger']);
             $name_of_passenger =mysqli_real_escape_string($conn,$_POST['name_of_passenger']);
-            $office=$_POST['office'];
+            $office=mysqli_real_escape_string($conn,$_POST['office']);
             $raduis=mysqli_real_escape_string($conn,$_POST['raduis']);
             $pickup_point=mysqli_real_escape_string($conn,$_POST['pickup_point']);
             $destination =mysqli_real_escape_string($conn,$_POST['destination']);
@@ -41,12 +41,13 @@ function add_request()
             $purpose= mysqli_real_escape_string($conn,$_POST['purpose']);
             $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
 
-        $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, office, raduis,pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
+        $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, office, raduis, pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
   		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$passenger', '$number_of_passenger', '$name_of_passenger', '$office', '$raduis','$pickup_point', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
         $result = mysqli_query($conn, $sql);
 
         if($result){
 
+          
     }
   }
 }
@@ -56,6 +57,7 @@ function add_request()
 <!-- Client List Request -->
 
 <?php
+include 'connection.php';
 function client_request()
 {
   global $conn;
@@ -66,7 +68,7 @@ function client_request()
     {
       
         $transaction_id =$row['transaction_id'];
-        $requestor_name =$row['requestor_name'];
+        $requestor_name =$_SESSION['name'];
         $requestor_govmail=$row['requestor_govmail']; 
         $requestor_position=$row['requestor_position'];
         $requestor_division=$row['requestor_division'];
