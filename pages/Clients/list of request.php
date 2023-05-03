@@ -92,8 +92,8 @@ session_start();
 									<option value="Outside-manila"> Outside Manila</option>
 							</select>
 						</div><br>
-
-              <div class="col">
+            <div class="row">
+            <div class="col">
               <h4 class= "btn-info">Trip Information</h4>
               <h6>Source/ Pick up point :</h6>
               <div class="form-group">
@@ -154,7 +154,7 @@ session_start();
           </div>
         </div>
        </div>        
-
+  </div>
  
               <!-- /.card-header -->
               <div class="card-body">

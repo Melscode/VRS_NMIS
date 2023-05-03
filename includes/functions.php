@@ -436,11 +436,11 @@ while($row = mysqli_fetch_array($sql))
     $requestor_division=$row['requestor_division'];
     $requestor_contact_number =$row['requestor_contact_number'];
     $region=$row['region'];
-        $passenger =$row['passenger'];
-        $number_of_passenger=$row['number_of_passenger'];
-        $name_of_passenger =$row['name_of_passenger'];
-        $office =$row ['office'];
-        $raduis =$row['raduis'];
+    $passenger =$row['passenger'];
+    $number_of_passenger=$row['number_of_passenger'];
+    $name_of_passenger =$row['name_of_passenger'];
+    $office =$row ['office'];
+    $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
     $start_date =$row['start_date'];
@@ -491,7 +491,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
+      
           </th>
           
           ";
@@ -776,7 +776,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../includes/trip_ticket.html' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          <a href='../../includes/NMIS_New-Standard-Letterhead VTT 2023.pdf' class='btn btn-info btn-sm'>Generate Ticket</a>
           </th>
           
           ";
@@ -902,9 +902,9 @@ while($row = mysqli_fetch_array($sql))
 ?>
 
       <tr>
-      <th><?php echo $transaction_id; ?></th>
-    <th><?php echo $requestor_name ; ?></th>
-    <th><?php echo $passenger ; ?></th>
+        <th><?php echo $transaction_id; ?></th>
+        <th><?php echo $requestor_name ; ?></th>
+        <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
         <th><?php echo $name_of_passenger; ?></th>
         <th><?php echo $office; ?></th>
@@ -917,9 +917,9 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
         <th><?php echo $travel_order; ?></th>
-          <td><?php echo $assigned_driver; ?></td>
-          <td><?php echo $status; ?></td>
-          <td>
+        <td><?php echo $assigned_driver; ?></td>
+        <td><?php echo $status; ?></td>
+        <td>
               <form method="POST">
               <input type="hidden" name="transaction_id" value="<?php echo $transaction_id;?>">
               <button type="submit" class="btn btn-primary btn-sm" name="assign_driver">Edit</button>
@@ -1364,7 +1364,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
+          
           </th>
           
           ";
