@@ -226,18 +226,23 @@ function client_request()
 
 <!-- Client Time Line-->
 <?php 
-  function first_view(){
+
+  function first_view()
+  {
     global $conn;
+
      if(isset($_POST['test'])){
-       $transaction_id =$_POST['transaction_id'];
-       $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
+        $transaction_id =$_POST['transaction_id'];
+        $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'"); 
+
      if($sql){
      while ($row = mysqli_fetch_array($sql)<0){
-        echo "Today :" .date('Y/m/d');
-       }
+     echo "Today :" .date('Y/m/d');
+        }
       }
     }
   } 
+
 
    function second_view(){
      global $conn;
@@ -274,7 +279,7 @@ function client_request()
             else 
                  {
                   echo "
-                  <span class=''> </span>
+                  <span class='btn-warning'>Your Rrequest is Currently Pending</span>
                   <th>
                   </th>";
                  }
