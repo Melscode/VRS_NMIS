@@ -33,6 +33,8 @@
   <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
    <!-- fullcalendar -->
  <link rel="stylesheet" href="../../plugins/fullcalendar/main.css">
+
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -109,12 +111,9 @@
 
             
 
-          
-
-        
 
           <li class="nav-item">
-            <a href="timeline.php" class="nav-link">
+            <a href="trails.php" class="nav-link">
               <i class="nav-icon fas fa-car"></i>
               <p>
                 Tracking 

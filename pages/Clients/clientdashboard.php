@@ -165,13 +165,29 @@ session_start();
           </div>
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success add-request" name = 'save' >Add Request</button>
+              <button type="submit" class="btn btn-success add-request" name = 'save' onclick="openPopup()" >Add Request</button>
+              <div class ="popup" id ="popup">
+                <img src="../../dist/img/tick.png">
+                  <h2>Thank You!</h2>
+                  <p>Your details has been successfully submitted. Thanks!</p>
+                  <button type = "button" onclick="closePopup()">OK</button>
+
+              </div>
             </div>
 
           </div>
         </div>
        </div>        
 
+       <script>
+        let popup =document.getElementById("popup");
+        function openPopup(){
+          popup.classlist.add("open-popup");
+        }
+        function closePopup(){
+          popup.classlist.remove("open-popup");
+        }
+       </script>
 
 
 

@@ -945,63 +945,6 @@ while($row = mysqli_fetch_array($sql))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ALERST FOR MOTORPOOL LIST REQUEST -->
  
 
