@@ -31,9 +31,9 @@ while($row = mysqli_fetch_array($result))
 
 ?>
 
-<div class="card card-default">
+<div class="card card-default container-fluid">
 
-        <form method="POST" id="update_request">
+        <form  method="POST" id="update_request">
         <?php assign_driver();?>
 
           <!-- /.card-header -->
@@ -100,7 +100,7 @@ while($row = mysqli_fetch_array($result))
               <label>Select Driver</label>
               <select name="asigned_driver" id="asigned_driver" class="form-control driver">
                   <option  value="">--Choose Driver--</option>
-									  <?php echo all_driver();?>
+									            <?php echo all_driver();?>
             </select>
               </div>
             </div>
@@ -154,6 +154,7 @@ while($row = mysqli_fetch_array($result))
 
               if (result.dismiss === Swal.DismissReason.timer) {
                 window.location = 'list of request.php';
+                 echo alert("Assigned Done!!");
               }
             })
 

@@ -13,11 +13,11 @@
                 
                   $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
-                  $query = 'SELECT id FROM request_tbl ORDER BY Id';
+                  $query = "SELECT * FROM request_tbl WHERE reservation_status='Verified'";
                   $query_execute = mysqli_query($conn, $query);     
                   
                   $row = mysqli_num_rows($query_execute);
-                  echo "<p>Reservation Request</p>";
+                  echo "<p>Reservation Request for Assigning Driver</p>";
                   echo "<h3>$row</h3>"; 
                   
                 ?>
@@ -26,7 +26,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Reservation Requests-->
@@ -53,7 +53,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Driver-->
@@ -78,7 +78,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!--end Vehicle-->
@@ -91,11 +91,11 @@
                 
                 $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
-                $query = 'SELECT id FROM users_tbl ORDER BY Id';
+                $query = "SELECT * FROM request_tbl WHERE reservation_status='Approved'";
                 $query_execute = mysqli_query($conn, $query);     
                 
                 $row = mysqli_num_rows($query_execute);
-                echo "<p>User</p>";
+                echo "<p>Approved Request</p>";
                 echo "<h3>$row</h3>"; 
                 
               ?>
@@ -103,7 +103,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="pages/tables/list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of approved request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           

@@ -12,12 +12,11 @@ session_start();
          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
         </div>
        </div>
-       <?php print_r($_SESSION[]);?>
-
+      
        <div class="modal fade" role="dialog" id="addrequestModal">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header btn-success">
               <h3 class="modal-title">Add Request</h3>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -26,7 +25,8 @@ session_start();
 
             <div class="modal-body">
 
-              <!-- $_Session['division'] Connect to Login -->
+              <h4 class="btn-info">Requester's Information</h4>
+
               <div class="form-input">
 							<select name="requestor_division" class="form-control">
 								<option  id= "division" value="">--Select Division--</option>
@@ -47,104 +47,105 @@ session_start();
 							</select>
 						</div><br>
 
-              
               <div class="form-group">
                 <input type="text" name="requestor_contact_number" class="form-control" placeholder="Contact Number">
               </div> 
               
               
-              <!-- $_SESSION ['Region'] -->
+
               <div class="form-group">
                 <input type="text" name="region" class="form-control" placeholder="Region">
-              </div> 
+              </div>
 
-              <!-- Need lagyan sa database $_SESSSION[Are you the Passenger?] -->
+                <h6>Are you the Passenger?</h6>
               <div class="form-input">
 							<select name="passenger" class="form-control">
-								<option  id= "division" value="">--Are you the Passenger?--</option>
-									<option value="YES">YES</option>
-									<option value="NO">NO</option>
+								<option  value=""></option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
 							</select>
 						</div><br>
-          
 
-            <h4>Passenger's Information </h4><br>
-              <!-- Need Lagyan sa Database number_of_passenger-->
-              <h6>No. of Passengers :</h6>
+            <h4 class= "btn-info">Passenger's Information</h4>
+
+            <h6>No. of Passengers :</h6>
             <div class="form-group">
-                <input type="number" name="number_of_passenger" class="form-control" placeholder="No. of Passengers">
+                <input type="number" name="number_of_passenger" class="form-control" placeholder="No.">
               </div>
 
               <h6>Name of Passengers :</h6>
-              <div class="form-group">
-                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name of Passenger">
+            <div class="form-group">
+                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name">
               </div>
 
-              <h6>Office (RTOC/Division/Unit/Section) :</h6>
-              <div class="form-group">
+              <h6 >Office (RTOC/Division/Unit/Section) :</h6>
+            <div class="form-group">
                 <input type="text" name="office" class="form-control" placeholder="Office">
               </div>
 
 
-              <h4>Trip Information</h4><br>
-              <h6>Kilometer Raduis :</h6>
+              <h6>KIlometer Raduis:</h6>
               <div class="form-input">
 							<select name="raduis" class="form-control">
-								<option  id= "division" value="">--Raduis--</option>
-									<option value="Within-Manila">Within-Manila</option>
-									<option value="Outside-Manila">Outside-Manila</option></option>
+								<option  value=""></option>
+									<option value="Within-Manila">Within Manila</option>
+									<option value="Outside-manila"> Outside Manila</option>
 							</select>
 						</div><br>
 
-              <!-- Source of Pickup -->
-              <h6>Source/Pick up point :</h6>
+              <div class="col">
+              <h4 class= "btn-info">Trip Information</h4>
+              <h6>Source/ Pick up point :</h6>
               <div class="form-group">
-                <input type="text" name="pickup_point" class="form-control" placeholder="Source/ Pick up point">
+                <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point">
               </div>
-              <h6>Destination/ Drop off point :</h6>
+
+              <h6>Destenation/ Drop Off Point</h6>
               <div class="form-group">
-                <input type="text" name="destination" class="form-control" placeholder="Destination/Drop off point">
+                <input type="text" name="destination" class="form-control" placeholder="Destination">
               </div>
-              <h6>From: Date of Trip :</h6>
+                
+              <h6>From: Date of Trip : </h6>
               <div class="form-group">
                 <input type="date" name="start_date" class="form-control" placeholder="Start Date">
               </div>
-              <h6>To: Date of Trip :</h6>
+
+               <h6>To: Date of Trip :</h6>
               <div class="form-group">
                 <input type="date" name="end_date" class="form-control" placeholder="End Date">
               </div>
-              <h6>Departure Time :</h6>
+
+              <h6>Depature Time :</h6>
               <div class="form-group">
                 <input type="time" name="start_time" class="form-control" placeholder="Start Time">
               </div>
-              <h6>Estimated Return Time:</h6>
+
+              <h6>Estimated Return Time</h6>
               <div class="form-group">
                 <input type="time" name="end_time" class="form-control" placeholder="End Time">
               </div>
-              <!-- Trip Information -->
-              <!-- Purpose of Trip -->
-              <h6>Purpose of Trip:</h6>
+
+              <h6>Purpose of Trip</h6>
               <div class="form-input">
 							<select name="purpose" class="form-control">
-								<option  id= "division" value="">--Select Purpose--</option>
-									<option value="Seminar/Meeting">Seminar/Meeting</option>
-									<option value="Financial Matters">Financial Matters</option></option>
-									<option value="Skeletal Workface">Skeletal Workface</option></option>
-									<option value="Canvass/Purchase">Canvass/Purchase</option>
-									<option value="Enforcemen">Enforcement</option>
-									<option value="Monitoring">Monitoring</option>
-									<option value="Other:">Other:</option>
+								<option  value=""></option>
+								<option value="Seminar/ Meeting">Seminar/ Meeting</option>
+									<option value="Financial Matters">Financial Matters</option>
+                  <option value="Skeletal Workforce">Skeletal Workforce</option>
+                  <option value="Canvass/ Purchase">Canvass/ Purchase</option>
+                  <option value="Enforcement">Enforcement</option>
+                  <option value="Monitoring">Monitoring</option> 
+                  <option value="others">Others</option>  
 							</select>
-						</div><br>
-          
-
-            <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available):</h6>
+						  </div><br>
+            
+              <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6>
               <div class="form-group">
                 <input type="file" name="travel_order" class="form-control" placeholder="Travel Order">
               </div>
 
             </div>
-          
+          </div>
 
             <div class="modal-footer">
               <button type="submit" class="btn btn-success add-request" name = 'save' >Add Request</button>
@@ -153,7 +154,6 @@ session_start();
           </div>
         </div>
        </div>        
-  
 
  
               <!-- /.card-header -->
@@ -161,30 +161,30 @@ session_start();
                 <table id="" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th> Transaction_ID</th>
-                    <th>Are you the Passenger?</th>
-                    <th >No. of Passenger</th>
-                    <th >Name of Passenger</th>
-                    <th >Office</th>
-                    <th >Raduis</th>
-                    <th >Pick up Point</th>
-                    <th >Drop off Point</th>
-                    <th >Date Start</th>
-                    <th >Date End</th>
-                    <th>Time Start</th>
-                    <th>Time End :</th>
-                    <th >Purpose :</th>
-                    <th >Travel Order :</th>
-                    <th >Assigned Driver :</th>
-                    <th >Status :</th>
-                    <th >Action :</th>
+                    <th class="btn-info"> Transaction_ID</th>
+                    <th class="btn-info"> Are you the Passenger?</th>
+                    <th class="btn-info"> No. of Passenger</th>
+                    <th class="btn-info"> Name of Passenger</th>
+                    <th class="btn-info"> Office</th>
+                    <th class="btn-info"> Raduis</th>
+                    <th class="btn-info"> Pick up Point</th>
+                    <th class="btn-info"> Drop off Point</th>
+                    <th class="btn-info"> Date Start</th>
+                    <th class="btn-info"> Date End</th>
+                    <th class="btn-info"> Time Start</th>
+                    <th class="btn-info"> Time End :</th>
+                    <th class="btn-info"> Purpose :</th>
+                    <th class="btn-info"> Travel Order :</th>
+                    <th class="btn-info"> Assigned Driver :</th>
+                    <th class="btn-info"> Status :</th>
+                    <th class="btn-info"> Action :</th>
                     
                   </tr>
                   </thead>
 
                   <tbody>
                     <tr>
-                      <td>
+                      
                  <?php client_request(); ?>
                                    
                         <!-- Delete  -->
@@ -274,34 +274,3 @@ session_start();
           </div>
           <!-- /.col -->
           <?php include 'includes/footer.php'; ?>
-<script>
-$(function(){
-
-  var division= $('#division').val()
-
-  $('.add-request').click( e=> { 
-    $.ajax({
-    type : 'POST',
-    url : 'list of request.php',
-    data: data,
-    success : function(res){
-    swal.fire({
-      title:'Success!',
-      icon : 'success',
-      html : 'Submitted Request',
-      timer : 2000,
-    }).then((result)=>{
-     if (result.dismiss === Swal.DismissReason.timer) {
-      window.location = 'list of request.php';
-     }
-    })
-  }, error : function(resp){
-
-  }
-})
-
-  })
-})
-
-
-</script>

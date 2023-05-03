@@ -1,7 +1,8 @@
-<?php session_start()?>
+<?php
+session_start();
+?>
 <?php include 'includes/header.php';   ?>
 <?php include "../../includes/functions.php";?>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -11,33 +12,32 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              <?php  
-                echo total_request();  
+              <?php 
+                echo total_request();   
               ?>
               </div>
-             <?php print_r($_SESSION['employee_id']);?>
+           
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
               <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          
-          
-          <?php echo add_request(); ?>
 
-          <!--Client Add Request -->
+          <?php echo add_request();?>
 
-    <div class="card-footer clearfix">
+
+
+          <div class="card-footer clearfix">
         <div class="card-header"></h3>
          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
         </div>
        </div>
-
+      
        <div class="modal fade" role="dialog" id="addrequestModal">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header btn-success">
               <h3 class="modal-title">Add Request</h3>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -46,7 +46,8 @@
 
             <div class="modal-body">
 
-              <!-- $_Session['division'] Connect to Login -->
+              <h4 class="btn-info">Requester's Information</h4>
+
               <div class="form-input">
 							<select name="requestor_division" class="form-control">
 								<option  id= "division" value="">--Select Division--</option>
@@ -67,104 +68,105 @@
 							</select>
 						</div><br>
 
-              
               <div class="form-group">
                 <input type="text" name="requestor_contact_number" class="form-control" placeholder="Contact Number">
               </div> 
               
               
-              <!-- $_SESSION ['Region'] -->
+
               <div class="form-group">
                 <input type="text" name="region" class="form-control" placeholder="Region">
-              </div> 
+              </div>
 
-              <!-- Need lagyan sa database $_SESSSION[Are you the Passenger?] -->
+                <h6>Are you the Passenger?</h6>
               <div class="form-input">
 							<select name="passenger" class="form-control">
-								<option  id= "division" value="">--Are you the Passenger?--</option>
-									<option value="YES">YES</option>
-									<option value="NO">NO</option>
+								<option  value=""></option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
 							</select>
 						</div><br>
-          
 
-            <h4>Passenger's Information </h4><br>
-              <!-- Need Lagyan sa Database number_of_passenger-->
-              <h6>No. of Passengers :</h6>
+            <h4 class= "btn-info">Passenger's Information</h4>
+
+            <h6>No. of Passengers :</h6>
             <div class="form-group">
-                <input type="number" name="number_of_passenger" class="form-control" placeholder="No. of Passengers">
+                <input type="number" name="number_of_passenger" class="form-control" placeholder="No.">
               </div>
 
               <h6>Name of Passengers :</h6>
-              <div class="form-group">
-                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name of Passenger">
+            <div class="form-group">
+                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name">
               </div>
 
-              <h6>Office (RTOC/Division/Unit/Section) :</h6>
-              <div class="form-group">
+              <h6 >Office (RTOC/Division/Unit/Section) :</h6>
+            <div class="form-group">
                 <input type="text" name="office" class="form-control" placeholder="Office">
               </div>
 
 
-              <h4>Trip Information</h4><br>
-              <h6>Kilometer Raduis :</h6>
+              <h6>KIlometer Raduis:</h6>
               <div class="form-input">
 							<select name="raduis" class="form-control">
-								<option  id= "division" value="">--Raduis--</option>
-									<option value="Within-Manila">Within-Manila</option>
-									<option value="Outside-Manila">Outside-Manila</option></option>
+								<option  value=""></option>
+									<option value="Within-Manila">Within Manila</option>
+									<option value="Outside-manila"> Outside Manila</option>
 							</select>
 						</div><br>
 
-              <!-- Source of Pickup -->
-              <h6>Source/Pick up point :</h6>
+              <div class="col">
+              <h4 class= "btn-info">Trip Information</h4>
+              <h6>Source/ Pick up point :</h6>
               <div class="form-group">
-                <input type="text" name="pickup_point" class="form-control" placeholder="Source/ Pick up point">
+                <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point">
               </div>
-              <h6>Destination/ Drop off point :</h6>
+
+              <h6>Destenation/ Drop Off Point</h6>
               <div class="form-group">
-                <input type="text" name="destination" class="form-control" placeholder="Destination/Drop off point">
+                <input type="text" name="destination" class="form-control" placeholder="Destination">
               </div>
-              <h6>From: Date of Trip :</h6>
+                
+              <h6>From: Date of Trip : </h6>
               <div class="form-group">
                 <input type="date" name="start_date" class="form-control" placeholder="Start Date">
               </div>
-              <h6>To: Date of Trip :</h6>
+
+               <h6>To: Date of Trip :</h6>
               <div class="form-group">
                 <input type="date" name="end_date" class="form-control" placeholder="End Date">
               </div>
-              <h6>Departure Time :</h6>
+
+              <h6>Depature Time :</h6>
               <div class="form-group">
                 <input type="time" name="start_time" class="form-control" placeholder="Start Time">
               </div>
-              <h6>Estimated Return Time:</h6>
+
+              <h6>Estimated Return Time</h6>
               <div class="form-group">
                 <input type="time" name="end_time" class="form-control" placeholder="End Time">
               </div>
-              <!-- Trip Information -->
-              <!-- Purpose of Trip -->
-              <h6>Purpose of Trip:</h6>
+
+              <h6>Purpose of Trip</h6>
               <div class="form-input">
 							<select name="purpose" class="form-control">
-								<option  id= "division" value="">--Select Purpose--</option>
-									<option value="Seminar/Meeting">Seminar/Meeting</option>
-									<option value="Financial Matters">Financial Matters</option></option>
-									<option value="Skeletal Workface">Skeletal Workface</option></option>
-									<option value="Canvass/Purchase">Canvass/Purchase</option>
-									<option value="Enforcemen">Enforcement</option>
-									<option value="Monitoring">Monitoring</option>
-									<option value="Other:">Other:</option>
+								<option  value=""></option>
+									<option value="Seminar/ Meeting">Seminar/ Meeting</option>
+									<option value="Financial Matters">Financial Matters</option>
+                  <option value="Skeletal Workforce">Skeletal Workforce</option>
+                  <option value="Canvass/ Purchase">Canvass/ Purchase</option>
+                  <option value="Enforcement">Enforcement</option>
+                  <option value="Monitoring">Monitoring</option> 
+                  <option value="others">Others</option> 
 							</select>
-						</div><br>
-          
-
-            <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available):</h6>
+						  </div><br>
+            
+              <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6>
               <div class="form-group">
                 <input type="file" name="travel_order" class="form-control" placeholder="Travel Order">
               </div>
 
             </div>
-          
+          </div>
 
             <div class="modal-footer">
               <button type="submit" class="btn btn-success add-request" name = 'save' >Add Request</button>
@@ -173,6 +175,11 @@
           </div>
         </div>
        </div>        
+
+
+
+
+
 
 
            <!--end Reservation Requests-->
@@ -234,12 +241,95 @@
         <!--end User-->
 
 <!---add calendar--->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Calendar</h1>
+          </div>
           
         </div>
       </div><!-- /.container-fluid -->
     </section>
    
-   
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="sticky-top mb-3">
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Add Details</h3>
+                </div>
+                <div class="card-body">
+                  <div class="btn-group" style="width: 100%; margin-bottom: 5px;">
+                    <!--<ul class="fc-color-picker" id="color-chooser">
+                      <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                    </ul>-->
+                  </div>
+                  <!-- /btn-group -->
+                  <div class="input-group">
+                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                    <div class="input-group-append">
+                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                    </div>
+                    <!-- /btn-group -->
+                  </div>
+                  <!-- /input-group -->
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Reservation Details</h4>
+                </div>
+                <div class="card-body">
+                  <!-- the events -->
+                  <div id="external-events">
+                    <div class="external-event bg-gradient-primary">Travel To Pampanga</div>
+                    <div class="external-event bg-gradient-primary">Travel to Quezon City</div>
+                    <div class="external-event bg-gradient-primary">Travel to Ilocos Norte</div>
+                    <div class="external-event bg-gradient-primary">Travel to Davao</div><br>
+                    <div class="checkbox">
+                      <label for="drop-remove">
+                        <input type="checkbox" id="drop-remove">
+                        Remove after drop
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+
+              <!-- /.card -->
+              
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card card-primary">
+              <div class="card-body p-0">
+                <!-- THE CALENDAR -->
+                <div id="calendar"></div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
 
 <?php include 'includes/footer.php';?>
 <script>

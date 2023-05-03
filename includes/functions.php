@@ -5,7 +5,7 @@ include 'connection.php';
 
 <?php
 
-session_start();
+
 include 'connection.php';
 function add_request()
 {
@@ -19,26 +19,24 @@ function add_request()
             // $requestor_name=mysqli_real_escape_string($conn, $_POST[$employee_id]);
             // $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);
             $requestor_govmail=$_SESSION['govmail'];
-            // $requestor_position=mysqli_real_escape_string($conn,$_POST['requestor_position']);
+            // $requestor_position=mysqli_real_escape_string($conn, $_POST['requestor_position']);
             $requestor_position=$_SESSION['position'];
             $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
-            // $requestor_division=$_SESSION['requestor_division'];
             $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
-            // $requestor_contact_number= $_SESSION['requestor_contact_number'];
             $region=mysqli_real_escape_string($conn,$_POST['region']);
             // $region=$_SESSION['region'];
             $passenger =mysqli_real_escape_string($conn,$_POST['passenger']);
             $number_of_passenger =mysqli_real_escape_string($conn,$_POST['number_of_passenger']);
             $name_of_passenger =mysqli_real_escape_string($conn,$_POST['name_of_passenger']);
             $office=mysqli_real_escape_string($conn,$_POST['office']);
-            $raduis=mysqli_real_escape_string($conn,$_POST['raduis']);
-            $pickup_point=mysqli_real_escape_string($conn,$_POST['pickup_point']);
-            $destination =mysqli_real_escape_string($conn,$_POST['destination']);
+            $raduis=$_POST['raduis'];
+            $pickup_point=$_POST['pickup_point'];
+             $destination =mysqli_real_escape_string($conn,$_POST['destination']);
             $start_date=mysqli_real_escape_string($conn,$_POST['start_date']);
             $end_date=mysqli_real_escape_string($conn, $_POST['end_date']);
             $start_time=mysqli_real_escape_string($conn, $_POST['start_time']);
             $end_time=mysqli_real_escape_string($conn, $_POST['end_time']);
-            $purpose= mysqli_real_escape_string($conn,$_POST['purpose']);
+            $purpose= $_POST['purpose'];
             $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
 
         $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, office, raduis, pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
@@ -47,7 +45,7 @@ function add_request()
 
         if($result){
 
-          
+  
     }
   }
 }
@@ -74,12 +72,12 @@ function client_request()
         $requestor_division=$row['requestor_division'];
         $requestor_contact_number =$row['requestor_contact_number'];
         $region=$row['region'];
-        $passenger=$row['passenger'];
+        $passenger =$row['passenger'];
         $number_of_passenger=$row['number_of_passenger'];
-        $name_of_passenger=$row['name_of_passenger'];
-        $office=$row['office'];
-        $raduis=$row['raduis'];
-        $pickup_point=$row['pickup_point'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $raduis =$row['raduis'];
+        $pickup_point = $row['pickup_point'];
         $destination =$row['destination'];
         $start_date =$row['start_date'];
         $end_date =$row['end_date'];
@@ -92,21 +90,22 @@ function client_request()
 ?>
 
     <tr>
-    <th><?php echo $transaction_id; ?></th>
-        <th><?php echo $passenger; ?></th>
+        <th><?php echo $transaction_id; ?></th>
+        <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
         <th><?php echo $name_of_passenger; ?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
-        <th><?php echo $pickup_point ; ?></th>
+        <th><?php echo $pickup_point; ?></th>
         <th><?php echo $destination; ?></th>
         <th><?php echo $start_date; ?></th>
         <th><?php echo $end_date; ?></th>
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
-        <th><?php echo $end_time; ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
         <th><?php echo $travel_order; ?></th>
         <th><?php echo $asigned_driver; ?></th>
+        <th>
           <?php 
             if($reservation_status == "Initialled")
             {
@@ -142,7 +141,7 @@ function client_request()
             }else
             {
               echo "
-              <span class='badge badge-info'>Processing</span>
+              <span class='badge badge-warning'>Pending</span>
               <th>
                 
               </th>
@@ -372,9 +371,482 @@ function fourth(){
 ?>
 
 
-<!-- Motorpool Function -->
+<!-- Supervising Admin Dashboard -->
+      <!-- Admin Total Request -->
+<?php 
+include 'connection.php';
+
+function admin_total_request()
+      {
+        global $conn;
+        $query = "SELECT * FROM request_tbl";
+        $query_execute = mysqli_query($conn, $query);     
+        
+        $row = mysqli_num_rows($query_execute);
+        echo "<p>New Request</p>";
+        echo "<h3>$row</h3>"; 
+
+
+      }
+
+        // Request for initial of Admin
+
+ function admin_checked_request()
+        {      
+            global $conn;
+            $query = "SELECT * FROM request_tbl WHERE reservation_status ='Checked'";
+            $query_execute = mysqli_query($conn, $query);     
+            
+            $row = mysqli_num_rows($query_execute);
+            echo "<p>Request For Initial</p>";
+            echo "<h3>$row</h3>"; 
+        }
+
+            // Admin Approved Request
+
+function admin_approved_request()
+        {      
+            global $conn;
+            $query = "SELECT * FROM request_tbl WHERE reservation_status ='Approved'";
+            $query_execute = mysqli_query($conn, $query);     
+            
+            $row = mysqli_num_rows($query_execute);
+            echo "<p>Approved Request</p>";
+            echo "<h3>$row</h3>"; 
+        }
+?>
+
+
+<!-- Admin Request for Initial -->
+
 <?php
-    function list_of_request(){
+include 'connection.php';
+function admin_list_request_for_initial(){
+  global $conn;
+
+// $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Checked'");
+while($row = mysqli_fetch_array($sql))
+{
+  
+    $transaction_id =$row['transaction_id'];
+    $requestor_name =$row['requestor_name'];
+    $requestor_govmail=$row['requestor_govmail']; 
+    $requestor_position=$row['requestor_position'];
+    $requestor_division=$row['requestor_division'];
+    $requestor_contact_number =$row['requestor_contact_number'];
+    $region=$row['region'];
+        $passenger =$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $raduis =$row['raduis'];
+    $pickup_point=$row['pickup_point'];
+    $destination =$row['destination'];
+    $start_date =$row['start_date'];
+    $end_date =$row['end_date'];
+    $start_time =$row['start_time'];
+    $end_time =$row['end_time'];
+    $purpose =$row['purpose'];
+    $travel_order =$row['travel_order'];
+    $asigned_driver =$row['asigned_driver'];
+    $reservation_status=$row['reservation_status'];
+
+  ?>
+
+
+<tr> 
+    <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $passenger ; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo $travel_order; ?></th>
+        <th><?php echo $asigned_driver; ?></th>
+
+    <th>
+      
+      <?php 
+        if($reservation_status == "Verified")
+        {
+          echo "
+          <span class='badge badge-success'>Verified</span>
+          <th>
+          </th>
+          
+          ";
+      
+        }
+        else if($reservation_status == "Approved")
+        {
+          echo "
+          <span class='badge badge-success'>Approved</span>
+          <th>
+          <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
+          </th>
+          
+          ";
+      
+        } else if($reservation_status == "Pending")
+        {
+          echo "
+          <span class='badge badge-warning'>Pending</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        }else if ($reservation_status == "Checked")
+        {
+
+          echo "
+          <span class='badge badge-info'>Checked</span>
+          <th>
+            <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+          </th>
+          
+          ";
+        }else if ($reservation_status == "Initialed")
+        {
+
+          echo "
+          <span class='badge badge-primary'>Initialed</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          </th>
+          
+          ";
+        }
+        
+        else if ($reservation_status == 'Canceled')
+        {
+          echo "
+          <span class='badge badge-danger'>Canceled</span>
+          <th>
+        
+          </th>
+          
+          ";
+      
+        }else
+        {
+          echo "
+          <span class='badge badge-info'>Processing</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+          </th>
+          
+          ";
+        }
+
+      ?> 
+
+    </th>
+    
+    
+  </tr>
+
+<?php }}?>
+
+<!--Admin List Approved Request -->
+
+<?php
+include 'connection.php';
+function admin_list_approved_request(){
+  global $conn;
+
+// $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Approved'");
+while($row = mysqli_fetch_array($sql))
+{
+  
+    $transaction_id =$row['transaction_id'];
+    $requestor_name =$row['requestor_name'];
+    $requestor_govmail=$row['requestor_govmail']; 
+    $requestor_position=$row['requestor_position'];
+    $requestor_division=$row['requestor_division'];
+    $requestor_contact_number =$row['requestor_contact_number'];
+    $region=$row['region'];
+        $passenger =$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $raduis =$row['raduis'];
+    $pickup_point=$row['pickup_point'];
+    $destination =$row['destination'];
+    $start_date =$row['start_date'];
+    $end_date =$row['end_date'];
+    $start_time =$row['start_time'];
+    $end_time =$row['end_time'];
+    $purpose =$row['purpose'];
+    $travel_order =$row['travel_order'];
+    $asigned_driver =$row['asigned_driver'];
+    $reservation_status=$row['reservation_status'];
+
+  ?>
+
+
+<tr> 
+    <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $passenger ; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo $travel_order; ?></th>
+        <th><?php echo $asigned_driver; ?></th>
+
+    <th>
+      
+      <?php 
+        if($reservation_status == "Verified")
+        {
+          echo "
+          <span class='badge badge-success'>Verified</span>
+          <th>
+          </th>
+          
+          ";
+      
+        }
+        else if($reservation_status == "Approved")
+        {
+          echo "
+          <span class='badge badge-success'>Approved</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        } else if($reservation_status == "Pending")
+        {
+          echo "
+          <span class='badge badge-warning'>Pending</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        }else if ($reservation_status == "Checked")
+        {
+
+          echo "
+          <span class='badge badge-info'>Checked</span>
+          <th>
+            <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+          </th>
+          
+          ";
+        }else if ($reservation_status == "Initialed")
+        {
+
+          echo "
+          <span class='badge badge-primary'>Initialed</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          </th>
+          
+          ";
+        }
+        
+        else if ($reservation_status == 'Canceled')
+        {
+          echo "
+          <span class='badge badge-danger'>Canceled</span>
+          <th>
+        
+          </th>
+          
+          ";
+      
+        }else
+        {
+          echo "
+          <span class='badge badge-info'>Processing</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+          </th>
+          
+          ";
+        }
+
+      ?> 
+
+    </th>
+    
+    
+  </tr>
+
+<?php }}?>
+
+
+
+
+<!-- Motorpool Approved Request For Trip Ticket -->
+
+<?php
+include 'connection.php';
+function motorpool_list_approved_request(){
+  global $conn;
+
+// $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Approved'");
+while($row = mysqli_fetch_array($sql))
+{
+  
+    $transaction_id =$row['transaction_id'];
+    $requestor_name =$row['requestor_name'];
+    $requestor_govmail=$row['requestor_govmail']; 
+    $requestor_position=$row['requestor_position'];
+    $requestor_division=$row['requestor_division'];
+    $requestor_contact_number =$row['requestor_contact_number'];
+    $region=$row['region'];
+        $passenger =$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $raduis =$row['raduis'];
+    $pickup_point=$row['pickup_point'];
+    $destination =$row['destination'];
+    $start_date =$row['start_date'];
+    $end_date =$row['end_date'];
+    $start_time =$row['start_time'];
+    $end_time =$row['end_time'];
+    $purpose =$row['purpose'];
+    $travel_order =$row['travel_order'];
+    $asigned_driver =$row['asigned_driver'];
+    $reservation_status=$row['reservation_status'];
+
+  ?>
+
+
+<tr> 
+    <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $passenger ; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo $travel_order; ?></th>
+        <th><?php echo $asigned_driver; ?></th>
+
+    <th>
+      
+      <?php 
+        if($reservation_status == "Verified")
+        {
+          echo "
+          <span class='badge badge-success'>Verified</span>
+          <th>
+          </th>
+          
+          ";
+      
+        }
+        else if($reservation_status == "Approved")
+        {
+          echo "
+          <span class='badge badge-success'>Approved</span>
+          <th>
+          <a href='../../includes/trip_ticket.html' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          </th>
+          
+          ";
+      
+        } else if($reservation_status == "Pending")
+        {
+          echo "
+          <span class='badge badge-warning'>Pending</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        }else if ($reservation_status == "Checked")
+        {
+
+          echo "
+          <span class='badge badge-info'>Checked</span>
+          <th>
+            <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+          </th>
+          
+          ";
+        }else if ($reservation_status == "Initialed")
+        {
+
+          echo "
+          <span class='badge badge-primary'>Initialed</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          </th>
+          
+          ";
+        }
+        
+        else if ($reservation_status == 'Canceled')
+        {
+          echo "
+          <span class='badge badge-danger'>Canceled</span>
+          <th>
+        
+          </th>
+          
+          ";
+      
+        }else
+        {
+          echo "
+          <span class='badge badge-info'>Processing</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+          </th>
+          
+          ";
+        }
+
+      ?> 
+
+    </th>
+    
+    
+  </tr>
+
+<?php }}?>
+
+<!-- Motorpool List OF Verified Request -->
+<!-- Motorpool Verified Request -->
+<?php
+    function list_of_verified_request(){
       global $conn;
         $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE reservation_status ='Verified'");
 
@@ -388,7 +860,12 @@ function fourth(){
           $requestor_division=$row['requestor_division'];
           $requestor_contact_number =$row['requestor_contact_number'];
           $region=$row['region'];
-          $location=$row['location'];
+          $passenger =$row['passenger'];
+          $number_of_passenger =$row['number_of_passenger'];
+          $name_of_passenger =$row['name_of_passenger'];
+          $office =$row['office'];
+          $raduis =$row['raduis'];
+          $pickup_point=$row['pickup_point'];
           $destination =$row['destination'];
           $start_date =$row['start_date'];
           $end_date =$row['end_date'];
@@ -425,15 +902,21 @@ function fourth(){
 ?>
 
       <tr>
-          <td><?php echo $transaction_id; ?></td>
-          <td><?php echo $requestor_name ; ?></td>
-          <td><?php echo $requestor_division; ?></td>
-          <td><?php echo $destination; ?></td>
-          <td><?php echo $start_date; ?></td>
-          <td><?php echo $end_date; ?></td>
-          <td><?php echo date('H:i a',strtotime($start_time)); ?></td>
-          <td><?php echo date('H:i a',strtotime($end_time)); ?></td>
-          <td><?php echo $purpose; ?></td>
+      <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $passenger ; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo $travel_order; ?></th>
           <td><?php echo $assigned_driver; ?></td>
           <td><?php echo $status; ?></td>
           <td>
@@ -454,6 +937,63 @@ function fourth(){
             </td>  
           </tr>
 <?php }?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -505,11 +1045,11 @@ function all_driver()
 function total_request()
  {
   global $conn;
-  $query = 'SELECT id FROM request_tbl ORDER BY Id';
+  $query = "SELECT * FROM request_tbl WHERE reservation_status = NULL";
   $query_execute = mysqli_query($conn, $query);     
   
   $row = mysqli_num_rows($query_execute);
-  echo "<p>Reservation Request</p>";
+  echo "<p>New Request</p>";
   echo "<h3>$row</h3>"; 
 
 
@@ -755,56 +1295,55 @@ global $conn;
 include 'connection.php';
 function admin_list_request(){
   global $conn;
+
 $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
 //$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Checked'OR reservation_status ='Processing'");
 while($row = mysqli_fetch_array($sql))
 {
   
-  $transaction_id =$row['transaction_id'];
-  $requestor_name =$row['requestor_name'];
-  $requestor_govmail=$row['requestor_govmail']; 
-  $requestor_position=$row['requestor_position'];
-  $requestor_division=$row['requestor_division'];
-  $requestor_contact_number =$row['requestor_contact_number'];
-  $region=$row['region'];
-  $passenger=$row['passenger'];
-  $number_of_passenger=$row['number_of_passenger'];
-  $name_of_passenger=$row['name_of_passenger'];
-  $office=$row['office'];
-  $raduis=$row['raduis'];
-  $pickup_point=$row['pickup_point'];
-  $destination =$row['destination'];
-  $start_date =$row['start_date'];
-  $end_date =$row['end_date'];
-  $start_time =$row['start_time'];
-  $end_time =$row['end_time'];
-  $purpose =$row['purpose'];
-  $travel_order =$row['travel_order'];
-  $asigned_driver =$row['asigned_driver'];
-  $reservation_status=$row['reservation_status'];
+    $transaction_id =$row['transaction_id'];
+    $requestor_name =$row['requestor_name'];
+    $requestor_govmail=$row['requestor_govmail']; 
+    $requestor_position=$row['requestor_position'];
+    $requestor_division=$row['requestor_division'];
+    $requestor_contact_number =$row['requestor_contact_number'];
+    $region=$row['region'];
+        $passenger =$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $raduis =$row['raduis'];
+    $pickup_point=$row['pickup_point'];
+    $destination =$row['destination'];
+    $start_date =$row['start_date'];
+    $end_date =$row['end_date'];
+    $start_time =$row['start_time'];
+    $end_time =$row['end_time'];
+    $purpose =$row['purpose'];
+    $travel_order =$row['travel_order'];
+    $asigned_driver =$row['asigned_driver'];
+    $reservation_status=$row['reservation_status'];
 
   ?>
 
 
-<tr>
+<tr> 
     <th><?php echo $transaction_id; ?></th>
     <th><?php echo $requestor_name ; ?></th>
-    <th><?php echo $transaction_id; ?></th>
-        <th><?php echo $passenger; ?></th>
+    <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
         <th><?php echo $name_of_passenger; ?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
-        <th><?php echo $pickup_point ; ?></th>
+        <th><?php echo $pickup_point; ?></th>
         <th><?php echo $destination; ?></th>
         <th><?php echo $start_date; ?></th>
         <th><?php echo $end_date; ?></th>
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
-        <th><?php echo $end_time; ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
         <th><?php echo $travel_order; ?></th>
         <th><?php echo $asigned_driver; ?></th>
-  
 
     <th>
       

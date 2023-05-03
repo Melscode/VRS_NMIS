@@ -9,7 +9,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              <?php echo total_request();?>
+              <?php echo admin_total_request();?>
               </div>
              
               <div class="icon">
@@ -25,13 +25,13 @@
             <div class="small-box bg-info">
             <div class="inner">
        
-            <?php echo total_driver();?>
+            <?php echo admin_checked_request();?>
                 
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list for initial.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Driver-->
@@ -40,12 +40,12 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              <?php echo total_vehicle();?>
+              <?php echo admin_approved_request();?>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of approved request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!--end Vehicle-->
@@ -54,12 +54,12 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-             <?php echo total_user();?>
+             <?php echo admin_total_request();?>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           
