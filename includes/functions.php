@@ -1041,12 +1041,11 @@ function all_driver()
 
 <?php 
  include 'connection.php';
-
 function total_request()
  {
   global $conn;
   $employee_id =$_SESSION['employee_id'];
-  $query = "SELECT * FROM request_tbl WHERE reservation_status ='NULL'";
+  $query = 'SELECT * FROM request_tbl';
   $query_execute = mysqli_query($conn, $query);     
   
   $row = mysqli_num_rows($query_execute);
