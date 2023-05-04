@@ -232,9 +232,9 @@ session_start();
         <!--end User-->
 
 <!---add calendar--->
-
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
- 
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -243,23 +243,20 @@ session_start();
           
         </div>
       </div><!-- /.container-fluid -->
-</div>
+    </section>
    
       <!-- Main content -->
       <section class="content">
         <div class="row">
-          <div class="col-md-2">
-            <div class="sticky-top md-2 ">
+          <div class="col-md-3">
+            <div class="sticky-top mb-3">
 
               <div class="card">
-              <div class="card-footer ">
-<center><div class=""></h3>
-         <button type="button" class="btn btn-success float-md-none" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
-        </div></center>
-       </div>
-
-                
-                  <div class="" style="width: 50%; bottom: 1px;">
+                <div class="card-header">
+                  <h3 class="card-title">Add Details</h3>
+                </div>
+                <div class="card-body">
+                  <div class="btn-group" style="width: 100%; margin-bottom: 5px;">
                     <!--<ul class="fc-color-picker" id="color-chooser">
                       <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
                       <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
@@ -267,12 +264,14 @@ session_start();
                       <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
                       <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
                     </ul>-->
-                  
+                  </div>
                   <!-- /btn-group -->
                   <div class="input-group">
-                    
+                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
 
-                   
+                    <div class="input-group-append">
+                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                    </div>
                     <!-- /btn-group -->
                   </div>
                   <!-- /input-group -->
@@ -280,13 +279,21 @@ session_start();
               </div>
 
               <div class="card">
-                
-                <div class="">
+                <div class="card-header">
+                  <h4 class="card-title">Reservation Details</h4>
+                </div>
+                <div class="card-body">
                   <!-- the events -->
                   <div id="external-events">
-                     <div class="">
-                   
-                     
+                    <div class="external-event bg-gradient-primary">Travel To Pampanga</div>
+                    <div class="external-event bg-gradient-primary">Travel to Quezon City</div>
+                    <div class="external-event bg-gradient-primary">Travel to Ilocos Norte</div>
+                    <div class="external-event bg-gradient-primary">Travel to Davao</div><br>
+                    <div class="checkbox">
+                      <label for="drop-remove">
+                        <input type="checkbox" id="drop-remove">
+                        Remove after drop
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -357,7 +364,7 @@ session_start();
     var Draggable = FullCalendar.Draggable;
 
     var containerEl = document.getElementById('external-events');
-    // var checkbox = document.getElementById('drop-remove');
+    var checkbox = document.getElementById('drop-remove');
     var calendarEl = document.getElementById('calendar');
 
     // initialize the external events
