@@ -279,7 +279,7 @@ function client_request()
             else 
                  {
                   echo "
-                  <span class='btn-warning'>Your Rrequest is Currently Pending</span>
+                  <span class='btn-warning'>Your Rrequest</span>
                   <th>
                   </th>";
                  }
@@ -942,6 +942,63 @@ while($row = mysqli_fetch_array($sql))
             </td>  
           </tr>
 <?php }?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

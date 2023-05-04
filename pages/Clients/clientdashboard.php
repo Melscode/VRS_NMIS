@@ -25,11 +25,6 @@ session_start();
           </div>
 
           <?php echo add_request();?>
-
-
-
-       
-      
        <div class="modal fade" role="dialog" id="addrequestModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -38,7 +33,7 @@ session_start();
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
-            <form  method="POST">
+            <form  action="clientdashboard.php" method="POST">
 
             <div class="modal-body">
 
@@ -87,23 +82,23 @@ session_start();
 
             <h6>No. of Passengers :</h6>
             <div class="form-group">
-                <input type="number" name="number_of_passenger" class="form-control" placeholder="No.">
+                <input type="number" name="number_of_passenger" class="form-control" placeholder="No." >
               </div>
 
               <h6>Name of Passengers :</h6>
             <div class="form-group">
-                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name">
+                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name" >
               </div>
 
               <h6 >Office (RTOC/Division/Unit/Section) :</h6>
             <div class="form-group">
-                <input type="text" name="office" class="form-control" placeholder="Office">
+                <input type="text" name="office" class="form-control" placeholder="Office" >
               </div>
 
 
               <h6>KIlometer Raduis:</h6>
               <div class="form-input">
-							<select name="raduis" class="form-control">
+							<select name="raduis" class="form-control" >
 								<option  value=""></option>
 									<option value="Within-Manila">Within Manila</option>
 									<option value="Outside-manila"> Outside Manila</option>
@@ -114,22 +109,22 @@ session_start();
               <h4 class= "btn-info">Trip Information</h4>
               <h6>Source/ Pick up point :</h6>
               <div class="form-group">
-                <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point">
+                <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point" >
               </div>
 
               <h6>Destenation/ Drop Off Point</h6>
               <div class="form-group">
-                <input type="text" name="destination" class="form-control" placeholder="Destination">
+                <input type="text" name="destination" class="form-control" placeholder="Destination" >
               </div>
                 
               <h6>From: Date of Trip : </h6>
               <div class="form-group">
-                <input type="date" name="start_date" class="form-control" placeholder="Start Date">
+                <input type="date" name="start_date" class="form-control" placeholder="Start Date" >
               </div>
 
                <h6>To: Date of Trip :</h6>
               <div class="form-group">
-                <input type="date" name="end_date" class="form-control" placeholder="End Date">
+                <input type="date" name="end_date" class="form-control" placeholder="End Date" >
               </div>
 
               <h6>Depature Time :</h6>
@@ -144,7 +139,7 @@ session_start();
 
               <h6>Purpose of Trip</h6>
               <div class="form-input">
-							<select name="purpose" class="form-control">
+							<select name="purpose" class="form-control" >
 								<option  value=""></option>
 									<option value="Seminar/ Meeting">Seminar/ Meeting</option>
 									<option value="Financial Matters">Financial Matters</option>
@@ -165,29 +160,13 @@ session_start();
           </div>
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success add-request" name = 'save' onclick="openPopup()" >Add Request</button>
-              <div class ="popup" id ="popup">
-                <img src="../../dist/img/tick.png">
-                  <h2>Thank You!</h2>
-                  <p>Your details has been successfully submitted. Thanks!</p>
-                  <button type = "button" onclick="closePopup()">OK</button>
-
+              <button type="submit" class="btn btn-success add-request" name = 'save'>Add Request</button>
               </div>
             </div>
 
-          </div>
+</div>
         </div>
-       </div>        
-
-       <script>
-        let popup =document.getElementById("popup");
-        function openPopup(){
-          popup.classlist.add("open-popup");
-        }
-        function closePopup(){
-          popup.classlist.remove("open-popup");
-        }
-       </script>
+       </div>       
 
 
 
