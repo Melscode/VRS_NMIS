@@ -236,15 +236,15 @@ if(mysqli_query($conn,$sql)){
           <?php include 'includes/footer.php';?>
 
           <script>
-$(function(){
+              $(function(){
 
 
-  Swal.fire(
-  'Good job! Request was Sumitted!',
-  'You clicked the button!',
-  'success'
-)
-})
+                Swal.fire(
+                'Good job! Request was Sumitted!',
+                'You clicked the button!',
+                'success'
+              )
+              })
 
 
-</script>
+        </script>

@@ -140,11 +140,13 @@ session_start();
            
           </div>
             <div class="modal-footer">
-               <button type="submit" class="btn btn-success add-request" name = 'save' >Add Request</button>
-            </div>    
+               <button type="submit" class="btn btn-success add-request swaldefaultinfo" name = 'save' >Add Request</button>
+            </div>
+            
           </div>
         </div>
      </div>
+    
    
               <!-- /.card-header -->
               <div class="card-body">
@@ -262,4 +264,18 @@ session_start();
               <!-- /.card -->
                </div>
                  <!-- /.col -->
-          <?php include 'includes/footer.php'; ?>
+                 <?php include 'includes/footer.php'; ?>
+          <script>
+              $(function(){
+
+
+                Swal.fire(
+                'Good job! Request was Sumitted!',
+                'You clicked the button!',
+                'success'
+              )
+              })
+
+
+        </script>    
+        
