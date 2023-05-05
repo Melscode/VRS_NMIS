@@ -338,7 +338,7 @@ session_start();
                 <i class="fas fa-check bg-green"></i>
                 <div class="timeline-item">
                   <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
-                  <h3 class="timeline-header no-border"><a href="#"></a> Supervising Admin Verified your request</h3>
+                  <!-- <h3 class="timeline-header no-border"><a href="#"></a> Supervising Admin Verified your request</h3> -->
                 </div>
               </div>
 
@@ -346,7 +346,7 @@ session_start();
                 <i class="fas fa-times bg-danger"></i>
                 <div class="timeline-item">
                   <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
-                  <h3 class="timeline-header no-border"><a href="#"></a> Supervising Admin Rejected your request</h3>
+                  <!-- <h3 class="timeline-header no-border"><a href="#"></a> Supervising Admin Rejected your request</h3> -->
                 </div>
               </div>
 
@@ -354,7 +354,7 @@ session_start();
                 <i class="fas fa-spinner bg-warning"></i>
                 <div class="timeline-item">
                   <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
-                  <h3 class="timeline-header no-border"><a href="#"></a> Supervising Admin verifying your request</h3>
+                  <!-- <h3 class="timeline-header no-border"><a href="#"></a> Supervising Admin verifying your request</h3> -->
                 </div>
               </div>
               <!-- END timeline item -->
@@ -366,7 +366,7 @@ session_start();
                 <i class="fas fa-check bg-success"></i>
                 <div class="timeline-item">
                   <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
-                  <h3 class="timeline-header"><a href="#"></a> Vehicle and Driver Already Assigned</h3>
+                  <!-- <h3 class="timeline-header"><a href="#"></a> Vehicle and Driver Already Assigned</h3> -->
                 </div>
               </div>
               <!-- END timeline item -->
