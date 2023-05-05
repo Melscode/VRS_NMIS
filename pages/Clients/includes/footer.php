@@ -127,7 +127,6 @@
 
 
 
-<<<<<<< HEAD
 
 <script>
   $(function() {
@@ -284,7 +283,5 @@
     });
   });
 </script>
-=======
->>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
 </body> 
 </html>
