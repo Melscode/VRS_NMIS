@@ -43,12 +43,9 @@
   <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
    <!-- fullcalendar -->
  <link rel="stylesheet" href="../../plugins/fullcalendar/main.css">
-<<<<<<< HEAD
 <!-- SweetAlert2 -->
 <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
-=======
->>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
