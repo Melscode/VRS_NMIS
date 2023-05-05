@@ -73,7 +73,7 @@
               ?>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-person-add"></i> 
               </div>
               <a href="list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -86,59 +86,33 @@
 <!---add calendar--->
 
     <!-- Content Header (Page header) -->
- 
+   
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Calendar</h1>
           </div>
-          
+          </div>
         </div>
       </div><!-- /.container-fluid -->
-</div>
-   
       <!-- Main content -->
-      <section class="content">
-        <div class="row">
           <div class="col-md-2">
-            <div class="sticky-top md-2 ">
-
-              <div class="">
-              <!-- <div class=" "> -->
-<!-- <center><div class=""></h3>
-         <button type="button" class="btn btn-success float-md-none" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
-        </div></center> -->
-       </div>
-
-                
-                  <div class="" style="width: 50%; bottom: 1px;">
-                    
+                <!-- <div class="card-header">
+        <center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button></center> 
+                </div> -->
+                  <!-- /btn-group -->
                   <div class="input-group">
-                    
-
-                   
+                    <div class="input-group-append">
+                    </div>
                     <!-- /btn-group -->
-                  </div>
                   <!-- /input-group -->
-                </div>
-              </div>
-
+                  </div>
               <div class="card">
-                
-                <div class="">
                   <!-- the events -->
                   <div id="external-events">
-                     <div class="">
-                   
-                     
-                    </div>
-                  </div>
                 </div>
                 <!-- /.card-body -->
-              </div>
-
               <!-- /.card -->
-              
             </div>
           </div>
           <!-- /.col -->

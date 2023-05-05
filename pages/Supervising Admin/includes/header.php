@@ -3,12 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
   <title>Dashboard</title>
-=======
-  <title>NMIS-VRS</title>
->>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -97,7 +92,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="admindashboard.php" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fa fa-th-large" aria-hidden="true"></i>
               <p>
                 Dashboard
               </p>
@@ -107,7 +102,7 @@
 
           <li class="nav-item">
             <a href="list of request.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <i class="nav-icon fa fa-list" aria-hidden="true"></i>
               <p>
                 List of request
               </p>
@@ -116,7 +111,7 @@
 
           <li class="nav-item">
             <a href="list of user.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
                 List of Users
               </p>
@@ -125,7 +120,7 @@
           
           <li class="nav-item">
             <a href="list of driver.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
                 List of Driver
               </p>
@@ -134,7 +129,7 @@
 
           <li class="nav-item">
             <a href="list of vehicle.php" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+              <i class=" nav-icon fa fa-car" aria-hidden="true"></i>
               <p>
                 List of Vehicle
               </p>
@@ -144,7 +139,7 @@
           
           <li class="nav-item">
             <a href="data.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-file" aria-hidden="true"></i>
               <p>
               Report
               </p>
@@ -154,7 +149,7 @@
 
           <li class="nav-item">
             <a href="login form/login.html" class="nav-link">
-              <i class="nav-icon fas fa-sign-out"></i>
+              <i class="nav-icon fas fa-sign-out" aria-hidden="true"></i>
               <p>
                 Logout
                 

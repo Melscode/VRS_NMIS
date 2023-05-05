@@ -89,7 +89,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="motorpooldashboard.php" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fa fa-th-large" aria-hidden="true"></i>
               <p>
                 Dashboard
               </p>
@@ -99,7 +99,7 @@
 
           <li class="nav-item">
             <a href="list of request.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <i class="nav-icon fa fa-list" aria-hidden="true"></i>
               <p>
                 List of request
               </p>
@@ -108,7 +108,7 @@
 
           <li class="nav-item">
             <a href="list of driver.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
                 List of Driver
               </p>
@@ -117,7 +117,7 @@
 
           <li class="nav-item">
             <a href="list of vehicle.php" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+            <i class=" nav-icon fa fa-car" aria-hidden="true"></i>
               <p>
                 List of Vehicle
               </p>
@@ -126,7 +126,7 @@
 
           <li class="nav-item">
             <a href="login form/login.html" class="nav-link">
-              <i class="nav-icon fas fa-sign-out"></i>
+            <i class="nav-icon fas fa-sign-out"></i>
               <p>
                 Logout
                 

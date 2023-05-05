@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-
+ 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -89,7 +89,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="chiefadmindashboard.php" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fa fa-th-large" aria-hidden="true"></i>
               <p>
                 Dashboard
               </p>
@@ -98,7 +98,7 @@
 
           <li class="nav-item">
             <a href="list of request.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <i class="nav-icon fa fa-list" aria-hidden="true"></i>
               <p>
                 List of request
               </p>
@@ -107,7 +107,7 @@
 
           <li class="nav-item">
             <a href="list of driver.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
                 List of Driver
               </p>
@@ -116,7 +116,7 @@
 
           <li class="nav-item">
             <a href="list of vehicle.php" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+            <i class=" nav-icon fa fa-car" aria-hidden="true"></i>
               <p>
                 List of Vehicle
               </p>

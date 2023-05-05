@@ -28,17 +28,12 @@ session_start();
 
 
 
-          <div class="card-footer clearfix">
-        <div class="card-header"></h3>
-         <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
-        </div>
-       </div>
       
        <div class="modal fade" role="dialog" id="addrequestModal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header btn-success">
-              <h3 class="modal-title">Add Request</h3>
+              <h3 class="modal-title ">Add Request</h3>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -46,7 +41,7 @@ session_start();
 
             <div class="modal-body swalDefaultSuccess">
 
-              <h4 class="btn-info">Requester's Information</h4>
+              <center><h4 class="btn-info">Requester's Information</h4> <br></center>
 
               <div class="form-input">
 							<select name="requestor_division" class="form-control">
@@ -87,7 +82,7 @@ session_start();
 							</select>
 						</div><br>
 
-            <h4 class= "btn-info">Passenger's Information</h4>
+            <center><h4 class= "btn-info">Passenger's Information</h4> <br></center>
 
             <h6>No. of Passengers :</h6>
             <div class="form-group">
@@ -115,7 +110,7 @@ session_start();
 						</div><br>
 
               <div class="col">
-              <h4 class= "btn-info">Trip Information</h4>
+              <center><h4 class= "btn-info">Trip Information</h4> <br></center>
               <h6>Source/ Pick up point :</h6>
               <div class="form-group">
                 <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point" required>
@@ -178,76 +173,43 @@ session_start();
        </div>        
 
 <!---add calendar--->
-<div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
+   
+    <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Calendar</h1>
           </div>
-          
+          </div>
         </div>
       </div><!-- /.container-fluid -->
-    </section>
+ 
    
       <!-- Main content -->
-      <section class="content">
+      
         <div class="row">
-          <div class="col-md-3">
-            <div class="sticky-top mb-3">
-
+          <div class="col-md-2">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Add Details</h3>
+        <center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button></center> 
                 </div>
-                <div class="card-body">
-                  <div class="btn-group" style="width: 100%; margin-bottom: 5px;">
-                    <!--<ul class="fc-color-picker" id="color-chooser">
-                      <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
-                    </ul>-->
-                  </div>
                   <!-- /btn-group -->
                   <div class="input-group">
-                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
-
                     <div class="input-group-append">
-                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
                     </div>
                     <!-- /btn-group -->
                   </div>
                   <!-- /input-group -->
                 </div>
-              </div>
+          
 
               <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Reservation Details</h4>
-                </div>
-                <div class="card-body">
                   <!-- the events -->
                   <div id="external-events">
-                    <div class="external-event bg-gradient-primary">Travel To Pampanga</div>
-                    <div class="external-event bg-gradient-primary">Travel to Quezon City</div>
-                    <div class="external-event bg-gradient-primary">Travel to Ilocos Norte</div>
-                    <div class="external-event bg-gradient-primary">Travel to Davao</div><br>
-                    <div class="checkbox">
-                      <label for="drop-remove">
-                        <input type="checkbox" id="drop-remove">
-                        Remove after drop
-                      </label>
-                    </div>
-                  </div>
                 </div>
                 <!-- /.card-body -->
-              </div>
-
               <!-- /.card -->
-              
             </div>
           </div>
           <!-- /.col -->

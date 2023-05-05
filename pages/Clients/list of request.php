@@ -17,8 +17,8 @@ session_start();
        <div class="modal fade" role="dialog" id="addrequestModal">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title">Add Request</h3>
+          <div class="modal-header btn-success">
+           <h3 class="modal-title">Add Request</h3>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -27,6 +27,7 @@ session_start();
             <div class="modal-body">
 
               <!-- $_Session['division'] Connect to Login -->
+              <center><h4 class="btn-info">Requester's Information</h4><br></center>
               <div class="form-input">
 							<select name="requestor_division" class="form-control">
 								<option  id= "division" value="">--Select Division--</option>
@@ -68,14 +69,14 @@ session_start();
 						</div><br>
           
 
-            <h4>Passenger's Information </h4><br>
+            <center><h4 class="btn-info">Passenger's Information </h4><br></center>
               <!-- Need Lagyan sa Database number_of_passenger-->
               <h6>No. of Passengers :</h6>
             <div class="form-group">
                 <input type="number" name="number_of_passenger" class="form-control" placeholder="No. of Passengers">
               </div>
 
-              <h6>Name of Passengers :</h6>
+              <h6 >Name of Passengers :</h6>
               <div class="form-group">
                 <input type="text" name="name_of_passenger" class="form-control" placeholder="Name of Passenger">
               </div>
@@ -86,7 +87,7 @@ session_start();
               </div>
 
 
-              <h4>Trip Information</h4><br>
+              <center><h4 class="btn-info">Trip Information</h4><br></center>
               <h6>Kilometer Raduis :</h6>
               <div class="form-input">
 							<select name="raduis" class="form-control">
