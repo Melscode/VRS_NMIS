@@ -136,12 +136,23 @@ function client_request()
               
               ";
           
-            }else
+            }else if($reservation_status == "Canceled")
+            {
+              echo "
+              <span class='badge badge-danger'>Cenceled</span>
+              <th>
+                
+              </th>
+              
+              ";
+          
+            }
+            else
             {
               echo "
               <span class='badge badge-warning'>Pending</span>
               <th>
-                
+              <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
               </th>
               
               ";
