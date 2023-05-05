@@ -44,8 +44,6 @@ function add_request()
         $result = mysqli_query($conn, $sql);
 
         if($result){
-
-  
     }
   }
 }
@@ -1013,7 +1011,7 @@ function assign_driver()
   $sql1= "UPDATE request_tbl SET asigned_driver = '$asigned_driver', reservation_status ='Checked'WHERE transaction_id ='$transaction_id' ";
 
   $result =mysqli_query($conn, $sql1);
-       die(json_encode(array('success' => 1)));
+        (json_encode(array('success' => 1)));
         // echo "<script>alert('Something went Wrong  Successfully!!');</script>"; 
     
 }
@@ -1334,7 +1332,7 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo $number_of_passenger; ?></th>
         <th><?php echo $name_of_passenger; ?></th>
         <th><?php echo $office; ?></th>
-        <th><?php echo $raduis; ?></th>
+        <th><?php echo $raduis; ?></th> 
         <th><?php echo $pickup_point; ?></th>
         <th><?php echo $destination; ?></th>
         <th><?php echo $start_date; ?></th>
@@ -1355,7 +1353,6 @@ while($row = mysqli_fetch_array($sql))
           <th>
           <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
-          
           ";
       
         }
