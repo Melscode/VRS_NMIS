@@ -42,7 +42,7 @@ session_start();
 
             <form  method="POST">
 
-            <div class="modal-body">
+            <div class="modal-body swalDefaultSuccess">
 
               <h4 class="btn-info">Requester's Information</h4>
 
@@ -167,7 +167,8 @@ session_start();
           </div>
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success add-request swalDefaultinfo" name = 'save' >Add Request</button>
+              <button type="button" class="btn btn-success add-request " name = 'save' > Add Request</button>
+            
             </div>
 
           </div>
@@ -315,19 +316,7 @@ session_start();
 
 
 <?php include 'includes/footer.php';?>
-<script>
-              $(function(){
 
-
-                Swal.fire(
-                'Good job! Request was Sumitted!',
-                'You clicked the button!',
-                'success'
-              )
-              })
-
-
-        </script>
 
 <script>
   $(function () {

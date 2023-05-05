@@ -98,7 +98,7 @@ if(mysqli_query($conn,$sql)){
               </div>
 
               <div class="form-group">
-                <input type="number" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password">
               </div>
 
               
