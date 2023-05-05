@@ -157,7 +157,7 @@ session_start();
             
               <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6>
               <div class="form-group">
-                <input type="file" name="travel_order" class="form-control" placeholder="Travel Order" required>
+                <input type="file" name="travel_order" class="form-control" placeholder="Travel Order">
               </div>
 
             </div>

@@ -38,12 +38,24 @@ function add_request()
             $end_time=mysqli_real_escape_string($conn, $_POST['end_time']);
             $purpose= $_POST['purpose'];
             $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
+                $_SESSION['raduis'] =$raduis;
 
         $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, office, raduis, pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
   		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$passenger', '$number_of_passenger', '$name_of_passenger', '$office', '$raduis','$pickup_point', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
-        $result = mysqli_query($conn, $sql);
+  
 
-        if($result){
+        if($result  = mysqli_query($conn, $sql) && $_SESSION['raduis'] == 'Outside-Manila'){
+               echo "<script>alert('Request was Submitted!!')</script>" ;
+
+             
+               if($_SESSION['raduis'] == 'Outside-Manila'){
+                echo "<script>alert('Request')</script>" ;
+               }else{
+
+
+
+               }
+               
     }
   }
 }
