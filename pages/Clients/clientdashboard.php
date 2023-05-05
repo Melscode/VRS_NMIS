@@ -170,14 +170,8 @@ session_start();
 
           
             <div class="modal-footer">
-<<<<<<< HEAD
-              <button type="button" class="btn btn-success add-request " name = 'save' > Add Request</button>
+              <button type="submit" class="btn btn-success " name = 'save' > Add Request</button>
             
-=======
-              <button type="submit" class="btn btn-success " name = 'save' onclick ="Swal.fire('Good job!',
-  'You clicked the button!',
-  'success')">Add Request</button>
->>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
             </div>
           </div>
         </div>
@@ -275,11 +269,8 @@ session_start();
 
 
 <?php include 'includes/footer.php';?>
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
 <script>
   $(function () {
 

@@ -26,9 +26,7 @@
                   </thead>
 
                   <tbody>
-                    <?php
-                     echo list_view_user();
-                    ?>
+                  
                   </tbody>
                 </table>
               </div>
