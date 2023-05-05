@@ -28,8 +28,10 @@ session_start();
 
 
 
-          <div class="">
-        
+          <div class="card-footer clearfix">
+        <div class="card-header"></h3>
+         <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
+        </div>
        </div>
       
        <div class="modal fade" role="dialog" id="addrequestModal">
@@ -78,7 +80,7 @@ session_start();
 
                 <h6>Are you the Passenger?</h6>
               <div class="form-input">
-							<select name="passenger" class="form-control">
+							<select name="passenger" class="form-control" required>
 								<option  value=""></option>
 									<option value="Yes">Yes</option>
 									<option value="No">No</option>
@@ -89,23 +91,23 @@ session_start();
 
             <h6>No. of Passengers :</h6>
             <div class="form-group">
-                <input type="number" name="number_of_passenger" class="form-control" placeholder="No.">
+                <input type="number" name="number_of_passenger" class="form-control" placeholder="No." required>
               </div>
 
               <h6>Name of Passengers :</h6>
             <div class="form-group">
-                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name">
+                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name" required>
               </div>
 
               <h6 >Office (RTOC/Division/Unit/Section) :</h6>
             <div class="form-group">
-                <input type="text" name="office" class="form-control" placeholder="Office">
+                <input type="text" name="office" class="form-control" placeholder="Office" required>
               </div>
 
 
               <h6>KIlometer Raduis:</h6>
               <div class="form-input">
-							<select name="raduis" class="form-control">
+							<select name="raduis" class="form-control" required>
 								<option  value=""></option>
 									<option value="Within-Manila">Within Manila</option>
 									<option value="Outside-manila"> Outside Manila</option>
@@ -116,37 +118,37 @@ session_start();
               <h4 class= "btn-info">Trip Information</h4>
               <h6>Source/ Pick up point :</h6>
               <div class="form-group">
-                <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point">
+                <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point" required>
               </div>
 
               <h6>Destenation/ Drop Off Point</h6>
               <div class="form-group">
-                <input type="text" name="destination" class="form-control" placeholder="Destination">
+                <input type="text" name="destination" class="form-control" placeholder="Destination" required>
               </div>
                 
               <h6>From: Date of Trip : </h6>
               <div class="form-group">
-                <input type="date" name="start_date" class="form-control" placeholder="Start Date">
+                <input type="date" name="start_date" class="form-control" placeholder="Start Date" required>
               </div>
 
                <h6>To: Date of Trip :</h6>
               <div class="form-group">
-                <input type="date" name="end_date" class="form-control" placeholder="End Date">
+                <input type="date" name="end_date" class="form-control" placeholder="End Date" required>
               </div>
 
               <h6>Depature Time :</h6>
               <div class="form-group">
-                <input type="time" name="start_time" class="form-control" placeholder="Start Time">
+                <input type="time" name="start_time" class="form-control" placeholder="Start Time" required>
               </div>
 
               <h6>Estimated Return Time</h6>
               <div class="form-group">
-                <input type="time" name="end_time" class="form-control" placeholder="End Time">
+                <input type="time" name="end_time" class="form-control" placeholder="End Time" required>
               </div>
 
               <h6>Purpose of Trip</h6>
               <div class="form-input">
-							<select name="purpose" class="form-control">
+							<select name="purpose" class="form-control" required>
 								<option  value=""></option>
 									<option value="Seminar/ Meeting">Seminar/ Meeting</option>
 									<option value="Financial Matters">Financial Matters</option>
@@ -160,90 +162,32 @@ session_start();
             
               <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6>
               <div class="form-group">
-                <input type="file" name="travel_order" class="form-control" placeholder="Travel Order">
+                <input type="file" name="travel_order" class="form-control" placeholder="Travel Order" required>
               </div>
 
             </div>
           </div>
 
+          
             <div class="modal-footer">
+<<<<<<< HEAD
               <button type="button" class="btn btn-success add-request " name = 'save' > Add Request</button>
             
+=======
+              <button type="submit" class="btn btn-success " name = 'save' onclick ="Swal.fire('Good job!',
+  'You clicked the button!',
+  'success')">Add Request</button>
+>>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
             </div>
-
           </div>
         </div>
        </div>        
 
-
-
-
-
-
-
-           <!--end Reservation Requests-->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6"> -->
-            <!-- small box -->
-            <!-- <div class="small-box bg-info"> -->
-              <!-- <div class="inner"> -->
-              <?php 
-            // echo total_driver(); 
-              ?>
-              <!-- </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div> -->
-              <!-- <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div> -->
-           <!--end Driver-->
-          <!-- ./col -->
-          
-          <!-- <div class="col-lg-3 col-6"> -->
-            <!-- small box -->
-            <!-- <div class="small-box bg-info"> -->
-              <!-- <div class="inner"> -->
-              <?php 
-                
-              // echo total_vehicle();
-                
-              ?>
-              <!-- </div> -->
-              <!-- <div class="icon"> -->
-                <!-- <i class="ion ion-person-add"></i> -->
-              <!-- </div> -->
-              <!-- <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
-            <!-- </div> -->
-          <!-- </div> -->
-          <!--end Vehicle-->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6"> -->
-            <!-- small box -->
-            <!-- <div class="small-box bg-info"> -->
-              <!-- <div class="inner"> -->
-              <?php 
-                
-                // echo total_user();
-                
-              ?>
-              <!-- </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          
-           ./col -->
-        <!-- </div> --> 
-        <!--end User-->
-
 <!---add calendar--->
-
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
- 
-    <div class="container-fluid">
+    <section class="content-header">
+      <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Calendar</h1>
@@ -251,28 +195,35 @@ session_start();
           
         </div>
       </div><!-- /.container-fluid -->
-</div>
+    </section>
    
       <!-- Main content -->
       <section class="content">
         <div class="row">
-          <div class="col-md-2">
-            <div class="sticky-top md-2 ">
+          <div class="col-md-3">
+            <div class="sticky-top mb-3">
 
               <div class="card">
-              <div class="card-footer ">
-<center><div class=""></h3>
-         <button type="button" class="btn btn-success float-md-none" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
-        </div></center>
-       </div>
-
-                
-                  <div class="" style="width: 50%; bottom: 1px;">
-                    
+                <div class="card-header">
+                  <h3 class="card-title">Add Details</h3>
+                </div>
+                <div class="card-body">
+                  <div class="btn-group" style="width: 100%; margin-bottom: 5px;">
+                    <!--<ul class="fc-color-picker" id="color-chooser">
+                      <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                    </ul>-->
+                  </div>
+                  <!-- /btn-group -->
                   <div class="input-group">
-                    
+                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
 
-                   
+                    <div class="input-group-append">
+                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                    </div>
                     <!-- /btn-group -->
                   </div>
                   <!-- /input-group -->
@@ -280,13 +231,21 @@ session_start();
               </div>
 
               <div class="card">
-                
-                <div class="">
+                <div class="card-header">
+                  <h4 class="card-title">Reservation Details</h4>
+                </div>
+                <div class="card-body">
                   <!-- the events -->
                   <div id="external-events">
-                     <div class="">
-                   
-                     
+                    <div class="external-event bg-gradient-primary">Travel To Pampanga</div>
+                    <div class="external-event bg-gradient-primary">Travel to Quezon City</div>
+                    <div class="external-event bg-gradient-primary">Travel to Ilocos Norte</div>
+                    <div class="external-event bg-gradient-primary">Travel to Davao</div><br>
+                    <div class="checkbox">
+                      <label for="drop-remove">
+                        <input type="checkbox" id="drop-remove">
+                        Remove after drop
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -316,8 +275,11 @@ session_start();
 
 
 <?php include 'includes/footer.php';?>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
 <script>
   $(function () {
 
@@ -484,4 +446,160 @@ session_start();
       $('#new-event').val('')
     })
   })
+</script>
+
+
+<script>
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: false,
+      position: 'top',
+      showConfirmButton: true,
+      timer: 3000
+    });
+
+    $('.swalDefaultSuccess').click(function() {
+      Toast.fire({
+        icon: 'success',
+        title: 'Your Request was Successfully submitted.!'
+      })
+    });
+    $('.swalDefaultInfo').click(function() {
+      Toast.fire({
+        icon: 'info',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultError').click(function() {
+      Toast.fire({
+        icon: 'error',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultWarning').click(function() {
+      Toast.fire({
+        icon: 'warning',
+        title: 'Please fillup the required fields.'
+      })
+    });
+    $('.swalDefaultQuestion').click(function() {
+      Toast.fire({
+        icon: 'question',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+
+    $('.toastrDefaultSuccess').click(function() {
+      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultInfo').click(function() {
+      toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultError').click(function() {
+      toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultWarning').click(function() {
+      toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+
+    $('.toastsDefaultDefault').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultTopLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'topLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomRight').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomRight',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultAutohide').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        autohide: true,
+        delay: 750,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultNotFixed').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        fixed: false,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultFull').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        icon: 'fas fa-envelope fa-lg',
+      })
+    });
+    $('.toastsDefaultFullImage').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        image: '../../dist/img/user3-128x128.jpg',
+        imageAlt: 'User Picture',
+      })
+    });
+    $('.toastsDefaultSuccess').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultInfo').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-info',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultWarning').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-warning',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultDanger').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-danger',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultMaroon').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-maroon',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+  });
 </script>

@@ -74,6 +74,13 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../../dist/js/pages/dashboard.js"></script>
 
+<!-- SweetAlert2 -->
+<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="../../plugins/toastr/toastr.min.js"></script>
+
+
+
 
 <!-- fullCalendar 2.2.5 -->
 <script src="../../plugins/moment/moment.min.js"></script>
@@ -120,6 +127,7 @@
 
 
 
+<<<<<<< HEAD
 
 <script>
   $(function() {
@@ -276,5 +284,7 @@
     });
   });
 </script>
+=======
+>>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
 </body> 
 </html>

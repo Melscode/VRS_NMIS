@@ -119,52 +119,30 @@ while($row = mysqli_fetch_array($result))
 
       <?php include 'includes/footer.php'; ?>
 
-      <script>
-      $(function(){
+ <script>
+$(function(){
 
-        // Swal.fire({
-        //   icon: 'info',
-        //   title: 'Oops...',
-        //   text: 'Something went wrong!',
-        // })
 
 
         $('.add-btn').click( e=> { 
 
-          e.preventDefault()
-          
-          var asigned_driver = $('#asigned_driver').val()
-          var transaction_id = $('#transaction_id').val()
-          var update = $('#update').val()
-
-          var data = { update : update, asigned_driver : asigned_driver,  transaction_id : transaction_id}
-              
+          e.preventDefault();
           $.ajax({
             type : 'POST',
             url : 'assigned driver.php',
-            data : data,
+            data : $('#update_request').serialize(),
             success : function(res){
-             
-              Swal.fire({
-              title: 'Success!',
-              icon : 'success',
-              html: 'Driver assigned.',
-              timer: 2000,
-            }).then((result) => {
+              alert('sample')
 
-              if (result.dismiss === Swal.DismissReason.timer) {
-                window.location = 'list of request.php';
-                 echo alert("Assigned Done!!");
-              }
-            })
-
+    e.preventDefault();
+    alert('sample')
             },
             error : function(resp){
               // console.log(resp)
             }
           })
 
-        })
-      })
-
-</script>
+  })
+})
+      
+      

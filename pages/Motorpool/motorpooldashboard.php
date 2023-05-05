@@ -1,16 +1,16 @@
 <?php include 'includes/header.php'; ?>
 
-              <!-- Main content -->
-            <section class="content">
-          <div class="container-fluid">
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-    <div class="row">
-      <div class="col-lg-3 col-6">
-         <!-- small box -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                
                 <?php 
+                
                   $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
                   $query = "SELECT * FROM request_tbl WHERE reservation_status='Verified'";
@@ -19,47 +19,51 @@
                   $row = mysqli_num_rows($query_execute);
                   echo "<p>Reservation Request for Assigning Driver</p>";
                   echo "<h3>$row</h3>"; 
+                  
                 ?>
-
-                   </div>
-                 <div class="icon">
+              </div>
+             
+              <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
               <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-         <!--end Reservation Requests-->
+           <!--end Reservation Requests-->
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+            <div class="inner">
+              
+            <?php 
+                
+                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+
+                  $query = 'SELECT id FROM users_tbl ORDER BY Id';
+                  $query_execute = mysqli_query($conn, $query);     
+                  
+                  $row = mysqli_num_rows($query_execute);
+                  echo "<p>Drivers</p>";
+                  echo "<h3>$row</h3>"; 
+                  
+                ?>
+                
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+           <!--end Driver-->
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              
-            <?php   
-              $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
-
-              $query = 'SELECT id FROM users_tbl ORDER BY Id';
-              $query_execute = mysqli_query($conn, $query);     
-              
-              $row = mysqli_num_rows($query_execute);
-              echo "<p>Drivers</p>";
-              echo "<h3>$row</h3>"; 
-            ?>
-                
-                     </div>
-                   <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-           <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-             </div>
-                </div>
-                   <!--end Driver-->
-                    <!-- ./col -->
-                      <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                          <div class="small-box bg-info">
-                            <div class="inner">
               <?php 
+                
                 $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
                 $query = 'SELECT id FROM vehicles_tbl ORDER BY Id';
@@ -67,26 +71,24 @@
                 
                 $row = mysqli_num_rows($query_execute);
                 echo "<p>Vehicles</p>";
-                echo "<h3>$row</h3>";  
+                echo "<h3>$row</h3>"; 
+                
               ?>
-
-
-                     </div>
-                  <div class="icon">
-                <i class="ion ion-person-add"></i>
-             </div>
-          <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
               </div>
-               <!--end Vehicle-->
-                 <!-- ./col -->
-                   <div class="col-lg-3 col-6">
-                     <!-- small box -->
-                       <div class="small-box bg-info">
-                          <div class="inner">
-
-
-              <?php
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!--end Vehicle-->
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+              <?php 
+                
                 $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
 
                 $query = "SELECT * FROM request_tbl WHERE reservation_status='Approved'";
@@ -95,19 +97,19 @@
                 $row = mysqli_num_rows($query_execute);
                 echo "<p>Approved Request</p>";
                 echo "<h3>$row</h3>"; 
+                
               ?>
-
-
               </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                    </div>
-                      <a href="list of approved request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                           </div>
-                         <!-- ./col -->
-                           </div>
-                             <!--end User-->
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="list of approved request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- ./col -->
+        </div>
+        <!--end User-->
 
 <!---add calendar--->
 
@@ -121,11 +123,16 @@
           
         </div>
       </div><!-- /.container-fluid -->
+<<<<<<< HEAD
 </div>
+=======
+    </section>
+>>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
    
       <!-- Main content -->
       <section class="content">
         <div class="row">
+<<<<<<< HEAD
           <div class="col-md-2">
             <div class="sticky-top md-2 ">
 
@@ -157,11 +164,83 @@
                      <div class="">
                    
                      
+=======
+          <div class="col-md-3">
+            <div class="sticky-top mb-3">
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Add Details</h3>
+                </div>
+                <div class="card-body">
+                  <div class="btn-group" style="width: 100%; margin-bottom: 5px;">
+                    <!--<ul class="fc-color-picker" id="color-chooser">
+                      <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                    </ul>-->
+                  </div>
+                  <!-- /btn-group -->
+                  <div class="input-group">
+                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                    <div class="input-group-append">
+                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                    </div>
+                    <!-- /btn-group -->
+                  </div>
+                  <!-- /input-group -->
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Reservation Details</h4>
+                </div>
+                <div class="card-body">
+                  <!-- the events -->
+                  <div id="external-events">
+                    <div class="external-event bg-gradient-primary">Travel To Pampanga</div>
+                    <div class="external-event bg-gradient-primary">Travel to Quezon City</div>
+                    <div class="external-event bg-gradient-primary">Travel to Ilocos Norte</div>
+                    <div class="external-event bg-gradient-primary">Travel to Davao</div><br>
+                    <div class="checkbox">
+                      <label for="drop-remove">
+                        <input type="checkbox" id="drop-remove">
+                        Remove after drop
+                      </label>
+>>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
                     </div>
                   </div>
                 </div>
                 <!-- /.card-body -->
               </div>
+<<<<<<< HEAD
+=======
+
+              <!-- /.card -->
+              
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card card-primary">
+              <div class="card-body p-0">
+                <!-- THE CALENDAR -->
+                <div id="calendar"></div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+>>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
 
               <!-- /.card -->
               

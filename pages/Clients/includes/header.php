@@ -4,7 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard</title>
+  <title>NMIS-VRS</title>
+  <script>
+    if(window.history.replaceState){
+      window.history.replaceState(null, null, window.location.href);
+    }</script>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -15,6 +19,12 @@
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
+
+     <!-- Toastr -->
+  <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -33,9 +43,12 @@
   <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
    <!-- fullcalendar -->
  <link rel="stylesheet" href="../../plugins/fullcalendar/main.css">
+<<<<<<< HEAD
 <!-- SweetAlert2 -->
 <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
+=======
+>>>>>>> 676fac14e6fc2a81290e3d422b435d732e73cfa5
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -45,7 +58,16 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../pages/examples/contacts.html" class="nav-link">Contacts</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../pages/examples/faq.html" class="nav-link">FAQs</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -58,16 +80,20 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    
+    <a href="../../index.html" class="brand-link">
+      <img src="../../dist/img/NMIS_LOGO.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">NMIS_VRS</span>
+    </a>
+
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/NMIS_LOGO.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../../dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">NMIS_VRS</a>
+          <a href="../examples/profile.html" class="d-block">Alexander the Great</a>
         </div>
       </div>
 
@@ -97,8 +123,11 @@
             </a>
           </li>
 
+
+        
+
           <li class="nav-item">
-            <a href="trails.php" class="nav-link">
+            <a href="timeline.php" class="nav-link">
               <i class="nav-icon fas fa-car"></i>
               <p>
                 Tracking 

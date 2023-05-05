@@ -44,8 +44,6 @@ function add_request()
         $result = mysqli_query($conn, $sql);
 
         if($result){
-
-  
     }
   }
 }
@@ -274,7 +272,7 @@ function client_request()
             else 
                  {
                   echo "
-                  <span class='btn-warning'>Your Rrequest</span>
+                  <span class=''> </span>
                   <th>
                   </th>";
                  }
@@ -436,11 +434,11 @@ while($row = mysqli_fetch_array($sql))
     $requestor_division=$row['requestor_division'];
     $requestor_contact_number =$row['requestor_contact_number'];
     $region=$row['region'];
-    $passenger =$row['passenger'];
-    $number_of_passenger=$row['number_of_passenger'];
-    $name_of_passenger =$row['name_of_passenger'];
-    $office =$row ['office'];
-    $raduis =$row['raduis'];
+        $passenger =$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
     $start_date =$row['start_date'];
@@ -491,7 +489,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-      
+          <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
           </th>
           
           ";
@@ -776,7 +774,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../includes/NMIS_New-Standard-Letterhead VTT 2023.pdf' class='btn btn-info btn-sm'>Generate Ticket</a>
+          <a href='../../includes/trip_ticket.html' class='btn btn-primary btn-sm'>Generate Ticket</a>
           </th>
           
           ";
@@ -902,9 +900,9 @@ while($row = mysqli_fetch_array($sql))
 ?>
 
       <tr>
-        <th><?php echo $transaction_id; ?></th>
-        <th><?php echo $requestor_name ; ?></th>
-        <th><?php echo $passenger ; ?></th>
+      <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
         <th><?php echo $name_of_passenger; ?></th>
         <th><?php echo $office; ?></th>
@@ -917,9 +915,9 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
         <th><?php echo $travel_order; ?></th>
-        <td><?php echo $assigned_driver; ?></td>
-        <td><?php echo $status; ?></td>
-        <td>
+          <td><?php echo $assigned_driver; ?></td>
+          <td><?php echo $status; ?></td>
+          <td>
               <form method="POST">
               <input type="hidden" name="transaction_id" value="<?php echo $transaction_id;?>">
               <button type="submit" class="btn btn-primary btn-sm" name="assign_driver">Edit</button>
@@ -1013,7 +1011,7 @@ function assign_driver()
   $sql1= "UPDATE request_tbl SET asigned_driver = '$asigned_driver', reservation_status ='Checked'WHERE transaction_id ='$transaction_id' ";
 
   $result =mysqli_query($conn, $sql1);
-       die(json_encode(array('success' => 1)));
+        (json_encode(array('success' => 1)));
         // echo "<script>alert('Something went Wrong  Successfully!!');</script>"; 
     
 }
@@ -1041,11 +1039,11 @@ function all_driver()
 
 <?php 
  include 'connection.php';
+
 function total_request()
  {
   global $conn;
-  $employee_id =$_SESSION['employee_id'];
-  $query = 'SELECT * FROM request_tbl';
+  $query = "SELECT * FROM request_tbl WHERE reservation_status = NULL";
   $query_execute = mysqli_query($conn, $query);     
   
   $row = mysqli_num_rows($query_execute);
@@ -1334,7 +1332,7 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo $number_of_passenger; ?></th>
         <th><?php echo $name_of_passenger; ?></th>
         <th><?php echo $office; ?></th>
-        <th><?php echo $raduis; ?></th>
+        <th><?php echo $raduis; ?></th> 
         <th><?php echo $pickup_point; ?></th>
         <th><?php echo $destination; ?></th>
         <th><?php echo $start_date; ?></th>
@@ -1355,7 +1353,6 @@ while($row = mysqli_fetch_array($sql))
           <th>
           <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
-          
           ";
       
         }
@@ -1364,7 +1361,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          
+          <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
           </th>
           
           ";
