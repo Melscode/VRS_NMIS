@@ -9,7 +9,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              <?php echo admin_total_request();?>
+              <?php echo admin_new_request();?>
               </div>
              
               <div class="icon">
@@ -19,6 +19,25 @@
             </div>
           </div>
            <!--end Reservation Requests-->
+           <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+            <div class="inner">
+       
+            <?php echo admin_outside_manila_request();?>
+                
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="list_outside_manila_request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+
+
+
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -59,7 +78,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list_of_admin_total_request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           

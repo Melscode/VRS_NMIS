@@ -56,7 +56,10 @@
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    
+  <script>
+    if(window.history.replaceState){
+      window.history.replaceState(null, null, window.location.href);
+    }</script>
 
     <!-- Sidebar -->
     <div class="sidebar">

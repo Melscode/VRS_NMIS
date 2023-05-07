@@ -41,7 +41,7 @@
               <div class ="form-group">
               <select name="assigned_driver" class="form-control">
                             <option value="">-- Select Driver--</option>
-                               <?php echo all_driver();?>
+                               <?php echo alls_driver();?>
 							</select>
               </div>
       
@@ -77,7 +77,8 @@
                   </thead>
                   <tbody>
                   <tr>
-                  <?php echo view_vehicle();?>
+                  <?php echo view_vehicle();
+                        echo remove_vehicle();?>
                       <!-- Delete  -->
                       <div class="modal fade" role="dialog" id="deleteModal">
                         <div class="modal-dialog">
@@ -93,7 +94,7 @@
                             </div>
                     
                             <div class="modal-footer">
-                              <button type="submit" class="btn btn-danger">Delete</button>
+                              <button type="submit" class="btn btn-danger" name= "delete">Delete</button>
                             </div>
                           </div>
                         </div>

@@ -40,7 +40,8 @@ session_start();
             <form  method="POST">
 
             <div class="modal-body swalDefaultSuccess">
-
+              <div class="row">
+                <div class="col-sm">
               <center><h4 class="btn-info">Requester's Information</h4> <br></center>
 
               <div class="form-input">
@@ -108,8 +109,8 @@ session_start();
 									<option value="Outside-manila"> Outside Manila</option>
 							</select>
 						</div><br>
-
-              <div class="col">
+</div>
+              <div class="col-sm">
               <center><h4 class= "btn-info">Trip Information</h4> <br></center>
               <h6>Source/ Pick up point :</h6>
               <div class="form-group">
@@ -171,7 +172,7 @@ session_start();
           </div>
         </div>
        </div>        
-
+</div>
 <!---add calendar--->
 
     <!-- Content Header (Page header) -->

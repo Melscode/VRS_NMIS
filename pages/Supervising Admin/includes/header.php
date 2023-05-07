@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <script>
+    if(window.history.replaceState){
+      window.history.replaceState(null, null, window.location.href);
+    }</script>
 
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
