@@ -19,8 +19,9 @@
 			<!-- IMAGE CONTAINER END -->
 
 			<!-- FORM CONTAINER BEGIN -->
+
 			<div class="col-lg-6 col-md-6 infinity-form-container">				
-				<div class="col-lg-9 col-md-12 col-sm-9 col-xs-12 infinity-form">
+			<div class="col-lg-9 col-md-12 col-sm-9 col-xs-12 infinity-form">
 					<!-- Company Logo -->
 					<div class="text-center mb-3 mt-5">
 						<img src="images/NMIS_LOGO.png" width="150px">
@@ -54,7 +55,7 @@
 
 
 						<div class="form-input">
-						</div><br>
+						</div>
 						<div class="row mb-3">
 						<!-- Remember Checkbox -->
 			        <div class="col-auto d-flex align-items-center">
@@ -67,9 +68,8 @@
 			 	    <!-- Login Button -->
 			      <div class="mb-3"> 
 							<button type="submit" class="btn btn-block">Login</button>
+							<!-- <button type="submit" class="btn btn-block">Track your Document</button> -->
 
-
-							
 						</div>
 						<div class="text-right ">
 			        <a href="reset.html" class="forget-link">Forgot password?</a>

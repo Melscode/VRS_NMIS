@@ -39,7 +39,7 @@ session_start();
 
             <form  method="POST">
 
-            <div class="modal-body swalDefaultSuccess">
+            <div class="modal-body ">
               <div class="row">
                 <div class="col-sm">
               <center><h4 class="btn-info">Requester's Information</h4> <br></center>
@@ -166,7 +166,7 @@ session_start();
 
           
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success " name = 'save' > Add Request</button>
+              <button type="submit" class="btn btn-success  swalDefaultSuccess" name = 'save' > Add Request</button>
             
             </div>
           </div>

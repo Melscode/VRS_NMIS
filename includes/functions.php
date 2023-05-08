@@ -41,17 +41,19 @@ function add_request()
   		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$passenger', '$number_of_passenger', '$name_of_passenger', '$office', '$raduis','$pickup_point', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
   
 
-        if($result  = mysqli_query($conn, $sql) && $_SESSION['raduis'] == 'Outside-Manila'){
-               echo "<script>alert('Request was Submitted!!')</script>" ;
-
-             
-               if($_SESSION['raduis'] == 'Outside-Manila'){
-                echo "<script>alert('Request')</script>" ;
-               }else{
-               }        
+        if($result  = mysqli_query($conn, $sql) ){
+          ?>
+                <div class="alert alert-success " role="alert">
+                  
+                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                  Success alert preview. This alert is dismissable.
+                </div>
+             <?php
+              
+      }        
     }
   }
-}
+
 ?>
 
 
@@ -265,32 +267,29 @@ function client_request()
             if($result['transaction_description'] == "Verified")
 
                  {
-                  echo "
-                  <span class='btn btn-success'> The request was Verified by Supervising Admin</span>
+                  ?>
+                  
+     
+              <li class="step-wizard-item ">
+                  <span class="progress-count current-item ">1</span>
+                  <span class="progress-label"> <span class='btn btn-success'> The request was Verified by Supervising Admin</span></span>
+              </li>
+   
+                <?php  echo "
+                  
+            
+       
+  
+                 
                   <th>
+                  
                   </th>";
                   
                  }
-            else if($result['transaction_description'] == "Processing")
-                 {
-                  echo "
-                  <span class=''>Processing</span>
-                  <th>
-                  </th>";
-                 }
-            else   if($result['transaction_description'] == "Canceled") 
-                 {
-                  echo "
-                  <span class=''>Cancelled</span>
-                  <th>
-                  </th>";
-                 }   
+           
             else 
                  {
-                  echo "
-                  <span class=''> </span>
-                  <th>
-                  </th>";
+                 
                  }
         }
       }
@@ -312,8 +311,8 @@ function third_view(){
         </div>
       <div>
       <div class="timeline-item">
-        <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
-          <h3 class="timeline-header no-border"><a href="#"></a> 
+        <!-- <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span> -->
+          <!-- <h3 class="timeline-header no-border"><a href="#"></a>  -->
 
 
      
@@ -383,6 +382,85 @@ function fourth(){
     }
   }
 ?>
+
+<?php 
+
+function initial_supervising(){
+  global $conn;
+
+ if(isset($_POST['test']))
+                {
+                  $transaction_id = $_POST['transaction_id'];
+                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+                  $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
+                  while($result = mysqli_fetch_array($sql))
+                  {
+                        if($result['transaction_description'] == "Initialed"){
+                            
+                          
+                          ?>
+                          
+
+                          <li class="step-wizard-item ">
+                <span class="progress-count current-item">2</span>
+                <span class="progress-label"><span class='btn btn-success'>Assinged Driver Swabe!!</span></span>
+            </li>
+            <li class="step-wizard-item ">
+                <span class="progress-count current-item">2</span>
+                <span class="progress-label"><span class='btn btn-success'>Your request was intitial by Supervising Admin</span></span>
+            </li>
+                        
+                          
+            <?php
+                             }
+                             else{
+                              
+                             }
+                            }
+             }             }
+                ?>
+
+
+
+
+<?php 
+ function approved_chiefadmin(){
+  global $conn;
+if(isset($_POST['test']))
+                {
+                  $transaction_id = $_POST['transaction_id'];
+                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+                  $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
+
+                  while($result = mysqli_fetch_array($sql))
+                  {
+                        if($result['transaction_description'] == "Approved"){
+                            
+                                              
+                          ?>
+
+
+                          <li class="step-wizard-item ">
+                <span class="progress-count current-item">2</span>
+                <span class="progress-label"><span class='btn btn-success'>Your request was Approved by Chief Admin</span></span>
+            </li>
+                          
+            <?php
+
+                        
+                             }
+                             else{
+                              
+                             }
+                            }
+                          }
+               } ?>
+
+
+
+
+
+
 
 
 <!-- Supervising Admin Dashboard -->
@@ -1039,6 +1117,9 @@ while($row = mysqli_fetch_array($sql))
 
 
 
+
+
+
 <!-- ALERST FOR MOTORPOOL LIST REQUEST -->
  
 
@@ -1432,7 +1513,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Verified</span>
           <th>
-          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm '>Cancel</a>
           </th>
           ";
       
@@ -1772,12 +1853,9 @@ while($row = mysqli_fetch_array($sql))
         {
           echo "
           <span class='badge badge-danger'>Canceled</span>
-          <th>
-        
-          </th>
-          
-          ";
-      
+          <th>  
+          </th> 
+          ";   
         }else 
         {
           echo "
@@ -2050,46 +2128,3 @@ if(isset($_POST['register'])){
 
 
 
-<?php
-  use PHPMailer\PHPMailer\PHPMailer;
-  use PHPMailer\PHPMailer\Exception;
-  require 'PHPMailer-master/src/Exception.php';
-  require 'PHPMailer-master/src/PHPMailer.php';
-  require 'PHPMailer-master/src/SMTP.php';
-
-function send_mail($recipient,$subject,$message)
-{
-
-  $mail = new PHPMailer();
-  $mail->IsSMTP();
-
-  $mail->SMTPDebug  = 0;  
-  $mail->SMTPAuth   = TRUE;
-  $mail->SMTPSecure = "tls";
-  $mail->Port       = 587;
-  $mail->Host       = "smtp.gmail.com";
-  //$mail->Host       = "smtp.mail.yahoo.com";
-  $mail->Username   = "your-email@gmail.com";
-  $mail->Password   = "your-app-password";
-
-  $mail->IsHTML(true);
-  $mail->AddAddress($recipient, "recipient-name");
-  $mail->SetFrom("your-email@gmail.com", "your-sender-name");
-  //$mail->AddReplyTo("reply-to-email", "reply-to-name");
-  //$mail->AddCC("cc-recipient-email", "cc-recipient-name");
-  $mail->Subject = $subject;
-  $content = $message;
-
-  $mail->MsgHTML($content); 
-  if(!$mail->Send()) {
-    //echo "Error while sending Email.";
-    //var_dump($mail);
-    return false;
-  } else {
-    //echo "Email sent successfully";
-    return true;
-  }
-
-}
-
-?>
