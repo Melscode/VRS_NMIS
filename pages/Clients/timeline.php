@@ -179,14 +179,14 @@ session_start();
 body {
     font-family: "Poppins", sans-serif;
     
-    background: url('../login form/images/NMIS_LOGO.png') center no-repeat;
-    background-size: 30% 50%;
+    background: url('../login form/images/opd.png') center no-repeat;
+    background-size: cover;
 }
 
 .step-wizard {
     /* background-color: #0000 ; */
     /* background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); */
-    height: 100vh;
+    height: 50vh;
     width: 100%;
 
     /* display: flex; */

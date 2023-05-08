@@ -36,6 +36,8 @@ if(mysqli_query($conn,$sql)){
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header btn-success">
+
+         
               <h3 class="modal-title">Add Request</h3>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -43,6 +45,8 @@ if(mysqli_query($conn,$sql)){
             <form  method="POST" >
 
             <div class="modal-body ">
+   <div class="row">
+    <div class="col-sm">
 
               <h4 class="btn-info">Requester's Information</h4>
 
@@ -105,14 +109,13 @@ if(mysqli_query($conn,$sql)){
 
               <h6>KIlometer Raduis:</h6>
               <div class="form-input">
-							<select name="raduis" class="form-control" required>
-								<option  value=""></option>
-									<option value="Within-Manila">Within Manila</option>
-									<option value="Outside-manila"> Outside Manila</option>
-							</select>
+							<input type="checkbox" id="raduis" name="raduis" value="Within-Manila">
+              <label for="raduis">Within-Manila</label><br>
+              <input type="checkbox" id="raduis" class="swalDefaultSuccess"  name="raduis" value="Outside-Manila">
+              <label for="raduis"> Outside-Manila</label><br>
 						</div><br>
-
-              <div class="col">
+</div>
+              <div class="col-sm">
               <h4 class= "btn-info">Trip Information</h4>
               <h6>Source/ Pick up point :</h6>
               <div class="form-group">
@@ -174,7 +177,7 @@ if(mysqli_query($conn,$sql)){
           </div>
         </div>
        </div>        
-
+</div>
 
  
               <!-- /.card-header -->

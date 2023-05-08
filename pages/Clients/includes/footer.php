@@ -145,14 +145,14 @@
     $('.swalDefaultSuccess').click(function()  {
       
       Toast.fire({
-        icon: 'success',
-        title: 'Your Vehicle Request was Submitted .'
+        icon: 'info',
+        title: ' Reminder: Please provide a approved requirements for outside-manila request for Vehicle ..'
       })
     });
     $('.swalDefaultInfo').click(function() {
       Toast.fire({
         icon: 'info',
-        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        title: ''
       })
     });
     $('.swalDefaultError').click(function() {

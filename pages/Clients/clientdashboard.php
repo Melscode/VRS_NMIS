@@ -101,13 +101,12 @@ session_start();
               </div>
 
 
-              <h6>KIlometer Raduis:</h6>
-              <div class="form-input">
-							<select name="raduis" class="form-control" required>
-								<option  value=""></option>
-									<option value="Within-Manila">Within Manila</option>
-									<option value="Outside-manila"> Outside Manila</option>
-							</select>
+              <h6 class="swalDefaultInfo">Kilometer Raduis:</h6>
+              <div class="form-input ">
+							<input type="radio" id="raduis" name="raduis" value="Within-Manila">
+              <label for="raduis">Within-Manila</label><br>
+              <input type="radio" id="raduis" class="swalDefaultSuccess"  name="raduis" value="Outside-Manila">
+              <label for="raduis"> Outside-Manila</label><br>
 						</div><br>
 </div>
               <div class="col-sm">
@@ -166,7 +165,7 @@ session_start();
 
           
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success  swalDefaultSuccess" name = 'save' > Add Request</button>
+              <button type="submit" class="btn btn-success " name = 'save' > Add Request</button>
             
             </div>
           </div>
@@ -414,8 +413,8 @@ session_start();
 
     $('.swalDefaultSuccess').click(function() {
       Toast.fire({
-        icon: 'success',
-        title: 'Your Request was Successfully submitted.!'
+        icon: 'info',
+        title: 'Reminder: Please provide a approved requirements for outside-manila request for Vehicle ..'
       })
     });
     $('.swalDefaultInfo').click(function() {

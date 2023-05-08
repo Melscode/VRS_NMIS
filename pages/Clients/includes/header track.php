@@ -50,24 +50,34 @@
         rel="stylesheet">
 
 </head>
-<body>
-  
-   
-      
+<body class="hold-transition lockscreen">
 
+  <div class="lockscreen-logo">
+    <a href=""><b><br>Tracking</a>
+  </div>
+ 
+
+  <!-- START LOCK SCREEN ITEM -->
+  <div class="lockscreen-item">
+    <!-- lockscreen image -->
+    <div class="lockscreen-image">
+      <img src="../../dist/img/NMIS_LOGO.png" alt="User Image">
+    </div>
   <!-- Content Wrapper. Contains page content -->
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-           <center><h1>Request Vehicle Tracking</h1><br><br><br>
-
-  <form method="POST" >
+          
+  <form class="lockscreen-credentials" method="POST" >
         <div class="input-group mb-6">
          <input type="text" class="form-control" placeholder="Transaction_ID" name="transaction_id"  required>
-          
-              <button type="submit" name="test" class="btn btn-info"><i class="fas fa-search"></i>  Search</button>
-          
-         </center> 
-      </div><!-- /.container-fluid -->
+              <button type="submit" name="test" class="btn btn-info"><i class="fas fa-arrow-right text-muted"></i> </button>
+      </div>
+      </div>
+      </div>
+    </form>
+  
     </section>
+
+    

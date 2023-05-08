@@ -44,9 +44,9 @@ function add_request()
         if($result  = mysqli_query($conn, $sql) ){
           ?>
                 <div class="alert alert-success " role="alert">
-                  
-                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
-                  Success alert preview. This alert is dismissable.
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">OK</button>
+                  <h5><i class="icon fas fa-check"></i>REQUEST</h5>
+                  was Successfully submitted! plss Click ok.
                 </div>
              <?php
               
@@ -275,22 +275,25 @@ function client_request()
                   <span class="progress-label"> <span class='btn btn-success'> The request was Verified by Supervising Admin</span></span>
               </li>
    
-                <?php  echo "
+                <?php  
+
+     }else if($result['transaction_description'] == "Canceled"){
+      ?>
                   
-            
-       
-  
-                 
-                  <th>
-                  
-                  </th>";
-                  
-                 }
-           
-            else 
-                 {
-                 
-                 }
+     
+      <li class="step-wizard-item ">
+          <span class="">0</span>
+          <span class="progress-label"> <span class='btn btn-warning'>Your request is still Pending </span></span>
+      </li>
+
+        <?php  
+
+     }else{
+
+    
+
+
+     }
         }
       }
      }
@@ -447,21 +450,14 @@ if(isset($_POST['test']))
                           
             <?php
 
-                        
-                             }
-                             else{
-                              
-                             }
-                            }
-                          }
+        
+              }
+              else{
+              
+              }
+            }
+          }
                } ?>
-
-
-
-
-
-
-
 
 <!-- Supervising Admin Dashboard -->
       <!-- Admin Total Request -->

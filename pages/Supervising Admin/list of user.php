@@ -235,16 +235,3 @@ if(mysqli_query($conn,$sql)){
           <!-- /.col -->
           <?php include 'includes/footer.php';?>
 
-          <script>
-              $(function(){
-
-
-                Swal.fire(
-                'Good job! Request was Sumitted!',
-                'You clicked the button!',
-                'success'
-              )
-              })
-
-
-        </script>
