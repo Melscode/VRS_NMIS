@@ -90,6 +90,7 @@ session_start();
                         while($result = mysqli_fetch_array($sql))
                         {
                           if($result['transaction_description'] == "Checked"){
+
                           
                           echo "
                               
@@ -98,11 +99,7 @@ session_start();
                               ";
                              }
                              else{
-                              echo "
-                              <span class=''></span>
-                              <th>
-                              </th>
-                              ";
+                              
                              }
                             }
                           }
@@ -177,24 +174,29 @@ session_start();
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 body {
     font-family: "Poppins", sans-serif;
+    
+    background: url('../login form/images/NMIS_LOGO.png') center no-repeat;
+    background-size: 30% 50%;
 }
 
 .step-wizard {
-    background-color: ;
-    background-image: ;
+    /* background-color: #0000 ; */
+    /* background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); */
     height: 100vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 .step-wizard-list{
-    background: #fff;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
-    color: #333;
+    
+    /* box-shadow: 0 15px 25px rgba(0,0,0,0.1); */
+    color: transparent;
     list-style-type: none;
     border-radius: 10px;
     display: flex;
@@ -289,22 +291,7 @@ body {
 }
 
   </style>
-             <div class="step-wizard">
-        <div class="step-wizard-list">
 
-          <div class="step-wizard">
-        <div class="step-wizard-list">
-
-        <form method="POST" >
-        <div class="input-group mb-2">
-         <input type="text" class="form-control" placeholder="Transaction_ID" name="transaction_id"  required>
-          <div class="input-group-append">
-              <button type="submit" name="test" class="btn btn-info"><i class="fas fa-search"></i>  Search</button>
-            <!--  <span class="fas fa-user"></span>-->
-          </div>
-        </div>
-        </div>
-        </div<br><br>
         <section class="step-wizard">
         <ul class="step-wizard-list">
         <?php echo second_view();?>
@@ -312,8 +299,7 @@ body {
         <?php initial_supervising();?>
 
         <?php       approved_chiefadmin();?>
-           
-            
+ 
         </ul>
     </section>
 

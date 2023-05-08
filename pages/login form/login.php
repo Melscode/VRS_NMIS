@@ -67,8 +67,8 @@
 			 	    </div>
 			 	    <!-- Login Button -->
 			      <div class="mb-3"> 
-							<button type="submit" class="btn btn-block">Login</button>
-							<!-- <button type="submit" class="btn btn-block">Track your Document</button> -->
+							<button type="submit" class="btn btn-block">Login</button><br>
+							<a href="../Clients/timeline.php" class="btn btn-primary">Track your Document</a>
 
 						</div>
 						<div class="text-right ">
