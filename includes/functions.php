@@ -892,7 +892,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../includes/trip_ticket.html' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          <a href='../../includes/NMIS_New-Standard-Letterhead VTT 2023.pdf' class='btn btn-primary btn-sm'>Generate Ticket</a>
           </th>
           
           ";
