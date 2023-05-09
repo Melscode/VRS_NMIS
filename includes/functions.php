@@ -1199,7 +1199,8 @@ function all_driver()
 function total_request()
  {
   global $conn;
-  $query = "SELECT * FROM request_tbl WHERE reservation_status is NULL";
+  $requestor_name = $_POST['requestor_name'];
+  $query = "SELECT * FROM request_tbl WHERE reservation_status is NULL AND requestor_name ='$requestor_name' ";
   $query_execute = mysqli_query($conn, $query);     
   
   $row = mysqli_num_rows($query_execute);
@@ -2111,8 +2112,8 @@ if(isset($_POST['register'])){
   }
 }
 }
-?>
 
+?>
 
 
 
