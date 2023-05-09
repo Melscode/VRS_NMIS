@@ -156,7 +156,6 @@
             <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>
               <p>
                 Logout
-                
               </p>
             </a>
       </nav>

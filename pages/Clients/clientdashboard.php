@@ -68,11 +68,6 @@ session_start();
                 <input type="text" name="requestor_contact_number" class="form-control" placeholder="Contact Number">
               </div> 
               
-              
-
-              <div class="form-group">
-                <input type="text" name="region" class="form-control" placeholder="Region">
-              </div>
 
                 <h6>Are you the Passenger?</h6>
               <div class="form-input">
@@ -148,10 +143,12 @@ session_start();
 									<option value="Seminar/ Meeting">Seminar/ Meeting</option>
 									<option value="Financial Matters">Financial Matters</option>
                   <option value="Skeletal Workforce">Skeletal Workforce</option>
-                  <option value="Canvass/ Purchase">Canvass/ Purchase</option>
+                  <option value="Canvass/ Purchase">Canvas/ Purchase</option>
                   <option value="Enforcement">Enforcement</option>
                   <option value="Monitoring">Monitoring</option> 
-                  <option value="others">Others</option> 
+                  <option value="others" >Others
+                <textarea cols="30" rows="1"></textarea>
+                  </option>
 							</select>
 						  </div><br>
             

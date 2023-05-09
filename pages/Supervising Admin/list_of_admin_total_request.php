@@ -18,12 +18,12 @@
                     <th class="btn-info"> Date Start</th>
                     <th class="btn-info"> Date End</th>
                     <th class="btn-info"> Time Start</th>
-                    <th class="btn-info"> Time End :</th>
-                    <th class="btn-info"> Purpose :</th>
-                    <th class="btn-info"> Travel Order :</th>
-                    <th class="btn-info"> Assigned Driver :</th>
-                    <th class="btn-info"> Status :</th>
-                    <th class="btn-info"> Action :</th>
+                    <th class="btn-info"> Time End</th>
+                    <th class="btn-info"> Purpose</th>
+                    <th class="btn-info"> Attachments</th>
+                    <th class="btn-info"> Assigned Driver</th>
+                    <th class="btn-info"> Status</th>
+                    <th class="btn-info"> Action</th>
                   </tr>
                   </thead>
 

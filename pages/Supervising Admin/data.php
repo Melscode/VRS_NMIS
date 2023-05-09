@@ -70,7 +70,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="admindashboard.php" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fa fa-th-large" aria-hidden="true"></i>
               <p>
                 Dashboard
               </p>
@@ -80,7 +80,7 @@
 
           <li class="nav-item">
             <a href="list of request.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <i class="nav-icon fa fa-list" aria-hidden="true"></i>
               <p>
                 List of request
               </p>
@@ -89,7 +89,7 @@
 
           <li class="nav-item">
             <a href="list of user.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
                 List of Users
               </p>
@@ -98,7 +98,7 @@
           
           <li class="nav-item">
             <a href="list of driver.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
                 List of Driver
               </p>
@@ -107,7 +107,7 @@
 
           <li class="nav-item">
             <a href="list of vehicle.php" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+            <i class=" nav-icon fa fa-car" aria-hidden="true"></i>
               <p>
                 List of Vehicle
               </p>
@@ -117,7 +117,7 @@
           <!--end UI-->
           <li class="nav-item ">
             <a href="../tables/data.php" class="nav-link ">
-              <i class="nav-icon fas fa-file"></i>
+            <i class="nav-icon fas fa-file" aria-hidden="true"></i>
               <p>
                 Reports
               </p>

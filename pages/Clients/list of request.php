@@ -48,7 +48,7 @@ if(mysqli_query($conn,$sql)){
    <div class="row">
     <div class="col-sm">
 
-              <h4 class="btn-info">Requester's Information</h4>
+              <center><h4 class="btn-info">Requester's Information</h4></center>
 
               <div class="form-input">
 							<select name="requestor_division" class="form-control">
@@ -73,12 +73,7 @@ if(mysqli_query($conn,$sql)){
               <div class="form-group">
                 <input type="text" name="requestor_contact_number" class="form-control" placeholder="Contact Number">
               </div> 
-              
-              
-
-              <div class="form-group">
-                <input type="text" name="region" class="form-control" placeholder="Region">
-              </div>
+            
 
                 <h6>Are you the Passenger?</h6>
               <div class="form-input">
@@ -89,7 +84,7 @@ if(mysqli_query($conn,$sql)){
 							</select>
 						</div><br>
 
-            <h4 class= "btn-info">Passenger's Information</h4>
+            <center><h4 class= "btn-info">Passenger's Information</h4></center>
 
             <h6>No. of Passengers :</h6>
             <div class="form-group">
@@ -116,7 +111,7 @@ if(mysqli_query($conn,$sql)){
 						</div><br>
 </div>
               <div class="col-sm">
-              <h4 class= "btn-info">Trip Information</h4>
+              <center><h4 class= "btn-info">Trip Information</h4></center>
               <h6>Source/ Pick up point :</h6>
               <div class="form-group">
                 <input type="text" name="pickup_point" class="form-control" placeholder="Pickup Point" required>
@@ -142,7 +137,7 @@ if(mysqli_query($conn,$sql)){
                 <input type="time" name="start_time" class="form-control" placeholder="Start Time" required>
               </div>
 
-              <h6>Estimated Return Time</h6>
+              <h6>Estimated Return Time : </h6>
               <div class="form-group">
                 <input type="time" name="end_time" class="form-control" placeholder="End Time" required>
               </div>
@@ -154,16 +149,20 @@ if(mysqli_query($conn,$sql)){
 									<option value="Seminar/ Meeting">Seminar/ Meeting</option>
 									<option value="Financial Matters">Financial Matters</option>
                   <option value="Skeletal Workforce">Skeletal Workforce</option>
-                  <option value="Canvass/ Purchase">Canvass/ Purchase</option>
+                  <option value="Canvass/ Purchase">Canvas/ Purchase</option>
                   <option value="Enforcement">Enforcement</option>
                   <option value="Monitoring">Monitoring</option> 
-                  <option value="others">Others</option> 
+                  <option value="others" >Others
+                <textarea cols="30" rows="1"></textarea>
+                  </option>
+                 
+                  
 							</select>
 						  </div><br>
             
               <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6>
               <div class="form-group">
-                <input type="file" name="travel_order" class="form-control" placeholder="Travel Order" required>
+                <input type="file" name="travel_order" class="form-control" placeholder="Travel Order">
               </div>
 
             </div>
@@ -196,12 +195,12 @@ if(mysqli_query($conn,$sql)){
                     <th class="btn-info">Date Start</th>
                     <th class="btn-info">Date End</th>
                     <th class="btn-info">Time Start</th>
-                    <th class="btn-info">Time End :</th>
-                    <th class="btn-info">Purpose :</th>
-                    <th class="btn-info">Travel Order :</th>
-                    <th class="btn-info">Assigned Driver :</th>
-                    <th class="btn-info">Status :</th>
-                    <th class="btn-info">Action :</th>
+                    <th class="btn-info">Time End</th>
+                    <th class="btn-info">Purpose</th>
+                    <th class="btn-info">Attachments</th>
+                    <th class="btn-info">Assigned Driver</th>
+                    <th class="btn-info">Status</th>
+                    <th class="btn-info">Action</th>
                     
                   </tr>
                   </thead>
