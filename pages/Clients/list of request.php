@@ -107,7 +107,7 @@ if(mysqli_query($conn,$sql)){
               </div>
 
 
-              <h6>KIlometer Raduis:</h6>
+              <h6>Kilometer Raduis:</h6>
               <div class="form-input">
 							<input type="checkbox" id="raduis" name="raduis" value="Within-Manila">
               <label for="raduis">Within-Manila</label><br>

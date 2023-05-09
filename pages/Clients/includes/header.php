@@ -56,20 +56,15 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
@@ -119,7 +114,7 @@
 
           <li class="nav-item">
             <a href="../../index.php" class="nav-link">
-            <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
+            <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>
               <p>
                 Logout
                 

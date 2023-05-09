@@ -20,7 +20,7 @@ if(mysqli_query($conn,$sql)){
     die("Something went wrong");
 }
 }else{
-    echo "Data does not exist";
+    
 }
 ?>
 

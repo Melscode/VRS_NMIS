@@ -11,7 +11,7 @@ function add_request()
   {
             $employee_id = $_SESSION['employee_id'];
             // $transaction_id=mysqli_real_escape_string($conn,$_POST['transaction_id']);
-            $transaction_id = 'NMISVRS-'.rand(1,7);
+            $transaction_id = 'NMISVRS-'.rand(1,50);
             $requestor_name= $_SESSION['name'];
             // $requestor_name=mysqli_real_escape_string($conn, $_POST[$employee_id]);
             // $requestor_govmail=mysqli_real_escape_string($conn, $_POST['requestor_govmail']);

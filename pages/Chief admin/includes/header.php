@@ -131,7 +131,7 @@
 
           <li class="nav-item">
             <a href="login form/login.html" class="nav-link">
-              <i class="nav-icon fas fa-sign-out"></i>
+            <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>
               <p>
                 Logout
                 

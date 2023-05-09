@@ -68,8 +68,10 @@
 			 	    <!-- Login Button -->
 			      <div class="mb-3"> 
 							<button type="submit" class="btn btn-block">Login</button><br>
-							<a href="../Clients/timeline.php" class="btn btn-primary">Track your Document</a>
-
+							<div class="text-center ">
+							<a href="../Clients/tracking-in-login.php" class="btn btn-primary">Track your Document</a>
+							</div>
+							
 						</div>
 						<div class="text-right ">
 			        <a href="reset.html" class="forget-link">Forgot password?</a>
