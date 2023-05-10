@@ -61,7 +61,7 @@
   <div class="lockscreen-item">
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <img src="../../dist/img/NMIS_LOGO.png" alt="User Image">
+      <img src="../../dist/img/logos.png" alt="User Image">
     </div>
   <!-- Content Wrapper. Contains page content -->
 

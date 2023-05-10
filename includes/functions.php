@@ -20,7 +20,7 @@ function add_request()
             $requestor_position=$_SESSION['position'];
             $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
             $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
-            $region=mysqli_real_escape_string($conn,$_POST['region']);
+            // $region=mysqli_real_escape_string($conn,$_POST['region']);
             // $region=$_SESSION['region'];
             $passenger =mysqli_real_escape_string($conn,$_POST['passenger']);
             $number_of_passenger =mysqli_real_escape_string($conn,$_POST['number_of_passenger']);

@@ -3,8 +3,10 @@
 require('fpdf185/fpdf.php');
 
 
-$pdf = new FPDF(); // New object created and constructor invoked
+$pdf = new FPDF('P','mm','A4'); // New object created and constructor invoked
 $pdf->AddPage(); // Add new pages. By default no pages available.
+
+$pdf->Image('../login form/images/logos1.png', 35, 7, 35);
 
 //Header//
 $pdf->SetFont('Times', '', 10);// Set font format and font-size
@@ -29,10 +31,10 @@ $pdf->Cell(200, 10, 'Tel. N o. 8-924-7980', 0, 0, 'C');// Framed rectangular are
 $pdf->Ln();// Set it new line
 $pdf->SetFont('Times', '', 10);// Set font format and font-size
 $pdf->Cell(200, -1, 'www.nmis.gov.ph | nmis@nmis.gov.ph', 0, 0, 'C');// Framed rectangular area
-//end of the header//
+// end of the header//
 
 //A. To be filled-up by the Dispatcher //
-$pdf->Ln(5);// Set it new line
+$pdf->Ln(2);// Set it new line
 $pdf->SetFont('Times', 'B', 9);// Set font format and font-size
 $pdf->Cell(60, 10, 'A. To be filled-up by the Dispatcher', 0, 0, 'C');// Framed rectangular area
 
@@ -58,7 +60,7 @@ $pdf->Cell(53, -1, '4. Duration of Dates of Travel:', 0, 0, 'C');// Framed recta
 
 $pdf->Ln();// Set it new line
 $pdf->SetFont('Times', '', 9);// Set font format and font-size
-$pdf->Cell(38, 10, '5. Fuel (Volume):  ', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(38, 10, '4. Fuel (Volume):  ', 0, 0, 'C');// Framed rectangular area
 
 $pdf->Ln();// Set it new line
 $pdf->SetFont('Times', '', 9);// Set font format and font-size
@@ -66,56 +68,307 @@ $pdf->Cell(28, -1, '6. Purpose:', 0, 0, 'C');// Framed rectangular area
 //end //
 
 //tables//
-$pdf->Ln(5);// Set it new line
+$pdf->Ln(2);// Set it new line
 $pdf->SetFont('Times','B', 9);
-$pdf->Cell(190,5,'ITINERARY',1,0,'C',0);
+$pdf->Cell(190,4,'ITINERARY',1,0,'C',0);
 $pdf->Ln();
 $pdf->SetFont('Times','', 9);
-$pdf->Cell(63,5,'Destination/s',1,0,'C',0);
-$pdf->Cell(64,5,'ETD (Time/ Date)',1,0,'C',0);
-$pdf->Cell(63,5,'ETA (Time/ Date)','LBR',1,'C',0);   
-$pdf->Cell(63,5,'',1,0,'C',0);
-$pdf->Cell(64,5,'',1,0,'C',0);
-$pdf->Cell(63,5,'','LBR',1,'C',0);  
+$pdf->Cell(63,4,'Destination/s',1,0,'C',0);
+$pdf->Cell(64,4,'ETD (Time/ Date)',1,0,'C',0);
+$pdf->Cell(63,4,'ETA (Time/ Date)','LBR',1,'C',0);   
+$pdf->Cell(63,4,'',1,0,'C',0);
+$pdf->Cell(64,4,'',1,0,'C',0);
+$pdf->Cell(63,4,'','LBR',1,'C',0);  
 // end tables//
 
 $pdf->Ln();
 $pdf->SetFont('Times', '', 9);// Set font format and font-size
 $pdf->Cell(28, -1, 'Requested by:', 0, 0, 'C');// Framed rectangular area
-$pdf->Cell(200, -1, 'Approved by:', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(190, -1, 'Approved by:', 0, 0, 'C');// Framed rectangular area
 
-$pdf->Ln(5);// Set it new line
+$pdf->Ln(3);// Set it new line
 $pdf->SetFont('Times', 'B', 9);// Set font format and font-size
-$pdf->Cell(29, 10, 'DR. YVETTE', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(43, 10, 'DR. YVETTE SOLLER', 0, 0, 'C');// Framed rectangular area
 
 $pdf->SetFont('Times', 'B', 9);// Set font format and font-size
-$pdf->Cell(237, 10, 'LAMBERTO B. DELA CRUZ, JR. MPM', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(200, 10, 'LAMBERTO B. DELA CRUZ, JR. MPM', 0, 0, 'C');// Framed rectangular area
 
 $pdf->Ln();// Set it new line
 $pdf->SetFont('Times', 'I', 9);// Set font format and font-size
-$pdf->Cell(34, -1, 'Supervising Admin', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(44, -1, 'Supervising Admin Officer', 0, 0, 'C');// Framed rectangular area
 
 $pdf->SetFont('Times', 'I', 9);// Set font format and font-size
-$pdf->Cell(226, -1, 'Chief Administrative and Management Div.', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(197, -1, 'Chief Administrative and Management Div.', 0, 0, 'C');// Framed rectangular area
+
+$pdf->Ln(3);// Set it new line
+$pdf->SetFont('Times', 'B', 9);// Set font format and font-size
+$pdf->Cell(53, 5, 'B. To be filled-up by the Driver', 0, 0, 'C');// Framed rectangular area
+
+$pdf->Ln();// Set it new line
+$pdf->SetFont('Times','B', 9);
+$pdf->Cell(16,23,'DATE',1,0,'C',0);
+$pdf->Cell(75,11,'DEPARTURE',1,0,'C',0);
+$pdf->Cell(75,11,'ARRIVAL',1,0,'C',0);
+$pdf->Cell(24,11,'DISTANCE',1,0,'C',0);
+
+// $pdf->Ln();
+// $pdf->Cell(167,0,' ','',0,'L',0);   // empty cell with left,top, and right borders
+// $pdf->Cell(24,0,'TRAVELLED',0,'L',0);
+
+$pdf->Ln();// Set it new line
+$pdf->Cell(16,10,' ','',0,'L',0);   // empty cell with left,top, and right borders
+$pdf->Cell(15,12,'TIME',1,0,'C',0);
+$pdf->Cell(38,12,'PLACE',1,0,'C',0);
+$pdf->Cell(22,12,'ODOMETER',1,0,'C',0);
+$pdf->Cell(15,12,'TIME',1,0,'C',0);
+$pdf->Cell(38,12,'PLACE',1,0,'C',0);
+$pdf->Cell(22,12,'ODOMETER',1,0,'C',0);
+$pdf->Cell(24,12,'',1,0,'C',0);
+
+//1
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//2
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//3
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//4
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//5
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//6
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//7
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
 
 
+//8
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//9
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//10
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//11
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//12
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+//13
+$pdf->Ln();
+$pdf->Cell(16,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(15,4,'',1,0,'C',0);
+$pdf->Cell(38,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
 
 
+$pdf->Ln(7);// Set it new line
+$pdf->SetFont('Times','B', 9);
+$pdf->Cell(91,4,'GASOLINE USED',1,0,'L',0);
+$pdf->SetFont('Times','', 9);
+$pdf->Cell(99,4,'OTHER VEHICLE EXPENSES',1,0,'C',0);
 
-// $pdf->Ln();// Set it new line
-// $pdf->Cell(40,5,' ','LTR',0,'L',0);   // empty cell with left,top, and right borders
-// $pdf->Cell(50,5,'Words Here',1,0,'L',0);
-// $pdf->Cell(50,5,'Words Here',1,0,'L',0);
-// $pdf->Cell(40,5,'Words Here','LR',1,'C',0);  // cell with left and right borders
-// $pdf->Cell(50,5,'[ x ] abc',1,0,'L',0);
-// $pdf->Cell(50,5,'[ x ] checkbox1',1,0,'L',0);
-// $pdf->Cell(40,5,'','LBR',1,'L',0);   // empty cell with left,bottom, and right borders
-// $pdf->Cell(50,5,'[ x ] def',1,0,'L',0);
-// $pdf->Cell(50,5,'[ x ] checkbox2',1,0,'L',0);
+$pdf->Ln();
+$pdf->SetFont('Times','', 9);
+$pdf->Cell(69,4,'Balance in Tank',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'Items',1,0,'C',0);
+$pdf->Cell(22,4,'Receipt Nos.',1,0,'C',0);
+$pdf->Cell(24,4,'Amount',1,0,'C',0);
 
-  
-  
-// Close document and sent to the browser
+$pdf->Ln();
+$pdf->Cell(69,4,'Issued from Stock',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+$pdf->Ln();
+$pdf->Cell(69,4,'Purchased Outside',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+$pdf->Ln();
+$pdf->Cell(69,4,'Gasoline Used',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+$pdf->Ln();
+$pdf->Cell(69,4,'Balance in Tank',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+$pdf->Ln();
+$pdf->Cell(69,4,'Gear oil put in',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+$pdf->Ln();
+$pdf->Cell(69,4,'Motor oil put in',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+$pdf->Ln();
+$pdf->Cell(69,4,'Brake fluid put in',1,0,'L',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(53,4,'',1,0,'C',0);
+$pdf->Cell(22,4,'',1,0,'C',0);
+$pdf->Cell(24,4,'',1,0,'C',0);
+
+$pdf->Ln(8);
+$pdf->SetFont('Times', '', 9);// Set font format and font-size
+$pdf->Cell(28, -1, 'Certified Correct:', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(196, -1, 'I/We hereby certify that I/We used this vehicle on official business:', 0, 0, 'C');// Framed rectangular area
+$pdf->Ln(5);
+$pdf->Cell(70, -1, 'Printed Name', 0, 0, 'C');// Framed rectangular area
+$pdf->Cell(40, -1, 'Signature', 0, 0, 'C');// Framed rectangular area
+
+$pdf->Ln(3);// Set it new line
+$pdf->Cell(6,4,' 1','',0,'C',0);   // empty cell with left,top, and right borders
+$pdf->Cell(60,4,'',1,0,'L',0);
+$pdf->Cell(45,4,'',1,0,'L',0);
+$pdf->Cell(70,4,'Driver/s','',1,'C',0);
+
+$pdf->Cell(6,4,' 2','',0,'C',0);   // empty cell with left,top, and right borders
+$pdf->Cell(60,4,'',1,0,'L',0);
+$pdf->Cell(45,4,'',1,0,'L',0);
+$pdf->Cell(16,10,' ','',0,'L',0);   // empty cell with left,top, and right borders
+$pdf->Cell(40,4,'','B',1,'L',0);   // empty cell with left,bottom, and right borders
+
+$pdf->Cell(6,4,'3','',0,'C',0);   // empty cell with left,top, and right borders
+$pdf->Cell(60,4,'',1,0,'L',0);
+$pdf->Cell(45,4,'',1,0,'L',0);
+$pdf->Cell(70,4,'Date Signed','',1,'C',0);
+
+$pdf->Cell(6,4,'4','',0,'C',0);   // empty cell with left,top, and right borders
+$pdf->Cell(60,4,'',1,0,'L',0);
+$pdf->Cell(45,4,'',1,0,'L',0);
+
+$pdf->SetFont('Times','B', 9);
+$pdf->Cell(70,4,'To be accomplished in Three (3) copies to be','',1,'C',0);
+$pdf->Cell(147,4,'distributed as follows:','',1,'R',0);
+$pdf->Cell(70,4,'Original Copy SAO, 2nd copy guard exit gate and 3rd driver','',1,'L',0);
+
+$pdf->Image('../login form/images/footerlogo1.png', 6, 271, 200);
+
 $pdf->Output();
   
 ?>
