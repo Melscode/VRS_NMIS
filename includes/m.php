@@ -22,9 +22,6 @@ if($conn->connect_error){
     $passenger = $row->passenger;
     $number_of_passenger = $row->number_of_passenger;
     $name_of_passenger = $row->name_of_passenger;
-    $p1= $row->p1;
-    $p2= $row->p2;
-    $p3= $row->p3;
     $office= $row->office;
     $raduis = $row->raduis;
     $pickup_point = $row->pickup_point;
@@ -101,7 +98,7 @@ $pdf->Ln();// Set it new line
 $pdf->SetFont('Times', '', 9);// Set font format and font-size
 $pdf->Cell(59, 10, '3. Name of Authorized Passenger/s:', 0, 0, 'C');// Framed rectangular area
 $pdf->SetFont('Times', 'B', 9);// Set font format and font-size
-$pdf->Cell(10, 10, $name_of_passenger, 0, 0, 'C');
+$pdf->Cell(45, 10, $name_of_passenger, 0, 0, 'C');
 $pdf->Ln();// Set it new line
 $pdf->SetFont('Times', '', 9);// Set font format and font-size
 $pdf->Cell(53, -1, '4. Duration of Dates of Travel:', 0, 0, 'C');// Framed rectangular area
@@ -394,24 +391,24 @@ $pdf->Cell(40, -1, 'Signature', 0, 0, 'C');// Framed rectangular area
 
 $pdf->Ln(3);// Set it new line
 $pdf->Cell(6,4,' 1','',0,'C',0);   // empty cell with left,top, and right borders
-$pdf->Cell(60,4,$name_of_passenger,1,0,'L',0);
+$pdf->Cell(60,4,'',1,0,'L',0);
 $pdf->Cell(45,4,'',1,0,'L',0);
 $pdf->SetFont('Times', 'B', 9);// Set font format and font-size
 $pdf->Cell(70,4,$asigned_driver,'',1,'C',0);
 
 $pdf->Cell(6,4,' 2','',0,'C',0);   // empty cell with left,top, and right borders
-$pdf->Cell(60,4,$p1,1,0,'L',0);
+$pdf->Cell(60,4,'',1,0,'L',0);
 $pdf->Cell(45,4,'',1,0,'L',0);
 $pdf->Cell(16,10,' ','',0,'L',0);   // empty cell with left,top, and right borders
 $pdf->Cell(40,4,'','B',1,'L',0);   // empty cell with left,bottom, and right borders
 
 $pdf->Cell(6,4,'3','',0,'C',0);   // empty cell with left,top, and right borders
-$pdf->Cell(60,4,$p2,1,0,'L',0);
+$pdf->Cell(60,4,'',1,0,'L',0);
 $pdf->Cell(45,4,'',1,0,'L',0);
 $pdf->Cell(70,4,'Date Signed','',1,'C',0);
 
 $pdf->Cell(6,4,'4','',0,'C',0);   // empty cell with left,top, and right borders
-$pdf->Cell(60,4,$p3,1,0,'L',0);
+$pdf->Cell(60,4,'',1,0,'L',0);
 $pdf->Cell(45,4,'',1,0,'L',0);
 
 $pdf->SetFont('Times','B', 9);

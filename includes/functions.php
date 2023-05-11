@@ -20,12 +20,14 @@ function add_request()
             $requestor_position=$_SESSION['position'];
             $requestor_division= mysqli_real_escape_string($conn,$_POST['requestor_division']);
             $requestor_contact_number= mysqli_real_escape_string($conn,$_POST['requestor_contact_number']);
-            // $region=mysqli_real_escape_string($conn,$_POST['region']);
+            $region=mysqli_real_escape_string($conn,$_POST['region']);
             // $region=$_SESSION['region'];
             $passenger =mysqli_real_escape_string($conn,$_POST['passenger']);
             $number_of_passenger =mysqli_real_escape_string($conn,$_POST['number_of_passenger']);
+            $p1 =mysqli_real_escape_string($conn,$_POST['p1']);
+            $p2 =mysqli_real_escape_string($conn,$_POST['p2']);
+            $p3 =mysqli_real_escape_string($conn,$_POST['p3']);
             $name_of_passenger =mysqli_real_escape_string($conn,$_POST['name_of_passenger']);
-            $office=mysqli_real_escape_string($conn,$_POST['office']);
             $raduis=$_POST['raduis'];
             $pickup_point=$_POST['pickup_point'];
              $destination =mysqli_real_escape_string($conn,$_POST['destination']);
@@ -37,8 +39,8 @@ function add_request()
             $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
                 $_SESSION['raduis'] =$raduis;
 
-        $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, office, raduis, pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
-  		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$passenger', '$number_of_passenger', '$name_of_passenger', '$office', '$raduis','$pickup_point', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
+        $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, p1, p2, p3, office, raduis, pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
+  		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$passenger', '$number_of_passenger', '$name_of_passenger','$p1','$p2','$p3', '$office', '$raduis','$pickup_point', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
   
 
         if($result  = mysqli_query($conn, $sql) ){
@@ -81,6 +83,9 @@ function client_request()
         $number_of_passenger=$row['number_of_passenger'];
         $name_of_passenger =$row['name_of_passenger'];
         $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
         $raduis =$row['raduis'];
         $pickup_point = $row['pickup_point'];
         $destination =$row['destination'];
@@ -98,7 +103,7 @@ function client_request()
         <th><?php echo $transaction_id; ?></th>
         <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger, $p1, $p2, $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
         <th><?php echo $pickup_point; ?></th>
@@ -852,7 +857,6 @@ while($row = mysqli_fetch_array($sql))
     $travel_order =$row['travel_order'];
     $asigned_driver =$row['asigned_driver'];
     $reservation_status=$row['reservation_status'];
-
   ?>
 
 
@@ -892,7 +896,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../includes/NMIS_New-Standard-Letterhead VTT 2023.pdf' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          <a href='../Supervising Admin/m.php' class='btn btn-primary btn-sm'>Generate Ticket</a>
           </th>
           
           ";
@@ -1199,8 +1203,7 @@ function all_driver()
 function total_request()
  {
   global $conn;
-  $requestor_name = $_POST['requestor_name'];
-  $query = "SELECT * FROM request_tbl WHERE reservation_status is NULL AND requestor_name ='$requestor_name' ";
+  $query = "SELECT * FROM request_tbl WHERE reservation_status is NULL  ";
   $query_execute = mysqli_query($conn, $query);     
   
   $row = mysqli_num_rows($query_execute);

@@ -67,6 +67,10 @@ session_start();
               <div class="form-group">
                 <input type="text" name="requestor_contact_number" class="form-control" placeholder="Contact Number">
               </div> 
+              <div class="form-group">
+                <input type="hidden" name="region" class="form-control" placeholder="Contact Number">
+              </div> 
+              
               
 
                 <h6>Are you the Passenger?</h6>
@@ -88,6 +92,15 @@ session_start();
               <h6>Name of Passengers :</h6>
             <div class="form-group">
                 <input type="text" name="name_of_passenger" class="form-control" placeholder="Name" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="p1" class="form-control" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <input type="text" name="p2" class="form-control" placeholder="Name" >
+              </div>
+              <div class="form-group">
+                <input type="text" name="p3" class="form-control" placeholder="Name" >
               </div>
 
               <h6 >Office (RTOC/Division/Unit/Section) :</h6>
@@ -147,10 +160,13 @@ session_start();
                   <option value="Enforcement">Enforcement</option>
                   <option value="Monitoring">Monitoring</option> 
                   <option value="others" >Others
-                <textarea cols="30" rows="1"></textarea>
                   </option>
 							</select>
-						  </div><br>
+						  </div> <br> 
+              <div class="form-group">
+                <input type="text" name="purpose" class="form-control" placeholder="Others Reason Type Here" >
+              </div>
+
             
               <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6>
               <div class="form-group">
