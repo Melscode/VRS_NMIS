@@ -113,7 +113,7 @@ function client_request()
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
-        <th><?php echo $travel_order; ?></th>
+        <th><a href='../../includes/image/view.php'>Attachment</a></th>
         <th><?php echo $asigned_driver; ?></th>
         <th>
           <?php 
@@ -165,6 +165,7 @@ function client_request()
               <span class='badge badge-warning'>Pending</span>
               <th>
               <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+              <a href='../../includes/image/index.php' class='btn btn-info btn-sm'>UPLOAD Files</a>
               </th>
               
               ";
