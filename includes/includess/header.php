@@ -113,6 +113,15 @@
           </li>
 
           <li class="nav-item">
+            <a href="../../pages/Supervising Admin/list of request.php" class="nav-link">
+              <i class="nav-icon fas fa-user" aria-hidden="true"></i>
+              <p>
+                Back
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="../../index.php" class="nav-link">
             <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>
               <p>

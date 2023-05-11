@@ -754,6 +754,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
+          <a href='m.php' class='btn btn-primary btn-sm'>Generate Ticket</a>
           
           </th>
           
@@ -1503,7 +1504,7 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
-        <th><?php echo $travel_order; ?></th>
+        <th><a href='../../includes/image/view.php'>Attachment</a></th>
         <th><?php echo $asigned_driver; ?></th>
 
     <th>
