@@ -1,5 +1,6 @@
+
 <?php
-  
+   
 require('fpdf185/fpdf.php');
 
 $conn = new mysqli('localhost', 'root', '', 'nmisvr_db');
@@ -7,7 +8,9 @@ $conn = new mysqli('localhost', 'root', '', 'nmisvr_db');
 if($conn->connect_error){
     die("Error in DB connection: ".$conn->connect_errno." : ".$conn->connect_error);    
   }
-  $select = "SELECT * FROM request_tbl ORDER BY id";
+
+  $transaction_id = $_GET['transaction_id'];
+  $select = "SELECT * FROM request_tbl WHERE transaction_id='$transaction_id'";
   $result = $conn->query($select);
 
   while($row = $result->fetch_object()){

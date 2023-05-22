@@ -1,6 +1,6 @@
 <?php 
 
-if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
+if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_GET['transaction_id'])) {
 	include "db_conn.php";
 
 	echo "<pre>";
@@ -28,8 +28,9 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 				move_uploaded_file($tmp_name, $img_upload_path);
 
 				// Insert into Database
-				$sql = "INSERT INTO images(image_url) 
-				        VALUES('$new_img_name')";
+				$transaction_id = $_GET['transaction_id'];
+				$sql = "INSERT INTO images(trasaction_id, image_url) 
+				        VALUES('$transaction_id', '$new_img_name')";
 				mysqli_query($conn, $sql);
 				header("Location: ../../pages/Clients/list of request.php");
 			}else {

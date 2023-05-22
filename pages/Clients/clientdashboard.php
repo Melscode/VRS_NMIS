@@ -168,12 +168,11 @@ session_start();
               </div>
 
             
-              <!-- <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6>
+           <!-- <h6>Attachments: Gate pass/ Locator Travel Order/Notice of Meeting /Memo / Email Invite (if available)</h6> -->
               <div class="form-group">
                 <input type="hidden" name="travel_order" class="form-control" placeholder="Travel Order">
                 
-              </div> -->
-
+              </div> 
             </div>
           </div>
 

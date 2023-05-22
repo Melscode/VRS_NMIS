@@ -27,6 +27,7 @@ function add_request()
             $p1 =mysqli_real_escape_string($conn,$_POST['p1']);
             $p2 =mysqli_real_escape_string($conn,$_POST['p2']);
             $p3 =mysqli_real_escape_string($conn,$_POST['p3']);
+            $office =mysqli_real_escape_string($conn,$_POST['office']);
             $name_of_passenger =mysqli_real_escape_string($conn,$_POST['name_of_passenger']);
             $raduis=$_POST['raduis'];
             $pickup_point=$_POST['pickup_point'];
@@ -37,7 +38,7 @@ function add_request()
             $end_time=mysqli_real_escape_string($conn, $_POST['end_time']);
             $purpose= $_POST['purpose'];
             $travel_order= mysqli_real_escape_string($conn,$_POST['travel_order']);
-                $_SESSION['raduis'] =$raduis;
+            $_SESSION['raduis'] =$raduis;
 
         $sql = "INSERT INTO request_tbl (transaction_id, requestor_name, requestor_govmail, requestor_position, requestor_division, requestor_contact_number, region, passenger, number_of_passenger, name_of_passenger, p1, p2, p3, office, raduis, pickup_point, destination, start_date, end_date, start_time, end_time, purpose, travel_order) 
   		  VALUES  ('$transaction_id', '$employee_id', '$requestor_govmail', '$requestor_position', '$requestor_division', '$requestor_contact_number', '$region', '$passenger', '$number_of_passenger', '$name_of_passenger','$p1','$p2','$p3', '$office', '$raduis','$pickup_point', '$destination', '$start_date', '$end_date', '$start_time', '$end_time', '$purpose', '$travel_order')";
@@ -55,12 +56,10 @@ function add_request()
       }        
     }
   }
-
 ?>
 
 
 <!-- Client List Request -->
-
 <?php
 include 'connection.php';
 function client_request()
@@ -113,7 +112,7 @@ function client_request()
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
-        <th><a href='../../includes/image/view.php'>Attachment</a></th>
+        <th><?php echo "<a href='../../includes/image/view.php?transaction_id=$transaction_id'>Attachment</a>";?></th>
         <th><?php echo $asigned_driver; ?></th>
         <th>
           <?php 
@@ -165,7 +164,7 @@ function client_request()
               <span class='badge badge-warning'>Pending</span>
               <th>
               <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
-              <a href='../../includes/image/index.php' class='btn btn-info btn-sm'>UPLOAD Files</a>
+              <a href='../../includes/image/index.php?transaction_id=$transaction_id' class='btn btn-info btn-sm'>UPLOAD Files</a>
               </th>
               
               ";
@@ -201,9 +200,9 @@ function client_request()
               <td>'.$address.'</td>
               <td>'.$division.'</td>
               </tr>';
-        }
-      }
-    }
+       }
+     }
+   }
  } 
  ?>
 
@@ -273,43 +272,35 @@ function client_request()
             if($result['transaction_description'] == "Verified")
 
                  {
-                  ?>
-                  
-     
+      ?>
               <li class="step-wizard-item ">
                   <span class="progress-count current-item ">1</span>
                   <span class="progress-label"> <span class='btn btn-success'> The request was Verified by Supervising Admin</span></span>
               </li>
    
-                <?php  
+      <?php  
 
-     }else if($result['transaction_description'] == "Canceled"){
+              }else if($result['transaction_description'] == "Canceled"){
       ?>
-                  
-     
-      <li class="step-wizard-item ">
-          <span class="">0</span>
-          <span class="progress-label"> <span class='btn btn-warning'>Your request is still Pending </span></span>
-      </li>
+              <li class="step-wizard-item ">
+                  <span class="">0</span>
+                  <span class="progress-label"> <span class='btn btn-warning'>Your request is still Pending </span></span>
+              </li>
 
-        <?php  
+      <?php  
 
-     }else{
+                }else{
 
-    
-
-
-     }
-        }
-      }
-     }
+                  }
+                }
+              }
+            }
 
 function third_view(){
   global $conn;
     if(isset($_POST['test'])){
       $transaction_id =$_POST['transaction_id'];
       $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id'");
-
       if($sql){while ($row = mysqli_fetch_array($sql)<0){
        echo "Today :" .date('Y/m/d');    
       } 
@@ -404,31 +395,23 @@ function initial_supervising(){
                   $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
                   while($result = mysqli_fetch_array($sql))
                   {
-                        if($result['transaction_description'] == "Initialed"){
-                            
-                          
-                          ?>
-                          
-
-                          <li class="step-wizard-item ">
+                        if($result['transaction_description'] == "Initialed"){                  
+           ?>
+                  <li class="step-wizard-item ">
                 <span class="progress-count current-item">2</span>
-                <span class="progress-label"><span class='btn btn-success'>Assinged Driver Swabe!!</span></span>
+              <span class="progress-label"><span class='btn btn-success'>Assinged Driver Swabe!!</span></span>
             </li>
-            <li class="step-wizard-item ">
+              <li class="step-wizard-item ">
                 <span class="progress-count current-item">2</span>
-                <span class="progress-label"><span class='btn btn-success'>Your request was intitial by Supervising Admin</span></span>
-            </li>
-                        
-                          
-            <?php
-                             }
-                             else{
-                              
-                             }
-                            }
-             }             }
-                ?>
-
+                  <span class="progress-label"><span class='btn btn-success'>Your request was intitial by Supervising Admin</span></span>
+                   </li>            
+          <?php
+                  }else{           
+                 }
+               }
+             }            
+           }
+          ?>
 
 
 
@@ -443,27 +426,20 @@ if(isset($_POST['test']))
 
                   while($result = mysqli_fetch_array($sql))
                   {
-                        if($result['transaction_description'] == "Approved"){
-                            
-                                              
-                          ?>
-
-
-                          <li class="step-wizard-item ">
-                <span class="progress-count current-item">2</span>
-                <span class="progress-label"><span class='btn btn-success'>Your request was Approved by Chief Admin</span></span>
-            </li>
-                          
+                        if($result['transaction_description'] == "Approved"){                   
+                          ?><li class="step-wizard-item ">
+                            <span class="progress-count current-item">2</span>
+                            <span class="progress-label"><span class='btn btn-success'>Your request was Approved by Chief Admin</span></span>
+                            </li>   
             <?php
 
-        
-              }
-              else{
-              
-              }
-            }
-          }
-               } ?>
+                          }
+                          else{
+                          
+                          }
+                        }
+                      }
+                    } ?>
 
 <!-- Supervising Admin Dashboard -->
       <!-- Admin Total Request -->
@@ -844,11 +820,11 @@ while($row = mysqli_fetch_array($sql))
     $requestor_division=$row['requestor_division'];
     $requestor_contact_number =$row['requestor_contact_number'];
     $region=$row['region'];
-        $passenger =$row['passenger'];
-        $number_of_passenger=$row['number_of_passenger'];
-        $name_of_passenger =$row['name_of_passenger'];
-        $office =$row ['office'];
-        $raduis =$row['raduis'];
+    $passenger =$row['passenger'];
+    $number_of_passenger=$row['number_of_passenger'];
+    $name_of_passenger =$row['name_of_passenger'];
+    $office =$row ['office'];
+    $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
     $start_date =$row['start_date'];
@@ -898,7 +874,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../Supervising Admin/m.php' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          <a href='../Supervising Admin/m.php?transaction_id=$transaction_id' class='btn btn-primary btn-sm'>Generate Ticket</a>
           </th>
           
           ";
@@ -1146,7 +1122,7 @@ function assign_driver()
   }
 
   function remove_vehicle(){
-
+global $conn;
   
 if (isset($_GET['id'])) {
 $plate_number = $_GET['id'];
