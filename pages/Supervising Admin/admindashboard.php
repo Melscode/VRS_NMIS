@@ -79,7 +79,6 @@
                 <i class="ion ion-person-add"></i>
               </div>
               <a href="list_of_admin_total_request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              <a href="m.php" class="small-box-footer">m.php <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           

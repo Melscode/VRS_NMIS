@@ -1,6 +1,6 @@
 <?php 
 
-if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_GET['transaction_id'])) {
+if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_POST['transaction_id'])) {
 	include "db_conn.php";
 
 	echo "<pre>";
@@ -13,14 +13,14 @@ if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_GET['transa
 	$error = $_FILES['my_image']['error'];
 
 	if ($error === 0) {
-		if ($img_size > 425000) {
+		if ($img_size > 10000000) {
 			$em = "Sorry, your file is too large.";
 		    header("Location: index.php?error=$em");
 		}else {
 			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
 			$img_ex_lc = strtolower($img_ex);
 
-			$allowed_exs = array("jpg", "jpeg", "png"); 
+			$allowed_exs = array("jpg", "jpeg", "png", "pdf"); 
 
 			if (in_array($img_ex_lc, $allowed_exs)) {
 				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
@@ -28,8 +28,8 @@ if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_GET['transa
 				move_uploaded_file($tmp_name, $img_upload_path);
 
 				// Insert into Database
-				$transaction_id = $_GET['transaction_id'];
-				$sql = "INSERT INTO images(trasaction_id, image_url) 
+				$transaction_id= mysqli_real_escape_string($conn,$_POST['transaction_id']);
+				$sql = "INSERT INTO images(transaction_id, image_url) 
 				        VALUES('$transaction_id', '$new_img_name')";
 				mysqli_query($conn, $sql);
 				header("Location: ../../pages/Clients/list of request.php");

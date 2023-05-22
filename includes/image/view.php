@@ -21,7 +21,8 @@ include "db_conn.php"; ?>
 <body>
      <a href="index.php">&#8592;</a>
      <?php 
-          $sql = "SELECT * FROM images ORDER BY id DESC";
+	 		$transaction_id = $_GET['transaction_id'];
+          $sql = "SELECT * FROM images WHERE transaction_id ='$transaction_id'";
           $res = mysqli_query($conn,  $sql);
 
           if (mysqli_num_rows($res) > 0) {
@@ -30,7 +31,16 @@ include "db_conn.php"; ?>
              <div class="alb">
              	<img src="uploads/<?=$images['image_url']?>">
              </div>
-          		
+		<?php	
+			//  if(isset($_POST['view'])) {
+            //    header("content-type: application/pdf");
+			//    readfile($images['image_url']);
+			//  }
+          ?>	
+		  
+		  <!-- <form action="" method="post">
+			<button name="view">VIEW PDF</button>
+		  </form> -->
     <?php } }?>
 </body>
 </html>

@@ -22,8 +22,10 @@ if(mysqli_query($conn,$sql)){
 ?>
   
 
-    <?php echo add_request(); ?>
-
+    <?php
+    //  echo add_request(); 
+     ?>
+<!-- 
     <div class="card-footer clearfix">
         <div class="card-header"></h3>
          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addrequestModal"><i class="fas fa-plus"></i> Add Request</button>
@@ -176,7 +178,7 @@ if(mysqli_query($conn,$sql)){
           </div>
         </div>
        </div>        
-</div>
+</div> -->
 
  
               <!-- /.card-header -->
@@ -207,7 +209,8 @@ if(mysqli_query($conn,$sql)){
 
                   <tbody>
                    
-                 <?php client_request(); ?>
+                 <?php echo client_request(); ?>
+                 <?php echo client_request_2(); ?>
                                    
                         <!-- Delete  -->
                         <div class="modal fade" role="dialog" id="deleteModal">

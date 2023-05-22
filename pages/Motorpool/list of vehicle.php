@@ -1,6 +1,22 @@
 <?php include 'includes/header.php'; ?>
 
-<?php include '../../includes/functions.php'; ?>
+<?php include '../../includes/functions.php'; 
+
+?>
+
+
+<?php
+if (isset($_GET['plate_number'])) {
+include("..\..\Connection\conn.php");
+$employee_id = $_GET['plate_number'];
+$sql = "DELETE FROM vehicles_tbl WHERE plate_number=employee_id'";
+if(mysqli_query($conn,$sql)){
+    
+    $_SESSION["delete"] = "Deleted Successfully!";
+}
+
+}
+?>
 <?php echo add_vehicle();?>
 
    <!-- Main content -->

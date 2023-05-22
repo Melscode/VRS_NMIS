@@ -66,10 +66,14 @@ function client_request()
 {
   global $conn;
     $employee_id = $_SESSION['employee_id'];
-    $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE requestor_name ='$employee_id' ");
+    $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE requestor_name ='$employee_id'");
    
     while($row = mysqli_fetch_array($sql))
     {
+
+      if($row['raduis'] == "Outside-Manila"){
+
+      
       
         $transaction_id =$row['transaction_id'];
         $requestor_name =$_SESSION['name'];
@@ -172,7 +176,129 @@ function client_request()
           ?> 
         </th> 
       </tr>
-<?php }}?>
+<?php } }}?>
+
+
+
+
+<!-- Client List Request -->
+<?php
+include 'connection.php';
+function client_request_2()
+{
+  global $conn;
+    $employee_id = $_SESSION['employee_id'];
+    $sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE requestor_name ='$employee_id'");
+   
+    while($row = mysqli_fetch_array($sql))
+    {
+
+      if($row['raduis'] == "Within-Manila"){
+
+      
+      
+        $transaction_id =$row['transaction_id'];
+        $requestor_name =$_SESSION['name'];
+        $requestor_govmail=$row['requestor_govmail']; 
+        $requestor_position=$row['requestor_position'];
+        $requestor_division=$row['requestor_division'];
+        $requestor_contact_number =$row['requestor_contact_number'];
+        $region=$row['region'];
+        $passenger =$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
+        $raduis =$row['raduis'];
+        $pickup_point = $row['pickup_point'];
+        $destination =$row['destination'];
+        $start_date =$row['start_date'];
+        $end_date =$row['end_date'];
+        $start_time =$row['start_time'];
+        $end_time =$row['end_time'];
+        $purpose =$row['purpose'];
+        $travel_order =$row['travel_order'];
+        $asigned_driver =$row['asigned_driver'];
+        $reservation_status=$row['reservation_status'];
+?>
+
+    <tr>
+        <th><?php echo $transaction_id; ?></th>
+        <th><?php echo $passenger ; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger, $p1, $p2, $p3;?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th></th>
+        <th><?php echo $asigned_driver; ?></th>
+        <th>
+          <?php 
+            if($reservation_status == "Initialled")
+            {
+              echo "
+              <span class='badge badge-primary'>Initialed</span>
+              <th>
+              <a href='../../Connection/set-status-technical3.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'>Approve</a>
+              </th>
+              
+              ";
+          
+            }
+            else if($reservation_status == "Approved")
+            {
+              echo "
+              <span class='badge badge-success'>Approved</span>
+              <th>
+                
+              </th>
+              
+              ";
+          
+            } else if($reservation_status == "Pending")
+            {
+              echo "
+              <span class='badge badge-warning'>Pending</span>
+              <th>
+                
+              </th>
+              
+              ";
+          
+            }else if($reservation_status == "Canceled")
+            {
+              echo "
+              <span class='badge badge-danger'>Cenceled</span>
+              <th>
+                
+              </th>
+              
+              ";
+          
+            }
+            else
+            {
+              echo "
+              <span class='badge badge-warning'>Pending</span>
+              <th>
+              <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+              
+              </th>
+              
+              ";
+            }
+          ?> 
+        </th> 
+      </tr>
+<?php } }}?>
 
 
 <!--Client List Of Driver Driver-->
@@ -462,7 +588,7 @@ function admin_total_request()
       function admin_new_request()
       {
         global $conn;
-        $query = "SELECT * FROM request_tbl WHERE raduis ='Within-Manila'";
+        $query = "SELECT * FROM request_tbl WHERE reservation_status is null and raduis ='Within-Manila'";
         $query_execute = mysqli_query($conn, $query);     
         
         $row = mysqli_num_rows($query_execute);
@@ -1116,12 +1242,14 @@ function assign_driver()
 
   $result =mysqli_query($conn, $sql1);
   if($result){
+
+
          echo "<script>alert('Assigned Successfully!!');</script>"; 
       }
     }
   }
 
-  function remove_vehicle(){
+function remove_vehicle(){
 global $conn;
   
 if (isset($_GET['id'])) {
@@ -1181,15 +1309,16 @@ function all_driver()
 function total_request()
  {
   global $conn;
-  $query = "SELECT * FROM request_tbl WHERE reservation_status is NULL  ";
+  $employee_id = $_SESSION['employee_id'];
+  $query = "SELECT * FROM request_tbl WHERE reservation_status is NULL and requestor_name ='$employee_id'";
   $query_execute = mysqli_query($conn, $query);     
   
   $row = mysqli_num_rows($query_execute);
   echo "<p>New Request</p>";
   echo "<h3>$row</h3>"; 
+}
 
 
- }
 
  function total_vehicle()
 {
@@ -1432,7 +1561,7 @@ include 'connection.php';
 function admin_list_request(){
   global $conn;
 
-$sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE reservation_status is Null");
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl WHERE reservation_status is Null and raduis='Within-Manila'");
 //$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Checked'OR reservation_status ='Processing'");
 while($row = mysqli_fetch_array($sql))
 {
@@ -1480,7 +1609,7 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
-        <th><a href='../../includes/image/view.php'>Attachment</a></th>
+        <th></th>
         <th><?php echo $asigned_driver; ?></th>
 
     <th>
@@ -1769,7 +1898,7 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
-        <th><?php echo $travel_order; ?></th>
+        <th><?php echo "<a href='../../includes/image/view.php?transaction_id=$transaction_id'>Attachment</a>";?></th>
         <th><?php echo $asigned_driver; ?></th>
 
     <th>
@@ -1960,8 +2089,8 @@ function view_vehicle(){
     <td>'.$assigned_driver.'</td>
   
     <td>
+    <a href="list of vehicle.php?plate_number='.$plate_number. '" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
 
- <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i>Assigned</button>
 
     </td>
     </tr>';

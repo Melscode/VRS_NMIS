@@ -108,7 +108,7 @@ while($row = mysqli_fetch_array($result))
 
             <div class="row">
             <div class="col-md-4">
-            <button type="submit" class="btn btn-success add-btn" name="update">Update Request</button>
+            <button type="submit" class="btn btn-success add-btn" name="update id" id="delete">Update Request</button>
             </div>
 
             </div>
