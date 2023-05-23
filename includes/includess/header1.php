@@ -113,7 +113,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="../../pages/Clients/list of request.php" class="nav-link">
+            <a href="../../pages/Supervising Admin/list of request.php" class="nav-link">
               <i class="nav-icon fas fa-user" aria-hidden="true"></i>
               <p>
                 Back

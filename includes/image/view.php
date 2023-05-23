@@ -19,7 +19,7 @@ include "db_conn.php"; ?>
 	</style>
 </head>
 <body>
-     <a href="index.php">&#8592;</a>
+     
      <?php 
 	 		$transaction_id = $_GET['transaction_id'];
           $sql = "SELECT * FROM images WHERE transaction_id ='$transaction_id'";
