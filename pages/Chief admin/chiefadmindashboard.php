@@ -13,7 +13,7 @@
               <div class="inner">
               <?php 
                 
-               echo total_request();
+               echo chief_total_request();
                 
               ?>
               </div>
@@ -32,14 +32,14 @@
               <div class="inner">
               <?php 
                 
-               echo total_driver(); 
+               echo chief_total_request_approved();
                 
               ?>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="list of driver.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list of approved request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
            <!--end Driver-->

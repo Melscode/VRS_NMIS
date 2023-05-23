@@ -121,15 +121,15 @@
             </a>
           </li>
           
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="list of driver.php" class="nav-link">
             <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
                 List of Driver
               </p>
             </a>
-          </li>
-
+          </li> -->
+<!-- 
           <li class="nav-item">
             <a href="list of vehicle.php" class="nav-link">
               <i class=" nav-icon fa fa-car" aria-hidden="true"></i>
@@ -137,7 +137,7 @@
                 List of Vehicle
               </p>
             </a>
-          </li>
+          </li> -->
 
           
           <li class="nav-item">

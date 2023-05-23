@@ -111,7 +111,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="list of driver.php" class="nav-link">
             <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
@@ -127,7 +127,7 @@
                 List of Vehicle
               </p>
             </a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a href="login form/login.html" class="nav-link">

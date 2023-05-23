@@ -95,6 +95,14 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
+            <a href="../../pages/Supervising Admin/list_outside_manila_request.php" class="nav-link">
+              <i class="nav-icon fas fa-user" aria-hidden="true"></i>
+              <p>
+                Back
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="../../pages/Clients/clientdashboard.php" class="nav-link">
             <i class="nav-icon fa fa-th-large" aria-hidden="true"></i>
               <p>
@@ -112,14 +120,6 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="../../pages/Supervising Admin/list of request.php" class="nav-link">
-              <i class="nav-icon fas fa-user" aria-hidden="true"></i>
-              <p>
-                Back
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
             <a href="../../index.php" class="nav-link">

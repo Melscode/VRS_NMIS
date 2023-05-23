@@ -106,7 +106,7 @@ function client_request()
         <th><?php echo $transaction_id; ?></th>
         <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger, $p1, $p2, $p3;?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
         <th><?php echo $pickup_point; ?></th>
@@ -229,7 +229,7 @@ function client_request_2()
         <th><?php echo $transaction_id; ?></th>
         <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger, $p1, $p2, $p3;?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
         <th><?php echo $pickup_point; ?></th>
@@ -665,6 +665,9 @@ while($row = mysqli_fetch_array($sql))
         $number_of_passenger=$row['number_of_passenger'];
         $name_of_passenger =$row['name_of_passenger'];
         $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
         $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
@@ -685,7 +688,7 @@ while($row = mysqli_fetch_array($sql))
     <th><?php echo $requestor_name ; ?></th>
     <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php echo $name_of_passenger; echo $p1; echo $p2; echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
         <th><?php echo $pickup_point; ?></th>
@@ -806,6 +809,9 @@ while($row = mysqli_fetch_array($sql))
         $number_of_passenger=$row['number_of_passenger'];
         $name_of_passenger =$row['name_of_passenger'];
         $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
         $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
@@ -826,7 +832,7 @@ while($row = mysqli_fetch_array($sql))
     <th><?php echo $requestor_name ; ?></th>
     <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
         <th><?php echo $pickup_point; ?></th>
@@ -928,6 +934,155 @@ while($row = mysqli_fetch_array($sql))
 
 
 
+
+
+<!-- Chief Admin List Of Approved Request -->
+<?php
+include 'connection.php';
+function chief_list_approved_request(){
+  global $conn;
+
+// $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Approved'");
+while($row = mysqli_fetch_array($sql))
+{
+  
+    $transaction_id =$row['transaction_id'];
+    $requestor_name =$row['requestor_name'];
+    $requestor_govmail=$row['requestor_govmail']; 
+    $requestor_position=$row['requestor_position'];
+    $requestor_division=$row['requestor_division'];
+    $requestor_contact_number =$row['requestor_contact_number'];
+    $region=$row['region'];
+        $passenger =$row['passenger'];
+        $number_of_passenger=$row['number_of_passenger'];
+        $name_of_passenger =$row['name_of_passenger'];
+        $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
+        $raduis =$row['raduis'];
+    $pickup_point=$row['pickup_point'];
+    $destination =$row['destination'];
+    $start_date =$row['start_date'];
+    $end_date =$row['end_date'];
+    $start_time =$row['start_time'];
+    $end_time =$row['end_time'];
+    $purpose =$row['purpose'];
+    $travel_order =$row['travel_order'];
+    $asigned_driver =$row['asigned_driver'];
+    $reservation_status=$row['reservation_status'];
+
+  ?>
+
+
+<tr> 
+    <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $passenger ; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo "<a href='../../includes/image/view.php?transaction_id=$transaction_id'>Attachment</a>";?></th>
+        <th><?php echo $asigned_driver; ?></th>
+
+    <th>
+      
+      <?php 
+        if($reservation_status == "Verified")
+        {
+          echo "
+          <span class='badge badge-success'>Verified</span>
+          <th>
+          </th>
+          
+          ";
+      
+        }
+        else if($reservation_status == "Approved")
+        {
+          echo "
+          <span class='badge badge-success'>Approved</span>
+          <th>
+          <a href='../../Connection/set-status-technical2.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          
+          </th>
+          
+          ";
+      
+        } else if($reservation_status == "Pending")
+        {
+          echo "
+          <span class='badge badge-warning'>Pending</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        }else if ($reservation_status == "Checked")
+        {
+
+          echo "
+          <span class='badge badge-info'>Checked</span>
+          <th>
+            
+          </th>
+          
+          ";
+        }else if ($reservation_status == "Initialed")
+        {
+
+          echo "
+          <span class='badge badge-primary'>Initialed</span>
+          <th>
+          
+          </th>
+          
+          ";
+        }
+        
+        else if ($reservation_status == 'Canceled')
+        {
+          echo "
+          <span class='badge badge-danger'>Canceled</span>
+          <th>
+        
+          </th>
+          
+          ";
+      
+        }else
+        {
+          echo "
+          <span class='badge badge-info'>Processing</span>
+          <th>
+          
+          </th>
+          
+          ";
+        }
+
+      ?> 
+
+    </th>
+    
+    
+  </tr>
+
+<?php }}?>
+
+
+
+
 <!-- Motorpool Approved Request For Trip Ticket -->
 
 <?php
@@ -951,6 +1106,9 @@ while($row = mysqli_fetch_array($sql))
     $number_of_passenger=$row['number_of_passenger'];
     $name_of_passenger =$row['name_of_passenger'];
     $office =$row ['office'];
+    $p1 =$row ['p1'];
+    $p2 =$row ['p2'];
+    $p3 =$row ['p3'];
     $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
@@ -970,7 +1128,7 @@ while($row = mysqli_fetch_array($sql))
     <th><?php echo $requestor_name ; ?></th>
     <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
         <th><?php echo $pickup_point; ?></th>
@@ -1089,6 +1247,9 @@ while($row = mysqli_fetch_array($sql))
           $number_of_passenger =$row['number_of_passenger'];
           $name_of_passenger =$row['name_of_passenger'];
           $office =$row['office'];
+          $p1 =$row ['p1'];
+          $p2 =$row ['p2'];
+          $p3 =$row ['p3'];
           $raduis =$row['raduis'];
           $pickup_point=$row['pickup_point'];
           $destination =$row['destination'];
@@ -1131,7 +1292,7 @@ while($row = mysqli_fetch_array($sql))
     <th><?php echo $requestor_name ; ?></th>
     <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th>
         <th><?php echo $pickup_point; ?></th>
@@ -1316,6 +1477,29 @@ function total_request()
   
   $row = mysqli_num_rows($query_execute);
   echo "<p>New Request</p>";
+  echo "<h3>$row</h3>"; 
+}
+
+
+function chief_total_request()
+ {
+  global $conn;
+  $query = "SELECT * FROM request_tbl WHERE reservation_status='Initialed'";
+  $query_execute = mysqli_query($conn, $query);     
+  
+  $row = mysqli_num_rows($query_execute);
+  echo "<p>New Request</p>";
+  echo "<h3>$row</h3>"; 
+}
+
+function chief_total_request_approved()
+ {
+  global $conn;
+  $query = "SELECT * FROM request_tbl WHERE reservation_status='Approved'";
+  $query_execute = mysqli_query($conn, $query);     
+  
+  $row = mysqli_num_rows($query_execute);
+  echo "<p>Approved Request</p>";
   echo "<h3>$row</h3>"; 
 }
 
@@ -1580,6 +1764,9 @@ while($row = mysqli_fetch_array($sql))
         $number_of_passenger=$row['number_of_passenger'];
         $name_of_passenger =$row['name_of_passenger'];
         $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
         $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
@@ -1600,7 +1787,7 @@ while($row = mysqli_fetch_array($sql))
     <th><?php echo $requestor_name ; ?></th>
     <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th> 
         <th><?php echo $pickup_point; ?></th>
@@ -1722,6 +1909,9 @@ while($row = mysqli_fetch_array($sql))
         $number_of_passenger=$row['number_of_passenger'];
         $name_of_passenger =$row['name_of_passenger'];
         $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
         $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
@@ -1742,7 +1932,7 @@ while($row = mysqli_fetch_array($sql))
     <th><?php echo $requestor_name ; ?></th>
     <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th> 
         <th><?php echo $pickup_point; ?></th>
@@ -1869,6 +2059,9 @@ while($row = mysqli_fetch_array($sql))
         $number_of_passenger=$row['number_of_passenger'];
         $name_of_passenger =$row['name_of_passenger'];
         $office =$row ['office'];
+        $p1 =$row ['p1'];
+        $p2 =$row ['p2'];
+        $p3 =$row ['p3'];
         $raduis =$row['raduis'];
     $pickup_point=$row['pickup_point'];
     $destination =$row['destination'];
@@ -1889,7 +2082,7 @@ while($row = mysqli_fetch_array($sql))
     <th><?php echo $requestor_name ; ?></th>
     <th><?php echo $passenger ; ?></th>
         <th><?php echo $number_of_passenger; ?></th>
-        <th><?php echo $name_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
         <th><?php echo $office; ?></th>
         <th><?php echo $raduis; ?></th> 
         <th><?php echo $pickup_point; ?></th>
@@ -1899,7 +2092,7 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
-        <th><?php echo "<a href='../../includes/image/view.php?transaction_id=$transaction_id'>Attachment</a>";?></th>
+        <th><?php echo "<a href='../../includes/image/view1.php?transaction_id=$transaction_id'>Attachment</a>";?></th>
         <th><?php echo $asigned_driver; ?></th>
 
     <th>
@@ -1910,7 +2103,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Verified</span>
           <th>
-          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
           ";
       
@@ -1921,6 +2114,7 @@ while($row = mysqli_fetch_array($sql))
           <span class='badge badge-success'>Approved</span>
           <th>
           <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
           
           ";
@@ -1941,7 +2135,8 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-info'>Checked</span>
           <th>
-            <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
           
           ";
@@ -1951,7 +2146,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-primary'>Initialed</span>
           <th>
-          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
           
           ";
@@ -1969,7 +2164,8 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-info'>Processing</span>
           <th>
-          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
           
           ";
