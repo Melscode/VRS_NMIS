@@ -136,7 +136,8 @@ function client_request()
               echo "
               <span class='badge badge-success'>Approved</span>
               <th>
-                
+              <a href='../../includes/feedback/feedback.html?transaction_id=$transaction_id' class='btn btn-info btn-sm'>FEEDBACK</a>
+              
               </th>
               
               ";
@@ -258,7 +259,7 @@ function client_request_2()
               echo "
               <span class='badge badge-success'>Approved</span>
               <th>
-                
+                <a href='../../includes/feedback/feedback.html?transaction_id=$transaction_id' class='btn btn-info btn-sm'>FEEDBACK</a>
               </th>
               
               ";
