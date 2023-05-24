@@ -13,7 +13,7 @@ session_start();
             <div class="small-box bg-info">
               <div class="inner">
               <?php 
-                echo total_request();   
+                echo total_request1();   
               ?>
               </div>
            
@@ -23,6 +23,8 @@ session_start();
               <a href="list of request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+          
 
           <?php echo add_request();?>
 

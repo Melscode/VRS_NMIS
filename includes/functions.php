@@ -136,7 +136,7 @@ function client_request()
               echo "
               <span class='badge badge-success'>Approved</span>
               <th>
-              <a href='../../includes/feedback/feedback.html?transaction_id=$transaction_id' class='btn btn-info btn-sm'>FEEDBACK</a>
+              <a href='../../includes/feedback/index.php?transaction_id=$transaction_id' class='btn btn-info btn-sm'>FEEDBACK</a>
               
               </th>
               
@@ -399,19 +399,23 @@ function client_request_2()
             if($result['transaction_description'] == "Verified")
 
                  {
+                  $transaction_date_time = $result['transaction_date_time'];
       ?>
               <li class="step-wizard-item ">
                   <span class="progress-count current-item ">1</span>
-                  <span class="progress-label"> <span class='btn btn-success'> The request was Verified by Supervising Admin</span></span>
+                  <span class="progress-label"> <span class='btn btn-success'> The request was Verified by Supervising Admin</span><br><br>
+                <span class='btn btn-danger'><?php echo date('d F, Y (l) h:i a',strtotime($transaction_date_time));?></span></span>
               </li>
    
       <?php  
 
               }else if($result['transaction_description'] == "Canceled"){
+                $transaction_date_time = $result['transaction_date_time'];
       ?>
               <li class="step-wizard-item ">
                   <span class="">0</span>
-                  <span class="progress-label"> <span class='btn btn-warning'>Your request is still Pending </span></span>
+                  <span class="progress-label"> <span class='btn btn-warning'>Your request is still Pending </span>
+                  <?php echo date('d F, Y (l) h:i a',strtotime($transaction_date_time));?></span>
               </li>
 
       <?php  
@@ -522,15 +526,46 @@ function initial_supervising(){
                   $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
                   while($result = mysqli_fetch_array($sql))
                   {
-                        if($result['transaction_description'] == "Initialed"){                  
+                        if($result['transaction_description'] == "Initialed"){     
+                          
+                          $transaction_date_time = $result['transaction_date_time'];
            ?>
-                  <li class="step-wizard-item ">
-                <span class="progress-count current-item">2</span>
-              <span class="progress-label"><span class='btn btn-success'>Assinged Driver Swabe!!</span></span>
-            </li>
+                  
               <li class="step-wizard-item ">
                 <span class="progress-count current-item">2</span>
-                  <span class="progress-label"><span class='btn btn-success'>Your request was intitial by Supervising Admin</span></span>
+                  <span class="progress-label"><span class='btn btn-success'>Your request was intitial by Supervising Admin</span><br><br>
+                  <span class='btn'><?php echo date('d F, Y (l) h:i a',strtotime($transaction_date_time));?></span>         
+          <?php
+                  }else{           
+                 }
+               }
+             }            
+           }
+          ?>
+
+
+
+<?php 
+
+function checked_motorpool(){
+  global $conn;
+
+ if(isset($_POST['test']))
+                {
+                  $transaction_id = $_POST['transaction_id'];
+                  $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+                  $sql = mysqli_query($conn, "SELECT * FROM transaction_tbl  WHERE transaction_id ='$transaction_id'");
+                  while($result = mysqli_fetch_array($sql))
+                  {
+                        if($result['transaction_description'] == "Checked"){     
+                          
+                          $transaction_date_time = $result['transaction_date_time'];
+           ?>
+                  
+              <li class="step-wizard-item ">
+                <span class="progress-count current-item">2</span>
+                  <span class="progress-label"><span class='btn btn-success'>Assigned Driver by Motorpool</span><br><br>
+                  <span class='btn'><?php echo date('d F, Y (l) h:i a',strtotime($transaction_date_time));?></span></span>
                    </li>            
           <?php
                   }else{           
@@ -539,6 +574,7 @@ function initial_supervising(){
              }            
            }
           ?>
+
 
 
 
@@ -553,10 +589,16 @@ if(isset($_POST['test']))
 
                   while($result = mysqli_fetch_array($sql))
                   {
-                        if($result['transaction_description'] == "Approved"){                   
+                        if($result['transaction_description'] == "Approved"){   
+                           $transaction_date_time = $result['transaction_date_time'];
+                          
+                          
                           ?><li class="step-wizard-item ">
                             <span class="progress-count current-item">2</span>
-                            <span class="progress-label"><span class='btn btn-success'>Your request was Approved by Chief Admin</span></span>
+                            <span class="progress-label"><span class='btn btn-success'>Your request was Approved by Chief Admin</span>
+                            <br><br>
+                  <span class='btn'><?php echo date('d F, Y (l) h:i a',strtotime($transaction_date_time));?></span>
+                                </span>
                             </li>   
             <?php
 
@@ -619,7 +661,7 @@ function admin_total_request()
  function admin_outside_manila_request()
  {      
      global $conn;
-     $query = "SELECT * FROM request_tbl WHERE raduis='Outside-Manila'";
+     $query = "SELECT * FROM request_tbl WHERE reservation_status is null and  raduis='Outside-Manila'";
      $query_execute = mysqli_query($conn, $query);     
      
      $row = mysqli_num_rows($query_execute);
@@ -740,7 +782,8 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-info'>Checked</span>
           <th>
-            <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
           </th>
           
           ";
@@ -863,7 +906,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='m.php' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          <a href='../Supervising Admin/m.php?transaction_id=$transaction_id' class='btn btn-primary btn-sm'>Generate Ticket</a>
           
           </th>
           
@@ -1400,13 +1443,18 @@ function assign_driver()
   $transaction_id=$_POST['transaction_id'];
   $asigned_driver = $_POST['asigned_driver'];
   $sql1= "UPDATE request_tbl SET asigned_driver = '$asigned_driver', reservation_status ='Checked'WHERE transaction_id ='$transaction_id' ";
+
  
 
   $result =mysqli_query($conn, $sql1);
   if($result){
 
-
+ $sql2 ="INSERT INTO transaction_tbl (transaction_id, transaction_description, transaction_date_time)
+  Value ('$transaction_id', 'Checked',Now())";
+ global $conn;
+ $result =mysqli_query($conn, $sql2);
          echo "<script>alert('Assigned Successfully!!');</script>"; 
+         header('location: ../Motorpool/list of request.php');
       }
     }
   }
@@ -1473,6 +1521,17 @@ function total_request()
   global $conn;
   $employee_id = $_SESSION['employee_id'];
   $query = "SELECT * FROM request_tbl WHERE reservation_status is NULL and requestor_name ='$employee_id'";
+  $query_execute = mysqli_query($conn, $query);     
+  
+  $row = mysqli_num_rows($query_execute);
+  echo "<p>New Request</p>";
+  echo "<h3>$row</h3>"; 
+}
+function total_request1()
+ {
+  global $conn;
+  $employee_id = $_SESSION['employee_id'];
+  $query = "SELECT * FROM request_tbl WHERE  requestor_name ='$employee_id'";
   $query_execute = mysqli_query($conn, $query);     
   
   $row = mysqli_num_rows($query_execute);
@@ -2073,6 +2132,7 @@ while($row = mysqli_fetch_array($sql))
     $travel_order =$row['travel_order'];
     $asigned_driver =$row['asigned_driver'];
     $reservation_status=$row['reservation_status'];
+    
 
   ?>
 
@@ -2092,7 +2152,7 @@ while($row = mysqli_fetch_array($sql))
         <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
         <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
         <th><?php echo $purpose ; ?></th>
-        <th><?php echo "<a href='../../includes/image/view1.php?transaction_id=$transaction_id'>Attachment</a>";?></th>
+        <th><?php echo "<a href='../../includes/image/view1.php?transaction_id=$transaction_id'>Attachment</a>"; ?></th>
         <th><?php echo $asigned_driver; ?></th>
 
     <th>

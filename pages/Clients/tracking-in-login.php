@@ -45,7 +45,7 @@ session_start();
                  <th>
                  
                 </tr></th> </a>
-                  <?php?>
+                  
                 </h3>
                 </div>
               </div>
@@ -295,10 +295,11 @@ body {
         <section class="step-wizard">
         <ul class="step-wizard-list">
         <?php echo second_view();?>
+        <?php echo checked_motorpool();?>
             
         <?php initial_supervising();?>
 
-        <?php       approved_chiefadmin();?>
+        <?php approved_chiefadmin();?>
  
         </ul>
     </section>

@@ -209,8 +209,12 @@ if(mysqli_query($conn,$sql)){
 
                   <tbody>
                    
-                 <?php echo client_request(); ?>
-                 <?php echo client_request_2(); ?>
+                 <?php 
+                 echo client_request(); 
+                 ?>
+                 <?php 
+                echo client_request_2(); 
+                 ?>
                                    
                         <!-- Delete  -->
                         <div class="modal fade" role="dialog" id="deleteModal">

@@ -21,14 +21,13 @@ if($result){
 <?php
 header('location: ../pages/Supervising Admin/list of request.php');
 }
-$date_array = getdate();
-   
-foreach ( $date_array as $key => $val ){
-   print "$key = $val<br />";
-}
- 
+?>
+
+
+ <?php
+
 $transaction ="INSERT INTO transaction_tbl (transaction_id, transaction_description, transaction_date_time)
-                Value ('$transaction_id', '$reservation_status', '$transaction_date_time')";
+                Value ('$transaction_id', '$reservation_status', NOW()";
 mysqli_query($conn, $transaction);
 
 header('location: ../pages/Supervising Admin/list of request.php');
