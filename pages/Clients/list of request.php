@@ -201,6 +201,7 @@ if(mysqli_query($conn,$sql)){
                     <th class="btn-info">Purpose</th>
                     <th class="btn-info">Attachments</th>
                     <th class="btn-info">Assigned Driver</th>
+                    <th class="btn-info">Feedback</th>
                     <th class="btn-info">Status</th>
                     <th class="btn-info">Action</th>
                     

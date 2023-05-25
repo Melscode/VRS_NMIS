@@ -119,6 +119,32 @@ function client_request()
         <th><?php echo "<a href='../../includes/image/view.php?transaction_id=$transaction_id'>Attachment</a>";?></th>
         <th><?php echo $asigned_driver; ?></th>
         <th>
+         <?php 
+        
+        echo "<a href='../../includes/feedback/index1.php?transaction_id=$transaction_id'>Feedback</a>";
+
+      
+	 		// $transaction_id = $_GET['transaction_id'];
+      //     $sql = "SELECT * FROM feedback_tbl WHERE transaction_id ='$transaction_id'";
+      //     $res = mysqli_query($conn,  $sql);
+
+      //     if($res['feedback_number'] == "1"){
+	    //           echo "<img src='../../includes/feedback/emojis/emoji-1.png' >";
+ 
+      //     }
+
+        
+            
+         
+
+	
+
+    ?>
+
+
+      
+        </th>
+        <th>
           <?php 
             if($reservation_status == "Initialled")
             {
@@ -241,6 +267,10 @@ function client_request_2()
         <th><?php echo $purpose ; ?></th>
         <th></th>
         <th><?php echo $asigned_driver; ?></th>
+        <th>
+
+        
+        </th>
         <th>
           <?php 
             if($reservation_status == "Initialled")
