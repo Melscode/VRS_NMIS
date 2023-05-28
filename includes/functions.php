@@ -121,8 +121,14 @@ function client_request()
         <th>
          <?php 
         
-        echo "<a href='../../includes/feedback/index1.php?transaction_id=$transaction_id'>Feedback</a>";
 
+        if($row['reservation_status'] == 'Approved'){
+
+       
+        echo "<a href='../../includes/feedback/index1.php?transaction_id=$transaction_id'>Feedback</a>";
+ }else{
+
+ }
       
 	 		// $transaction_id = $_GET['transaction_id'];
       //     $sql = "SELECT * FROM feedback_tbl WHERE transaction_id ='$transaction_id'";
@@ -194,7 +200,7 @@ function client_request()
               echo "
               <span class='badge badge-warning'>Pending</span>
               <th>
-              <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+              <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a> <br><br>
               <a href='../../includes/image/index.php?transaction_id=$transaction_id' class='btn btn-info btn-sm'>UPLOAD Files</a>
               </th>
               
@@ -434,7 +440,7 @@ function client_request_2()
               <li class="step-wizard-item ">
                   <span class="progress-count current-item ">1</span>
                   <span class="progress-label"> <span class='btn btn-success'> The request was Verified by Supervising Admin</span><br><br>
-                <span class='btn btn-danger'><?php echo date('d F, Y (l) h:i a',strtotime($transaction_date_time));?></span></span>
+                <span class='btn'><?php echo date('d F, Y (l) h:i a',strtotime($transaction_date_time));?></span></span>
               </li>
    
       <?php  
@@ -474,6 +480,11 @@ function third_view(){
       <div class="timeline-item">
         <!-- <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span> -->
           <!-- <h3 class="timeline-header no-border"><a href="#"></a>  -->
+
+
+
+
+
 
 
      
@@ -542,7 +553,17 @@ function fourth(){
       }
     }
   }
+  
+ 
+  
 ?>
+
+
+
+
+
+
+
 
 <?php 
 
@@ -638,7 +659,62 @@ if(isset($_POST['test']))
                           }
                         }
                       }
-                    } ?>
+                    } 
+                    
+                    function calculate(){
+                      global $conn;
+                     
+                      $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+                      $transaction_id = $_POST['transaction_id'];
+                      
+                       $sql =mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id' AND transaction_description ='Verified'");
+                       while($row = mysqli_fetch_array($sql)){
+                          $transaction_date_time1 =new DateTime($row['transaction_date_time']);
+                          // $start = microtime($row ['transaction_time']);
+                          // $val=1;
+                          // for($i = 1; $i <=1500; $i++)
+                          // {
+                          //   $val++;
+                          // }
+
+                      
+                      }
+
+                       $sq2 =mysqli_query($conn, "SELECT * FROM transaction_tbl WHERE transaction_id= '$transaction_id' AND transaction_description ='Approved'");
+                       while($row = mysqli_fetch_array($sq2)){
+                        $transaction_date_time2 =new DateTime($row['transaction_date_time']);
+
+                        $timediff = $transaction_date_time1->diff($transaction_date_time2); 
+                            
+                    //   $end = microtime($row['transaction_time']);
+                    // $exec_time = ($end - $start);
+  
+                   ?>
+               <li class="step-wizard-item ">
+                <span class=""></span>
+                  <center>  <span class= " btn btn-warning"><?php 
+                 echo $timediff->format(' %d days %h hour %i minute %s second')."<br/>";
+
+               
+                            ?> </span></center> 
+                            
+                   </li>  
+                        
+                           <?php
+                       }
+                      
+                       // Get the difference and divide into
+                       // total no. seconds 60/60/24 to get
+                       // number of days
+                      
+                      }        
+                
+                    
+                    
+                    
+                    
+                    
+                    ?>
 
 <!-- Supervising Admin Dashboard -->
       <!-- Admin Total Request -->
@@ -1959,10 +2035,13 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-info'>Processing</span>
           <th>
-          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
-          </th>
-          
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>
           ";
+          ?>
+           <button class="btn btn-success" onclick="fireSweetAlert()">  Verify </button></a>
+          </th>
+        
+          <?php
         }
  
       ?> 

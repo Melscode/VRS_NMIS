@@ -297,11 +297,19 @@ body {
         <?php echo second_view();?>
         <?php echo checked_motorpool();?>
             
-        <?php initial_supervising();?>
+        <?php echo initial_supervising();?>
 
-        <?php approved_chiefadmin();?>
- 
-        </ul>
+        <?php echo approved_chiefadmin();?>
+        
+        </ul>  
+       
+    </section>
+    <section class="step-wizard">
+        <ul class="step-wizard-list">
+         <?php echo  calculate();?>
+        
+        </ul>  
+       
     </section>
 
     </div>

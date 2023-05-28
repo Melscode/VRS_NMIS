@@ -38,6 +38,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
    <!-- fullcalendar -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
  <link rel="stylesheet" href="../../plugins/fullcalendar/main.css">
 </head>
 <body class="hold-transition sidebar-mini">
