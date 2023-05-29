@@ -108,7 +108,7 @@ while($row = mysqli_fetch_array($result))
 
             <div class="row">
             <div class="col-md-4">
-            <button type="submit" class="btn btn-success add-btn" name="update id" id="delete">Update Request</button>
+            <button type="submit" class="btn btn-success add-btn" name="update id" id="delete" onclick="add()">Update Request</button>
             </div>
 
             </div>
@@ -144,5 +144,18 @@ $(function(){
 
   })
 })
-      
+    </script>  
+
+<script>
+
+function add() {
+    Swal.fire(
+        'Assigned Driver!',
+        'You clicked the button!',
+        'success'
+    )
+}
+
+</script>
+
       

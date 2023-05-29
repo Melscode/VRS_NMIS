@@ -21,7 +21,7 @@ if (!$conn){
     
   
           if($result  = mysqli_query($conn, $sql) ){
-
+                sleep(3);
             header('location: ../../pages/Clients/list of request.php');
                
         }        
@@ -38,6 +38,7 @@ if (!$conn){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -93,11 +94,11 @@ body {
   <form method ="POST">
     <div class="center">
   <div class="wrapper">
-    <input type="radio" name="rate" id="star-1">
-    <input type="radio" name="rate" id="star-2">
-    <input type="radio" name="rate" id="star-3">
-    <input type="radio" name="rate" id="star-4">
-    <input type="radio" name="rate" id="star-5">
+    <input type="radio" name="feedback_number" id="star-1" value="1">
+    <input type="radio" name="feedback_number" id="star-2" value="2">
+    <input type="radio" name="feedback_number" id="star-3" value="3">
+    <input type="radio" name="feedback_number" id="star-4" value="4">
+    <input type="radio" name="feedback_number" id="star-5" value="5">
     <div class="content">
       <div class="outer">
         <div class="emojis">
@@ -120,8 +121,9 @@ body {
       <span class="text"></span>
       <span class="numb"></span>
     </div>
-    </div>
     
+    </div>
+<!--     
 						<br> <center><select name="feedback_number" class="form-control" required>
 								<option  value=""></option>
 									<option value="1">1</option>
@@ -130,10 +132,23 @@ body {
                   <option value="4">4</option>
                   <option value="5">5</option>
 							</select>
- 
+  -->
   
-   <br> <button type="submit" class="btn btn-success " name = 'save' > Submit</button></center>	     
+   <br> <button type="submit" class="btn btn-success " name = 'save' onclick="add()"> Submit</button></center>	     
    </div>
 </form>
 </body>
 </html>
+
+
+<script>
+
+function add() {
+    Swal.fire(
+        'Feedback  was  Submitted!',
+        'You clicked the button!',
+        'success'
+    )
+}
+
+</script>

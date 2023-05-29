@@ -51,4 +51,12 @@
         )
     }
 
+    function cancel() {
+        Swal.fire(
+            'Canceled!',
+            'You clicked the button!',
+            'error'
+        )
+    }
+
   </script>

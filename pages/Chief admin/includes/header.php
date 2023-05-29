@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
- 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
   <script>
     if(window.history.replaceState){

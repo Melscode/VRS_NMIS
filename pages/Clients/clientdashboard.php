@@ -582,4 +582,11 @@ function add() {
     )
 }
 
+function cancel() {
+    Swal.fire(
+        'Request was  Cancel!',
+        'You clicked the button!',
+        'error'
+    )
+}
 </script>

@@ -44,3 +44,22 @@
           </div>
           <!-- /.col -->
 <?php include 'includes/footer.php'; ?>
+
+<script>
+
+function add() {
+    Swal.fire(
+        'Request was  Submitted!',
+        'You clicked the button!',
+        'success'
+    )
+}
+
+function cancel() {
+    Swal.fire(
+        'Request was  Cancel!',
+        'You clicked the button!',
+        'error'
+    )
+}
+</script>

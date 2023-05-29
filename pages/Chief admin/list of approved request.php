@@ -40,3 +40,14 @@
           </div>
 
  <?php include 'includes/footer.php';?>
+ <script>
+
+function cancel() {
+    Swal.fire(
+        'Request was  Canceled!',
+        'You clicked the button!',
+        'error'
+    )
+}
+
+</script>

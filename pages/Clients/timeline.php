@@ -9,8 +9,8 @@ session_start();
 
 
 
-    <!-- Main content -->
-    <section class="content">
+   <!-- Main content -->
+   <section class="content">
       <div class="container-fluid">
 
 <!--          
@@ -45,7 +45,7 @@ session_start();
                  <th>
                  
                 </tr></th> </a>
-                 
+                  
                 </h3>
                 </div>
               </div>
@@ -297,16 +297,21 @@ body {
         <?php echo second_view();?>
         <?php echo checked_motorpool();?>
             
-        <?php initial_supervising();?>
+        <?php echo initial_supervising();?>
 
-        <?php approved_chiefadmin();?>
- 
-        </ul>
+        <?php echo approved_chiefadmin();?>
+        
+        </ul>  
+       
+    </section>
+    <section class="step-wizard">
+        <ul class="step-wizard-list">
+         <?php echo  calculate();?>
+        
+        </ul>  
+       
     </section>
 
     </div>
         </div>
           <?php include 'includes/footer.php'; ?>
-
-
-

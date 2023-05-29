@@ -89,11 +89,12 @@
                       echo "
                       <span class='badge badge-primary'>Initialed</span>
                       <th>
-                      <a href='../../Connection/set-status-technical4.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'>Approve</a>
-                      </th>
-                      
-                      ";
-                  
+                      <a href='../../Connection/set-status-technical2.php?transaction_id=$transaction_id &reservation_status=Approved' class='btn btn-success btn-sm'> ";
+                      ?>
+                      <button class="btn btn-success" onclick="add()"> Approve </button></a>
+                     </th>
+                   
+                     <?php
                     }
                     else if($reservation_status == "Approved")
                     {
@@ -144,3 +145,14 @@
   </div>
 
   <?php include 'includes/footer.php'; ?>
+  <script>
+
+function add() {
+    Swal.fire(
+        'Request was  Approved!',
+        'You clicked the button!',
+        'success'
+    )
+}
+
+</script>

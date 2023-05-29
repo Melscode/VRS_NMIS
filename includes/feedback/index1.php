@@ -107,7 +107,7 @@ if($row['feedback_number'] == '1'){
     <span class="text"></span>
     <span class="numb"></span>
   </div>
-  
+  <center><a href='../../pages/Clients/list of request.php' class='btn btn-info btn-sm'>BACK</a></center><br>
   </div>
 
 <?php 
@@ -136,7 +136,7 @@ if($row['feedback_number'] == '1'){
     <span class="text"></span>
     <span class="numb"></span>
   </div>
-  
+  <center><a href='../../pages/Clients/list of request.php' class='btn btn-info btn-sm'>BACK</a></center><br>
   </div>
 
 <?php 
@@ -165,7 +165,7 @@ if($row['feedback_number'] == '1'){
     <span class="text"></span>
     <span class="numb"></span>
   </div>
-  
+  <center><a href='../../pages/Clients/list of request.php' class='btn btn-info btn-sm'>BACK</a></center><br>
   </div>
 
 <?php 
@@ -194,7 +194,7 @@ if($row['feedback_number'] == '1'){
     <span class="text"></span>
     <span class="numb"></span>
   </div>
-  
+  <center><a href='../../pages/Clients/list of request.php' class='btn btn-info btn-sm'>BACK</a></center><br>
   </div>
 
 <?php 
@@ -203,7 +203,7 @@ else if($row['feedback_number'] == '5'){
  
   // echo "<img src='emojis/emoji-1.png' >"; 
 ?>  <div class="wrapper">
- 
+
   <input type="radio" name="rate" id="star-5">
 
   <div class="content">
@@ -223,7 +223,11 @@ else if($row['feedback_number'] == '5'){
   <div class="footer">
     <span class="text"></span>
     <span class="numb"></span>
-  </div>
+  
+   
+  </div> 
+  <center><a href='../../pages/Clients/list of request.php' class='btn btn-info btn-sm'>BACK</a></center><br>
+  
   </div>
   </div>
 
