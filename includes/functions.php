@@ -45,13 +45,7 @@ function add_request()
   
 
         if($result  = mysqli_query($conn, $sql) ){
-          ?>
-                <div class="alert alert-success " role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">OK</button>
-                  <h5><i class="icon fas fa-check"></i>REQUEST</h5>
-                  was Successfully submitted! plss Click ok.
-                </div>
-             <?php
+         sleep(3);
               
       }        
     }
@@ -2333,11 +2327,16 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-info'>Processing</span>
           <th>
-          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
-          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>
+           ";?>
+          <button class="btn btn-success" onclick="fireSweetAlert()">  Verify </button></a></a>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>
+            
+          <button class="btn btn-danger" onclick="cancel()"> Cancel</button></a>
           </th>
+          <?php
           
-          ";
+         
         }
 }
       ?> 
@@ -2464,12 +2463,6 @@ function view_vehicle(){
     }
 }                    
 ?>
-
-
-
-
-
-
 <!-- Function LOgin -->
 <?php
 

@@ -40,3 +40,23 @@
           </div>
 
  <?php include 'includes/footer.php';?>
+
+ <script>
+
+function fireSweetAlert() {
+    Swal.fire(
+        'Request was  Verified!',
+        'You clicked the button!',
+        'success'
+    )
+}
+
+function cancel() {
+    Swal.fire(
+        ' Request was Canceled !',
+        'You clicked the button!',
+        'error'
+    )
+}
+
+</script>

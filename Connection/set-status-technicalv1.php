@@ -19,13 +19,14 @@ if($result){
             </li>
 
 <?php
+sleep(3);
 header('location: ../pages/Supervising Admin/admindashboard.php');
 }
 
 $transaction ="INSERT INTO transaction_tbl (transaction_id, transaction_description, transaction_date_time)
                 Value ('$transaction_id', '$reservation_status',Now())";
 mysqli_query($conn, $transaction);
-
+sleep(3);
 header('location: ../pages/Supervising Admin/admindashboard.php');
 
 ?>

@@ -180,7 +180,7 @@ session_start();
 
           
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success " name = 'save' > Add Request</button>
+              <button type="submit" class="btn btn-success " name = 'save' onclick="add()"> Add Request</button>
             
             </div>
           </div>
@@ -570,4 +570,16 @@ session_start();
       })
     });
   });
+</script>
+
+<script>
+
+function add() {
+    Swal.fire(
+        'Request was  Submitted!',
+        'You clicked the button!',
+        'success'
+    )
+}
+
 </script>
