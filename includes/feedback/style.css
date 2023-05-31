@@ -11,7 +11,12 @@ body{
   justify-content: center;
   min-height: 100vh;
   /* background: linear-gradient(#FED151, #DE981F); */
-  background-image: url('emojis/NMIS_LOGO.png');
+  background-image: url('emojis/opd.png');
+  background-size: cover;
+}
+.center {
+  padding: 250px 0;
+  text-align: center;
 }
 .wrapper{
   background: #f6f6f6;

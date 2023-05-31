@@ -36,7 +36,7 @@ if (!$conn){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Stars Rating</title>
+    <title>Feedback</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- Google Font: Source Sans Pro -->
@@ -76,16 +76,22 @@ if (!$conn){
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
 body {
-  background-image: url('emojis/NMIS_LOGO.png');
+  
+  background-image: url('emojis/opd.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 10%;
+  background-size: cover;
 
+}
+.center {
+  padding: 250px 0;
+  text-align: center;
 }
 </style>
 </head>
 <body>
   <form method ="POST">
+    <div class="center">
   <div class="wrapper">
     <input type="radio" name="rate" id="star-1">
     <input type="radio" name="rate" id="star-2">
@@ -114,9 +120,9 @@ body {
       <span class="text"></span>
       <span class="numb"></span>
     </div>
-    
     </div>
-						<center><select name="feedback_number" class="form-control" required>
+    
+						<br> <center><select name="feedback_number" class="form-control" required>
 								<option  value=""></option>
 									<option value="1">1</option>
                   <option value="2">2</option>
@@ -126,8 +132,8 @@ body {
 							</select>
  
   
-    <button type="submit" class="btn btn-success " name = 'save' > Submit</button></center>	     
- 
+   <br> <button type="submit" class="btn btn-success " name = 'save' > Submit</button></center>	     
+   </div>
 </form>
 </body>
 </html>

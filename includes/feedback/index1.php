@@ -16,7 +16,7 @@ $conn = mysqli_connect($hostname, $username, $password, $dbname);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Stars Rating</title>
+    <title>Feedback</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -55,11 +55,15 @@ $conn = mysqli_connect($hostname, $username, $password, $dbname);
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
 body {
-  background-image: url('emojis/NMIS_LOGO.png');
+  background-image: url('emojis/opd.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 10%;
+  background-size: cover;
 
+}
+.center {
+  padding: 250px 0;
+  text-align: center;
 }
 </style>
 </head>
@@ -75,6 +79,7 @@ if($row['feedback_number'] == '1'){
  
   // echo "<img src='emojis/emoji-1.png' >"; 
 ?>  <div class="wrapper">
+  <div class="center">
   <input type="radio" name="rate" id="star-1">
   <!-- <input type="radio" name="rate" id="star-2">
   <input type="radio" name="rate" id="star-3">
@@ -219,7 +224,7 @@ else if($row['feedback_number'] == '5'){
     <span class="text"></span>
     <span class="numb"></span>
   </div>
-  
+  </div>
   </div>
 
 <?php 
@@ -228,6 +233,5 @@ else if($row['feedback_number'] == '5'){
 }
  ?>
   
-
 </body>
 </html>
