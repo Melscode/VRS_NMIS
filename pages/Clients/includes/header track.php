@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Timeline</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  
   <script>
     if(window.history.replaceState){
       window.history.replaceState(null, null, window.location.href);
@@ -72,15 +74,16 @@
   <form class="lockscreen-credentials" method="POST" >
         <div class="input-group mb-6">
          <input type="text" class="form-control" placeholder="Transaction_ID" name="transaction_id"  required>
-              <button type="submit" name="test" class="btn btn-info"><i class="fas fa-arrow-right text-muted"></i> </button>
+            
       </div>
       </div>
       </div>
-    </form>
+  
     <div class="text-center">
-    <a href="clientdashboard.php" class="btn btn-info">Back</a>
+    <a href="clientdashboard.php" class="btn btn-primary">Back</a>  
+    <button type="submit" name="test" class="btn btn-info">Search </button>
   </div>
-    
+      </form>
     </section>
 
     

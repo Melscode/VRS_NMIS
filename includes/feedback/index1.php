@@ -75,6 +75,11 @@ $res = mysqli_query($conn,  $sql);
 
 $row=mysqli_fetch_array($res);
 
+if(is_null($row)){
+
+  echo "<br> <br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br> <br> <br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br> <a href='../../pages/Clients/list of request.php'>";?> <span class="btn btn-info" > EMPTY!!  please send Feedback First<span></a><?php
+}else{
+
 if($row['feedback_number'] == '1'){
  
   // echo "<img src='emojis/emoji-1.png' >"; 
@@ -235,7 +240,7 @@ else if($row['feedback_number'] == '5'){
 }else{
 
 }
- ?>
+} ?>
   
 </body>
 </html>

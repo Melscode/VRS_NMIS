@@ -292,6 +292,8 @@ body {
 
   </style>
 
+
+
         <section class="step-wizard">
         <ul class="step-wizard-list">
         <?php echo second_view();?>

@@ -28,7 +28,7 @@
                   </thead>
 
                   <tbody>
-                  <?php echo motorpool_list_approved_request();?>
+                  <?php echo motorpool_list_dispatch_request();?>
 
 
                   </tbody>
@@ -44,7 +44,7 @@
 
 function cancel() {
     Swal.fire(
-        'Request was  Canceled!',
+        'Ready to Travel!',
         'You clicked the button!',
         'error'
     )

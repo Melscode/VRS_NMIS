@@ -123,37 +123,37 @@ body{
   font-weight: 400;
 }
 .footer .text::before{
-  content: "Rate your experience";
+  content: "Clicked Starts";
 }
 .footer .numb::before{
   content: "0 out of 5";
 }
 #star-1:checked ~ .footer .text::before{
-  content: "I just hate it";
+  content: "Very Dissatisfied";
 }
 #star-1:checked ~ .footer .numb::before{
   content: "1 out of 5";
 }
 #star-2:checked ~ .footer .text::before{
-  content: "I don't like it";
+  content: "Dissatisfied";
 }
 #star-2:checked ~ .footer .numb::before{
   content: "2 out of 5";
 }
 #star-3:checked ~ .footer .text::before{
-  content: "This is awesome";
+  content: "Neither satisfied nor Dissatisfied";
 }
 #star-3:checked ~ .footer .numb::before{
   content: "3 out of 5";
 }
 #star-4:checked ~ .footer .text::before{
-  content: "I just like it";
+  content: "Satisfied";
 }
 #star-4:checked ~ .footer .numb::before{
   content: "4 out of 5";
 }
 #star-5:checked ~ .footer .text::before{
-  content: "I just love it";
+  content: "I Very Satisfied";
 }
 #star-5:checked ~ .footer .numb::before{
   content: "5 out of 5";

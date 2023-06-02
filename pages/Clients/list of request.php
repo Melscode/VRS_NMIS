@@ -186,24 +186,24 @@ if(mysqli_query($conn,$sql)){
                 <table id="" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th class="btn-info"> Transaction_ID</th>
-                    <th class="btn-info">Are you the Passenger?</th>
-                    <th class="btn-info">No. of Passenger</th>
-                    <th class="btn-info">Name of Passenger</th>
-                    <th class="btn-info">Office</th>
-                    <th class="btn-info">Raduis</th>
-                    <th class="btn-info">Pick up Point</th>
+                    <th class="btn-info"> Transaction_ID <br><br><br></th>
+                    <th class="btn-info">Are you the Passenger?<br><br></th>
+                    <th class="btn-info">No. of Passenger<br><br></th>
+                    <th class="btn-info">Name of Passenger<br><br></th>
+                    <th class="btn-info">Office<br><br><br></th>
+                    <th class="btn-info">Raduis<br><br><br></th>
+                    <th class="btn-info">Pick up Point<br><br></th>
                     <th class="btn-info">Drop off Point</th>
-                    <th class="btn-info">Date Start</th>
-                    <th class="btn-info">Date End</th>
-                    <th class="btn-info">Time Start</th>
-                    <th class="btn-info">Time End</th>
-                    <th class="btn-info">Purpose</th>
-                    <th class="btn-info">Attachments</th>
-                    <th class="btn-info">Assigned Driver</th>
-                    <th class="btn-info">Feedback</th>
-                    <th class="btn-info">Status</th>
-                    <th class="btn-info">Action</th>
+                    <th class="btn-info">Date Start<br><br></th>
+                    <th class="btn-info">Date End<br><br></th>
+                    <th class="btn-info">Time Start<br><br></th>
+                    <th class="btn-info">Time End<br><br></th>
+                    <th class="btn-info">Purpose<br><br><br></th>
+                    <th class="btn-info">Attachments<br><br><br></th>
+                    <th class="btn-info">Assigned Driver<br><br></th>
+                    <th class="btn-info">Feedback<br><br><br></th>
+                    <th class="btn-info">Status<br><br><br></th>
+                    <th class="btn-info">Action<br><br><br></th>
                     
                   </tr>
                   </thead>
@@ -334,4 +334,24 @@ $(function(){
 })
 
 
+</script>
+
+
+<script>
+
+// function add() {
+//     Swal.fire(
+//         'Request was  Submitted!',
+//         'You clicked the button!',
+//         'success'
+//     )
+// }
+
+function cancel() {
+    Swal.fire(
+        'Request was  Cancel!',
+        'You clicked the button!',
+        'error'
+    )
+}
 </script>

@@ -44,40 +44,40 @@
           </div>
            <!--end Driver-->
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
+          <!-- <div class="col-lg-3 col-6">
+           
             <div class="small-box bg-info">
-              <div class="inner">
+              <div class="inner"> -->
               <?php 
                 
-              echo total_vehicle();
+              // echo total_vehicle();
                 
               ?>
-              </div>
+              <!-- </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
               <a href="list of vehicle.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
+          </div> -->
           <!--end Vehicle-->
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
+          <!-- <div class="col-lg-3 col-6">
+      
             <div class="small-box bg-info">
-              <div class="inner">
+              <div class="inner"> -->
               <?php 
                 
-              echo total_user(); 
+              // echo total_user(); 
                 
               ?>
-              </div>
+              <!-- </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i> 
               </div>
               <a href="list of user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
+          </div> -->
           
           <!-- ./col -->
         </div>

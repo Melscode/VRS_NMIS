@@ -44,9 +44,9 @@ session_start();
             <div class="modal-body ">
               <div class="row">
                 <div class="col-sm">
-              <center><h4 class="btn-info">Requester's Information</h4> <br></center>
+              <!-- <center><h4 class="btn-info">Requester's Information</h4> <br></center> -->
 
-              <div class="form-input">
+              <!-- <div class="form-input">
 							<select name="requestor_division" class="form-control">
 								<option  id= "division" value="">--Select Division--</option>
 									<option value="Laboratory">Laboratory</option>
@@ -73,7 +73,7 @@ session_start();
                 <input type="hidden" name="region" class="form-control" placeholder="Contact Number">
               </div> 
               
-              
+               -->
 
                 <h6>Are you the Passenger?</h6>
               <div class="form-input">
@@ -93,16 +93,16 @@ session_start();
 
               <h6>Name of Passengers :</h6>
             <div class="form-group">
-                <input type="text" name="name_of_passenger" class="form-control" placeholder="Name" required>
+                <input type="text" name="name_of_passenger" class="form-control" placeholder="Firstname, Lastname" required>
               </div>
               <div class="form-group">
-                <input type="text" name="p1" class="form-control" placeholder="Name">
+                <input type="text" name="p1" class="form-control" placeholder="Firstname, Lastname">
               </div>
               <div class="form-group">
-                <input type="text" name="p2" class="form-control" placeholder="Name" >
+                <input type="text" name="p2" class="form-control" placeholder="Firstname, Lastname" >
               </div>
               <div class="form-group">
-                <input type="text" name="p3" class="form-control" placeholder="Name" >
+                <input type="text" name="p3" class="form-control" placeholder="Firstname, Lastname" >
               </div>
 
               <h6 >Office (RTOC/Division/Unit/Section) :</h6>
@@ -414,162 +414,6 @@ session_start();
       $('#new-event').val('')
     })
   })
-</script>
-
-
-<script>
-  $(function() {
-    var Toast = Swal.mixin({
-      toast: false,
-      position: 'top',
-      showConfirmButton: true,
-      timer: 3000
-    });
-
-    $('.swalDefaultSuccess').click(function() {
-      Toast.fire({
-        icon: 'info',
-        title: 'Reminder: Please provide a approved requirements for outside-manila request for Vehicle ..'
-      })
-    });
-    $('.swalDefaultInfo').click(function() {
-      Toast.fire({
-        icon: 'info',
-        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.swalDefaultError').click(function() {
-      Toast.fire({
-        icon: 'error',
-        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.swalDefaultWarning').click(function() {
-      Toast.fire({
-        icon: 'warning',
-        title: 'Please fillup the required fields.'
-      })
-    });
-    $('.swalDefaultQuestion').click(function() {
-      Toast.fire({
-        icon: 'question',
-        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-
-    $('.toastrDefaultSuccess').click(function() {
-      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
-    $('.toastrDefaultInfo').click(function() {
-      toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
-    $('.toastrDefaultError').click(function() {
-      toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
-    $('.toastrDefaultWarning').click(function() {
-      toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
-
-    $('.toastsDefaultDefault').click(function() {
-      $(document).Toasts('create', {
-        title: 'Toast Title',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultTopLeft').click(function() {
-      $(document).Toasts('create', {
-        title: 'Toast Title',
-        position: 'topLeft',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultBottomRight').click(function() {
-      $(document).Toasts('create', {
-        title: 'Toast Title',
-        position: 'bottomRight',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultBottomLeft').click(function() {
-      $(document).Toasts('create', {
-        title: 'Toast Title',
-        position: 'bottomLeft',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultAutohide').click(function() {
-      $(document).Toasts('create', {
-        title: 'Toast Title',
-        autohide: true,
-        delay: 750,
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultNotFixed').click(function() {
-      $(document).Toasts('create', {
-        title: 'Toast Title',
-        fixed: false,
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultFull').click(function() {
-      $(document).Toasts('create', {
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        icon: 'fas fa-envelope fa-lg',
-      })
-    });
-    $('.toastsDefaultFullImage').click(function() {
-      $(document).Toasts('create', {
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        image: '../../dist/img/user3-128x128.jpg',
-        imageAlt: 'User Picture',
-      })
-    });
-    $('.toastsDefaultSuccess').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-success',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultInfo').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-info',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultWarning').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-warning',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultDanger').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-danger',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultMaroon').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-maroon',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-  });
 </script>
 
 <script>

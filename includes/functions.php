@@ -194,11 +194,14 @@ function client_request()
               echo "
               <span class='badge badge-warning'>Pending</span>
               <th>
-              <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a> <br><br>
+              <a href='../../Connection/set-status-technical5.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>";
+              ?>
+              <button class="btn btn-danger" onclick="cancel()"> Cancel </button></a><br><br> 
               <a href='../../includes/image/index.php?transaction_id=$transaction_id' class='btn btn-info btn-sm'>UPLOAD Files</a>
-              </th>
+             </th>
+           
+             <?php 
               
-              ";
             }
           ?> 
         </th> 
@@ -586,6 +589,9 @@ function initial_supervising(){
                }
              }            
            }
+
+
+
           ?>
 
 
@@ -701,10 +707,9 @@ if(isset($_POST['test']))
                        // total no. seconds 60/60/24 to get
                        // number of days
                       
-                      }        
-                
-                    
-                    
+                  
+                        }
+     
                     
                     
                     
@@ -882,11 +887,18 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-info'>Checked</span>
           <th>
-            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
-            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
-          </th>
+            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>";?>
+            <button class="btn btn-warning" onclick="add()">  Initial</button></a>
           
-          ";
+         
+           <?php
+           echo "
+            
+            <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>";  ?>
+             <button class="btn btn-danger" onclick="cancel()"> Cancel</button></a>
+            </th>
+          <?php
+          
         }else if ($reservation_status == "Initialed")
         {
 
@@ -1155,11 +1167,14 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../Connection/set-status-technical2.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          <a href='../../Connection/set-status-technical2.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'> ";?>
+          <button class="btn btn-danger" onclick="cancel()">  Cancel </button></a>
+         </th>
+       
+         <?php
+         
           
-          </th>
-          
-          ";
+         
       
         } else if($reservation_status == "Pending")
         {
@@ -1296,6 +1311,14 @@ while($row = mysqli_fetch_array($sql))
           
           ";
       
+        }else if($reservation_status == "Dispatch"){
+          echo "
+          <span class='badge badge-success'>Dispatch</span>
+          <th>
+          </th>
+          
+          ";
+
         }
         else if($reservation_status == "Approved")
         {
@@ -1303,6 +1326,156 @@ while($row = mysqli_fetch_array($sql))
           <span class='badge badge-success'>Approved</span>
           <th>
           <a href='../Supervising Admin/m.php?transaction_id=$transaction_id' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Dispatch' class='btn btn-info btn-sm'>For Dispatch</a>
+          </th>
+          
+          ";
+      
+        } else if($reservation_status == "Pending")
+        {
+          echo "
+          <span class='badge badge-warning'>Pending</span>
+          <th>
+          
+          </th>
+          
+          ";
+      
+        }else if ($reservation_status == "Checked")
+        {
+
+          echo "
+          <span class='badge badge-info'>Checked</span>
+          <th>
+            <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Initialed ' class='btn btn-warning btn-sm'>Initial</a>
+          </th>
+          
+          ";
+        }else if ($reservation_status == "Initialed")
+        {
+
+          echo "
+          <span class='badge badge-primary'>Initialed</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>Cancel</a>
+          </th>
+          
+          ";
+        }
+        
+        else if ($reservation_status == 'Canceled')
+        {
+          echo "
+          <span class='badge badge-danger'>Canceled</span>
+          <th>
+        
+          </th>
+          
+          ";
+      
+        }else
+        {
+          echo "
+          <span class='badge badge-info'>Processing</span>
+          <th>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>Verify</a>
+          </th>
+          
+          ";
+        }
+
+      ?> 
+
+    </th>
+    
+    
+  </tr>
+
+<?php }}?>
+<?php
+include 'connection.php';
+function motorpool_list_dispatch_request(){
+  global $conn;
+
+// $sql = mysqli_query($conn, "SELECT * FROM request_tbl");
+$sql = mysqli_query($conn, "SELECT * FROM request_tbl  WHERE reservation_status ='Dispatch'");
+while($row = mysqli_fetch_array($sql))
+{
+  
+    $transaction_id =$row['transaction_id'];
+    $requestor_name =$row['requestor_name'];
+    $requestor_govmail=$row['requestor_govmail']; 
+    $requestor_position=$row['requestor_position'];
+    $requestor_division=$row['requestor_division'];
+    $requestor_contact_number =$row['requestor_contact_number'];
+    $region=$row['region'];
+    $passenger =$row['passenger'];
+    $number_of_passenger=$row['number_of_passenger'];
+    $name_of_passenger =$row['name_of_passenger'];
+    $office =$row ['office'];
+    $p1 =$row ['p1'];
+    $p2 =$row ['p2'];
+    $p3 =$row ['p3'];
+    $raduis =$row['raduis'];
+    $pickup_point=$row['pickup_point'];
+    $destination =$row['destination'];
+    $start_date =$row['start_date'];
+    $end_date =$row['end_date'];
+    $start_time =$row['start_time'];
+    $end_time =$row['end_time'];
+    $purpose =$row['purpose'];
+    $travel_order =$row['travel_order'];
+    $asigned_driver =$row['asigned_driver'];
+    $reservation_status=$row['reservation_status'];
+  ?>
+
+
+<tr> 
+    <th><?php echo $transaction_id; ?></th>
+    <th><?php echo $requestor_name ; ?></th>
+    <th><?php echo $passenger ; ?></th>
+        <th><?php echo $number_of_passenger; ?></th>
+        <th><?php  echo $name_of_passenger; ?><br><?php echo $p1; ?><br><?php echo $p2; ?> <br><?php echo $p3;?></th>
+        <th><?php echo $office; ?></th>
+        <th><?php echo $raduis; ?></th>
+        <th><?php echo $pickup_point; ?></th>
+        <th><?php echo $destination; ?></th>
+        <th><?php echo $start_date; ?></th>
+        <th><?php echo $end_date; ?></th>
+        <th><?php echo date('h:i a',strtotime($start_time)); ?></th>
+        <th><?php echo date('h:i a',strtotime($end_time));$end_time; ?></th>
+        <th><?php echo $purpose ; ?></th>
+        <th><?php echo $travel_order; ?></th>
+        <th><?php echo $asigned_driver; ?></th>
+
+    <th>
+      
+      <?php 
+        if($reservation_status == "Verified")
+        {
+          echo "
+          <span class='badge badge-success'>Verified</span>
+          <th>
+          </th>
+          
+          ";
+      
+        }else if($reservation_status == "Dispatch"){
+          echo "
+          <span class='badge badge-success'>Dispatch</span>
+          <th>
+          </th>
+          
+          ";
+
+        }
+        else if($reservation_status == "Approved")
+        {
+          echo "
+          <span class='badge badge-success'>Approved</span>
+          <th>
+          <a href='../Supervising Admin/m.php?transaction_id=$transaction_id' class='btn btn-primary btn-sm'>Generate Ticket</a>
+          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Dispatch' class='btn btn-info btn-sm'>For Dispatch</a>
           </th>
           
           ";
@@ -1472,63 +1645,6 @@ while($row = mysqli_fetch_array($sql))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ALERST FOR MOTORPOOL LIST REQUEST -->
  
 
@@ -1553,7 +1669,7 @@ function assign_driver()
   Value ('$transaction_id', 'Checked',Now())";
  global $conn;
  $result =mysqli_query($conn, $sql2);
-         echo "<script>alert('Assigned Successfully!!');</script>"; 
+         sleep(3);
          header('location: ../Motorpool/list of request.php');
       }
     }
@@ -2029,13 +2145,16 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-info'>Processing</span>
           <th>
-          <a href='../../Connection/set-status-technical.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>
           ";
           ?>
            <button class="btn btn-success" onclick="fireSweetAlert()">  Verify </button></a>
+           <?php echo "
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'> "; ?>
+          <button class="btn btn-danger" onclick="cancel()">Cancel</button></a>
           </th>
-        
           <?php
+        
         }
  
       ?> 
@@ -2125,7 +2244,7 @@ while($row = mysqli_fetch_array($sql))
           echo "
           <span class='badge badge-success'>Approved</span>
           <th>
-          <a href='../../includes/trip_ticket.html' class='btn btn-info btn-sm'>Trip Ticket</a>
+          <a href='../Supervising Admin/m.php?transaction_id=$transaction_id' class='btn btn-primary btn-sm'>Generate Ticket</a>
           </th>
           
           ";
@@ -2329,10 +2448,10 @@ while($row = mysqli_fetch_array($sql))
           <th>
           <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Verified' class='btn btn-success btn-sm'>
            ";?>
-          <button class="btn btn-success" onclick="fireSweetAlert()">  Verify </button></a></a>
-          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'>
-            
-          <button class="btn btn-danger" onclick="cancel()"> Cancel</button></a>
+          <button class="btn btn-success" onclick="fireSweetAlert()">  Verify </button></a>
+          <?php echo "
+          <a href='../../Connection/set-status-technicalv1.php?transaction_id=$transaction_id &reservation_status=Canceled' class='btn btn-danger btn-sm'> "; ?>
+          <button class="btn btn-danger" onclick="cancel()">Cancel</button></a>
           </th>
           <?php
           
@@ -2582,8 +2701,11 @@ if(isset($_POST['register'])){
 }
 }
 
-?>
 
+
+
+
+?>
 
 
 

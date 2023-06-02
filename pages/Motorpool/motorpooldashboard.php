@@ -106,6 +106,30 @@
               <a href="list of approved request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+              <?php 
+                
+                $conn = mysqli_connect('localhost', 'root', '', 'nmisvr_db');
+
+                $query = "SELECT * FROM request_tbl WHERE reservation_status='Dispatch'";
+                $query_execute = mysqli_query($conn, $query);     
+                
+                $row = mysqli_num_rows($query_execute);
+                echo "<p>Completed</p>";
+                echo "<h3>$row</h3>"; 
+                
+              ?>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="list of dispatch request.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
           
           <!-- ./col -->
         </div>
